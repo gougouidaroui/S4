@@ -1,0 +1,2437 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Couronnes Céramo-céramiques - Guide d'Étude</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #F59E0B;
+            --primary-dark: #D97706;
+            --primary-light: #FCD34D;
+            --primary-bg: #FEF3C7;
+            --secondary: #8B5CF6;
+            --secondary-bg: #EDE9FE;
+            --accent: #10B981;
+            --accent-bg: #D1FAE5;
+            --ceramic: #FBBF24;
+            --ceramic-bg: #FEF9C3;
+            --empress: #EF4444;
+            --empress-bg: #FEE2E2;
+            --inceram: #06B6D4;
+            --inceram-bg: #CFFAFE;
+            --procera: #10B981;
+            --procera-bg: #A7F3D0;
+            --bg: #F5F5F4;
+            --surface: #FFFFFF;
+            --text: #1C1917;
+            --text-muted: #78716C;
+            --text-light: #A8A29E;
+            --border: #E7E5E4;
+            --border-light: #F5F5F4;
+            --radius: 20px;
+            --radius-sm: 12px;
+            --radius-lg: 28px;
+            --radius-full: 9999px;
+            --transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* Claymorphism shadows */
+            --clay-shadow: 
+                10px 10px 20px rgba(0, 0, 0, 0.07),
+                -10px -10px 20px rgba(255, 255, 255, 0.95);
+            --clay-shadow-sm: 
+                6px 6px 12px rgba(0, 0, 0, 0.05),
+                -6px -6px 12px rgba(255, 255, 255, 0.8);
+            --clay-shadow-lg: 
+                15px 15px 30px rgba(0, 0, 0, 0.08),
+                -12px -12px 24px rgba(255, 255, 255, 0.95);
+            --clay-inset: 
+                inset 4px 4px 8px rgba(0, 0, 0, 0.05),
+                inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+            --clay-hover: 
+                10px 10px 20px rgba(0, 0, 0, 0.1),
+                -10px -10px 20px rgba(255, 255, 255, 0.95);
+        }
+
+        [data-theme="dark"] {
+            --primary: #FBBF24;
+            --primary-dark: #F59E0B;
+            --primary-light: #FDE68A;
+            --primary-bg: #292524;
+            --secondary-bg: #1E1B2E;
+            --accent-bg: #064E3B;
+            --ceramic-bg: #292524;
+            --empress-bg: #2D1B1B;
+            --inceram-bg: #13272D;
+            --procera-bg: #0D2D1E;
+            --bg: #18181B;
+            --surface: #27272A;
+            --text: #FAFAFA;
+            --text-muted: #A1A1AA;
+            --text-light: #71717A;
+            --border: #3F3F46;
+            --border-light: #27272A;
+            --clay-shadow: 
+                10px 10px 20px rgba(0, 0, 0, 0.4),
+                -10px -10px 20px rgba(50, 50, 50, 0.5);
+            --clay-shadow-sm: 
+                6px 6px 12px rgba(0, 0, 0, 0.35),
+                -6px -6px 12px rgba(45, 45, 45, 0.45);
+            --clay-shadow-lg: 
+                15px 15px 30px rgba(0, 0, 0, 0.45),
+                -15px -15px 30px rgba(55, 55, 55, 0.55);
+            --clay-inset: 
+                inset 6px 6px 12px rgba(0, 0, 0, 0.35),
+                inset -6px -6px 12px rgba(45, 45, 45, 0.35);
+            --clay-hover: 
+                12px 12px 24px rgba(0, 0, 0, 0.5),
+                -12px -12px 24px rgba(60, 60, 60, 0.6);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .header {
+            background: linear-gradient(145deg, #FBBF24 0%, #F59E0B 50%, #D97706 100%);
+            color: white;
+            padding: 3rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3Cg%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 3rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .header h1 {
+            font-size: clamp(1.75rem, 5vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.2);
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 500;
+            backdrop-filter: blur(8px);
+            box-shadow: var(--clay-shadow-sm);
+        }
+
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            border-radius: var(--radius-full);
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition);
+            backdrop-filter: blur(8px);
+            box-shadow: var(--clay-shadow-sm);
+            min-height: 44px;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-1px);
+            box-shadow: var(--clay-shadow);
+        }
+
+        .theme-toggle svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .nav-container {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        [data-theme="dark"] .nav-container {
+            background: rgba(26, 26, 26, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0.5rem;
+            padding: 0.75rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1rem;
+            border: none;
+            background: var(--surface);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: var(--radius);
+            white-space: nowrap;
+            transition: all var(--transition);
+            min-height: 44px;
+            box-shadow: var(--clay-shadow-sm);
+        }
+
+        .nav-btn:hover {
+            background: var(--surface);
+            color: var(--text);
+            transform: translateY(-1px);
+            box-shadow: var(--clay-shadow);
+        }
+
+        .nav-btn.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: var(--clay-shadow);
+        }
+
+        .nav-btn svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--clay-shadow);
+            transition: all var(--transition);
+            border: none;
+        }
+
+        .card:hover {
+            box-shadow: var(--clay-hover);
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: var(--clay-shadow-sm);
+        }
+
+        .card-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .card-icon.info { background: var(--primary-bg); color: var(--primary); }
+        .card-icon.empress { background: var(--empress-bg); color: var(--empress); }
+        .card-icon.inceram { background: var(--inceram-bg); color: var(--inceram); }
+        .card-icon.procera { background: var(--procera-bg); color: var(--procera); }
+        .card-icon.ceramic { background: var(--ceramic-bg); color: var(--primary); }
+
+        .card h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        .card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 1.25rem 0 0.5rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .card > h3:first-child {
+            margin-top: 0;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .comparison-card {
+            background: var(--bg);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            box-shadow: var(--clay-shadow-sm);
+            transition: all var(--transition);
+            border: none;
+        }
+
+        .comparison-card:hover {
+            box-shadow: var(--clay-shadow);
+            transform: translateY(-2px);
+        }
+
+        .comparison-card h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .comparison-card ul {
+            list-style: none;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .comparison-card li {
+            padding: 0.25rem 0;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .pros { border-left: 4px solid var(--accent); padding-left: 1rem; }
+        .cons { border-left: 4px solid var(--empress); padding-left: 1rem; }
+
+        .list {
+            list-style: none;
+        }
+
+        .list li {
+            padding: 0.625rem 0;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .list li:last-child {
+            border-bottom: none;
+        }
+
+        .list-bullet {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-top: 0.4rem;
+            flex-shrink: 0;
+            box-shadow: var(--clay-shadow-sm);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.35rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            box-shadow: var(--clay-shadow-sm);
+        }
+
+        .badge.good { background: var(--accent-bg); color: var(--accent); }
+        .badge.bad { background: var(--empress-bg); color: var(--empress); }
+        .badge.info { background: var(--primary-bg); color: var(--primary); }
+
+        .accordion {
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin: 1rem 0;
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--clay-shadow-sm);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 1.5rem;
+            background: var(--bg);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all var(--transition);
+            min-height: 56px;
+            border-radius: var(--radius);
+        }
+
+        .accordion-header:hover {
+            background: var(--border-light);
+            box-shadow: var(--clay-inset);
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 1.5rem;
+        }
+
+        .accordion.open .accordion-content {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .accordion-arrow {
+            transition: transform var(--transition);
+            color: var(--text-muted);
+        }
+
+        .accordion.open .accordion-arrow {
+            transform: rotate(180deg);
+        }
+
+        .diagram {
+            background: var(--ceramic-bg);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-align: center;
+            margin: 1.5rem 0;
+            box-shadow: var(--clay-inset);
+        }
+
+        .diagram h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .diagram-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .diagram-box {
+            background: var(--surface);
+            padding: 0.875rem 1.25rem;
+            border-radius: var(--radius);
+            box-shadow: var(--clay-shadow-sm);
+            min-width: 100px;
+            font-size: 0.85rem;
+        }
+
+        .diagram-box small {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .diagram-box.highlight {
+            background: var(--primary);
+            color: white;
+        }
+
+        .diagram-box.highlight small {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .diagram-box.ceramic-box {
+            background: var(--ceramic-bg);
+            border: 2px solid var(--ceramic);
+        }
+
+        .diagram-arrow {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--clay-shadow-sm);
+            background: var(--surface);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        th, td {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        th {
+            background: var(--bg);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        tbody tr {
+            transition: background var(--transition);
+        }
+
+        tbody tr:hover {
+            background: var(--bg);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .pillars-diagram {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .pillar {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--clay-shadow);
+            min-width: 180px;
+            border-top: 5px solid var(--primary);
+            transition: all var(--transition);
+        }
+
+        .pillar:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--clay-shadow-lg);
+        }
+
+        .pillar-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--primary-bg);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            box-shadow: var(--clay-shadow-sm);
+        }
+
+        .pillar-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .pillar h4 {
+            margin: 0 0 0.5rem;
+        }
+
+        .pillar p {
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .technique-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--clay-shadow);
+            border-left: 6px solid var(--primary);
+            transition: all var(--transition);
+        }
+
+        .technique-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--clay-shadow-lg);
+        }
+
+        .technique-card.empress { border-left-color: var(--empress); }
+        .technique-card.inceram { border-left-color: var(--inceram); }
+        .technique-card.procera { border-left-color: var(--procera); }
+
+        .technique-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .technique-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--clay-shadow-sm);
+        }
+
+        .technique-icon.empress { background: var(--empress-bg); color: var(--empress); }
+        .technique-icon.inceram { background: var(--inceram-bg); color: var(--inceram); }
+        .technique-icon.procera { background: var(--procera-bg); color: var(--procera); }
+
+        .process-steps {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: var(--surface);
+            border-radius: var(--radius);
+            font-size: 0.85rem;
+            font-weight: 500;
+            box-shadow: var(--clay-shadow-sm);
+            transition: all var(--transition);
+        }
+
+        .step:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--clay-shadow);
+        }
+
+        .step-number {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            box-shadow: var(--clay-shadow-sm);
+        }
+
+        .step-arrow {
+            color: var(--text-light);
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .pyramid-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .pyramid-level {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .pyramid-box {
+            padding: 1.25rem 1.75rem;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: var(--clay-shadow);
+            transition: all var(--transition);
+        }
+
+        .pyramid-box:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--clay-shadow-lg);
+        }
+
+        .pyramid-box strong {
+            display: block;
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+        }
+
+        .pyramid-box small {
+            font-size: 0.75rem;
+            opacity: 0.9;
+        }
+
+        .pyramid-box.spinell {
+            background: linear-gradient(135deg, #C4B5FD, #8B5CF6);
+            color: white;
+        }
+
+        .pyramid-box.alumina {
+            background: linear-gradient(135deg, #CBD5E1, #64748B);
+            color: white;
+        }
+
+        .pyramid-box.zirconia {
+            background: linear-gradient(135deg, #5EEAD4, #0D9488);
+            color: white;
+        }
+
+        .compare-chart {
+            margin: 2rem 0;
+        }
+
+        .compare-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .compare-label {
+            width: 120px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            flex-shrink: 0;
+        }
+
+        .compare-bars {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .compare-bar-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .compare-bar-type {
+            width: 24px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            flex-shrink: 0;
+        }
+
+        .compare-bar-type.ccc { color: var(--primary); }
+        .compare-bar-type.metal { color: var(--text-muted); }
+
+        .compare-bar-track {
+            flex: 1;
+            height: 14px;
+            background: var(--border-light);
+            border-radius: 7px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .compare-bar-fill {
+            height: 100%;
+            border-radius: 7px;
+            transition: width 0.6s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .compare-bar-fill.ccc {
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+        }
+
+        .compare-bar-fill.metal {
+            background: linear-gradient(90deg, #6B7280, #9CA3AF);
+        }
+
+        .compare-legend {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .compare-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .compare-legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+
+        .compare-legend-color.ccc {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+        }
+
+        .compare-legend-color.metal {
+            background: linear-gradient(135deg, #6B7280, #9CA3AF);
+        }
+
+        .prep-visual {
+            background: var(--primary-bg);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .prep-zones {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .prep-zone {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem;
+            text-align: center;
+            box-shadow: var(--clay-shadow-sm);
+            transition: all var(--transition);
+        }
+
+        .prep-zone:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--clay-shadow);
+        }
+
+        .prep-zone-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .prep-zone small {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .conclusion-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin: 1.5rem 0;
+            box-shadow: var(--clay-shadow-lg);
+        }
+
+        .conclusion-box h2 {
+            color: white;
+            margin-bottom: 0.75rem;
+        }
+
+        .conclusion-box p {
+            color: rgba(255,255,255,0.95);
+            font-size: 1rem;
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 52px;
+            height: 52px;
+            background: var(--primary);
+            box-shadow: var(--clay-shadow);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all var(--transition);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-top:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        .scroll-top svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .nav-guides {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem;
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--clay-shadow);
+            margin-top: 2rem;
+        }
+
+        .nav-guide-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: var(--primary);
+            color: white;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all var(--transition);
+            box-shadow: var(--clay-shadow-sm);
+        }
+
+        .nav-guide-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--clay-shadow);
+        }
+
+        .nav-guide-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .nav-guides-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-guides-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .nav-guide-link {
+            padding: 0.5rem 0.875rem;
+            background: var(--bg);
+            color: var(--text-muted);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all var(--transition);
+            box-shadow: var(--clay-shadow-sm);
+        }
+
+        .nav-guide-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 1.5rem 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .header-top {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .theme-toggle {
+                align-self: flex-start;
+                min-height: 44px;
+                min-width: 44px;
+                justify-content: center;
+            }
+
+            .main {
+                padding: 1rem;
+            }
+
+            .card {
+                padding: 1.25rem;
+                border-radius: var(--radius);
+                margin-bottom: 1rem;
+            }
+
+            .card:hover {
+                transform: none;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .pillars-diagram {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .pillar {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .pillar:hover {
+                transform: none;
+            }
+
+            .process-steps {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .step-arrow {
+                display: none;
+            }
+
+            .step {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .nav-container {
+                padding: 0.25rem;
+            }
+
+            .nav-btn {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.8rem;
+                min-height: 44px;
+            }
+
+            .nav-btn svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .card-icon {
+                width: 48px;
+                height: 48px;
+            }
+
+            .compare-chart {
+                margin: 1rem 0;
+            }
+
+            .compare-label {
+                width: 90px;
+                font-size: 0.8rem;
+            }
+
+            .compare-bar-type {
+                width: 20px;
+                font-size: 0.6rem;
+            }
+
+            .compare-bar-fill {
+                font-size: 0.6rem;
+                padding-right: 4px;
+            }
+
+            .prep-zones {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pyramid-diagram {
+                margin: 1rem 0;
+            }
+
+            .pyramid-level {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pyramid-box {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .technique-card {
+                padding: 1.25rem;
+            }
+
+            .technique-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .table-container {
+                margin: 0.75rem 0;
+            }
+
+            table {
+                font-size: 0.8rem;
+            }
+
+            th, td {
+                padding: 0.625rem 0.5rem;
+            }
+
+            .scroll-top {
+                bottom: 1rem;
+                right: 1rem;
+                width: 44px;
+                height: 44px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.25rem;
+            }
+
+            .header-badge {
+                font-size: 0.75rem;
+                padding: 0.375rem 0.75rem;
+            }
+
+            .card h2 {
+                font-size: 1.1rem;
+            }
+
+            .card h3 {
+                font-size: 1rem;
+            }
+
+            .card h4 {
+                font-size: 0.9rem;
+            }
+
+            .prep-zones {
+                grid-template-columns: 1fr;
+            }
+
+            .compare-legend {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: flex-start;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        @media print {
+            .nav-container, .scroll-top, .theme-toggle {
+                display: none;
+            }
+            .section {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="header-top">
+                <div>
+                    <h1>Couronnes Céramo-céramiques</h1>
+                    <p>Guide d'Étude Complet - Prothèse Conjointe</p>
+                    <span class="header-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                        Pr A El Yamani
+                    </span>
+                </div>
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="moon-icon" style="display:none;" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <span>Mode</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav-container">
+        <div class="nav">
+            <button class="nav-btn active" data-section="overview">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                Vue d'ensemble
+            </button>
+            <button class="nav-btn" data-section="definition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                Définition
+            </button>
+            <button class="nav-btn" data-section="avantages">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Avantages
+            </button>
+            <button class="nav-btn" data-section="indications">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                Indications
+            </button>
+            <button class="nav-btn" data-section="objectifs">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                Objectifs
+            </button>
+            <button class="nav-btn" data-section="preparation">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                Préparation
+            </button>
+            <button class="nav-btn" data-section="materiaux">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                Matériaux
+            </button>
+            <button class="nav-btn" data-section="cfao">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                CFAO
+            </button>
+            <button class="nav-btn" data-section="conclusion">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                Conclusion
+            </button>
+        </div>
+    </nav>
+
+    <main class="main">
+        <!-- Vue d'ensemble -->
+        <section id="overview" class="section active">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon info">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
+                    </div>
+                    <h2>Vue d'ensemble</h2>
+                </div>
+                
+                <p>Une couronne céramo-céramique (CCC) est une <strong>couronne de recouvrement total constituée entièrement en céramique</strong>, sans armature métallique.</p>
+
+                <h3>Comparaison: Céramo-céramique vs Métallo-céramique</h3>
+                <div class="compare-chart">
+                    <div class="compare-legend">
+                        <div class="compare-legend-item">
+                            <div class="compare-legend-color ccc"></div>
+                            <span>Couronne Céramo-céramique</span>
+                        </div>
+                        <div class="compare-legend-item">
+                            <div class="compare-legend-color metal"></div>
+                            <span>Système Métallo-céramique</span>
+                        </div>
+                    </div>
+                    
+                    <div class="compare-row">
+                        <div class="compare-label">Esthétique</div>
+                        <div class="compare-bars">
+                            <div class="compare-bar-row">
+                                <span class="compare-bar-type ccc">CCC</span>
+                                <div class="compare-bar-track">
+                                    <div class="compare-bar-fill ccc" style="width: 95%;">95%</div>
+                                </div>
+                            </div>
+                            <div class="compare-bar-row">
+                                <span class="compare-bar-type metal">MC</span>
+                                <div class="compare-bar-track">
+                                    <div class="compare-bar-fill metal" style="width: 55%;">55%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="compare-row">
+                        <div class="compare-label">Biocompatibilité</div>
+                        <div class="compare-bars">
+                            <div class="compare-bar-row">
+                                <span class="compare-bar-type ccc">CCC</span>
+                                <div class="compare-bar-track">
+                                    <div class="compare-bar-fill ccc" style="width: 95%;">95%</div>
+                                </div>
+                            </div>
+                            <div class="compare-bar-row">
+                                <span class="compare-bar-type metal">MC</span>
+                                <div class="compare-bar-track">
+                                    <div class="compare-bar-fill metal" style="width: 60%;">60%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="compare-row">
+                        <div class="compare-label">Résistance</div>
+                        <div class="compare-bars">
+                            <div class="compare-bar-row">
+                                <span class="compare-bar-type ccc">CCC</span>
+                                <div class="compare-bar-track">
+                                    <div class="compare-bar-fill ccc" style="width: 50%;">50%</div>
+                                </div>
+                            </div>
+                            <div class="compare-bar-row">
+                                <span class="compare-bar-type metal">MC</span>
+                                <div class="compare-bar-track">
+                                    <div class="compare-bar-fill metal" style="width: 95%;">95%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="compare-row">
+                        <div class="compare-label">Indication</div>
+                        <div class="compare-bars">
+                            <div class="compare-bar-row">
+                                <span class="compare-bar-type ccc">CCC</span>
+                                <div class="compare-bar-track">
+                                    <div class="compare-bar-fill ccc" style="width: 40%;">Limité</div>
+                                </div>
+                            </div>
+                            <div class="compare-bar-row">
+                                <span class="compare-bar-type metal">MC</span>
+                                <div class="compare-bar-track">
+                                    <div class="compare-bar-fill metal" style="width: 90%;">Large</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Historique</h3>
+                <div class="diagram">
+                    <div class="diagram-flow">
+                        <div class="diagram-box">
+                            <strong>1886</strong>
+                            <small>Couronnes "Jacket" par Lang</small>
+                        </div>
+                        <span class="diagram-arrow">→</span>
+                        <div class="diagram-box">
+                            <strong>Taux d'échec élevé</strong>
+                            <small>Fractures fréquentes</small>
+                        </div>
+                        <span class="diagram-arrow">→</span>
+                        <div class="diagram-box highlight">
+                            <strong>1990s+</strong>
+                            <small>Nouvelles céramiques + collage</small>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Les 4 Systèmes Modernes</h3>
+                <div class="comparison-grid">
+                    <div class="comparison-card" style="border-left: 3px solid var(--empress);">
+                        <h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--empress)" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>
+                            Empress® - Pressée
+                        </h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">Injection sous pression de céramique chauffée renforcée de leucite</p>
+                    </div>
+                    <div class="comparison-card" style="border-left: 3px solid var(--inceram);">
+                        <h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--inceram)" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>
+                            In-Ceram® - Barbotine
+                        </h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">Montage artisanal de barbotine, frittée et infiltrée de verre</p>
+                    </div>
+                    <div class="comparison-card" style="border-left: 3px solid var(--procera);">
+                        <h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--procera)" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>
+                            Procera® - CFAO
+                        </h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">Conception et fabrication assistées par ordinateur, haute résistance</p>
+                    </div>
+                    <div class="comparison-card" style="border-left: 3px solid var(--primary);">
+                        <h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+                            Empreinte Optique
+                        </h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">Numérisation 3D au fauteuil, workflow entièrement digital</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Définition -->
+        <section id="definition" class="section">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon ceramic">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    </div>
+                    <h2>Définition & Histoire</h2>
+                </div>
+
+                <h3>1.1 Définition</h3>
+                <p>C'est une couronne de <strong>recouvrement total</strong> constituée <strong>entièrement en céramique</strong>. L'amélioration des céramiques, des revêtements réfractaires et des techniques de collage a conduit au développement des couronnes céramo-céramiques collées.</p>
+
+                <div class="diagram">
+                    <div class="diagram-flow">
+                        <div class="diagram-box ceramic-box">
+                            <strong>Armature</strong>
+                            <small>Céramique renforcée</small>
+                        </div>
+                        <span class="diagram-arrow">+</span>
+                        <div class="diagram-box ceramic-box">
+                            <strong>Cosmétique</strong>
+                            <small>Céramique de stratification</small>
+                        </div>
+                        <span class="diagram-arrow">=</span>
+                        <div class="diagram-box highlight">
+                            <strong>CCC Collée</strong>
+                            <small>Esthétique exceptionnelle</small>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>1.2 Historique</h3>
+                <ul class="list">
+                    <li><span class="list-bullet" style="background: var(--primary);"></span><strong>1886:</strong> Couronnes "Jackets" élaborées par LANG - feuille de platine dans un four (brevet)</li>
+                    <li><span class="list-bullet" style="background: var(--text-muted);"></span><strong>Problème:</strong> Taux d'échec très élevé - fractures fréquentes → abandon temporaire</li>
+                    <li><span class="list-bullet" style="background: var(--accent);"></span><strong>Années 1990+:</strong> Nouvelles céramiques + techniques de collage → regain d'intérêt</li>
+                </ul>
+
+                <h3>1.3 vs Système Céramo-métallique</h3>
+                <div class="comparison-grid">
+                    <div class="comparison-card" style="border-left: 3px solid var(--empress);">
+                        <h4>Limites du Métallo-céramique</h4>
+                        <ul>
+                            <li>Bandeau métallique: Aspect inesthétique</li>
+                            <li>Assombrissement tissulaire</li>
+                            <li>Visibilité du métal au niveau gingival</li>
+                            <li>Risques d'allergie aux métaux</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-card" style="border-left: 3px solid var(--accent);">
+                        <h4>Avantage CCC</h4>
+                        <ul>
+                            <li>Absence totale de métal</li>
+                            <li>Transmission lumineuse naturelle</li>
+                            <li>Excellent comportement tissulaire</li>
+                            <li>Pas de corrosion (dentisterie écologique)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Avantages -->
+        <section id="avantages" class="section">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon info">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <h2>Avantages & Inconvénients</h2>
+                </div>
+
+                <div class="two-column">
+                    <div class="pros" style="padding-left: 1rem;">
+                        <h3 style="color: var(--accent); margin-top: 0;">✓ Avantages</h3>
+                        <ul class="list">
+                            <li><span class="list-bullet" style="background: var(--accent);"></span><strong>Esthétique exceptionnelle</strong> - Absence de chape métallique, excellente transmission lumineuse</li>
+                            <li><span class="list-bullet" style="background: var(--accent);"></span><strong>Absence de corrosion</strong> - Dentisterie plus écologique</li>
+                            <li><span class="list-bullet" style="background: var(--accent);"></span><strong>Comportement tissulaire excellent</strong> - Parfaite adaptation, pas de liseré métallique visible</li>
+                            <li><span class="list-bullet" style="background: var(--accent);"></span><strong>Biocompatibilité</strong> - Supprime les problèmes d'allergie aux métaux</li>
+                        </ul>
+                    </div>
+                    <div class="cons" style="padding-left: 1rem;">
+                        <h3 style="color: var(--empress); margin-top: 0;">✗ Inconvénients</h3>
+                        <ul class="list">
+                            <li><span class="list-bullet" style="background: var(--empress);"></span><strong>Nécessité d'une grande rigueur</strong> dans la réalisation clinique</li>
+                            <li><span class="list-bullet" style="background: var(--empress);"></span><strong>Coût élevé</strong></li>
+                            <li><span class="list-bullet" style="background: var(--empress);"></span><strong>Réalisation au laboratoire</strong> nécessitant technicien expérimenté + matériel spécifique</li>
+                            <li><span class="list-bullet" style="background: var(--empress);"></span><strong>Indications limitées</strong> - Unitaire, petit bridge (sauf Zircone pour bridges étendus)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Tableau Récapitulatif</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Critère</th>
+                                <th>Céramo-céramique</th>
+                                <th>Métallo-céramique</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Esthétique</td>
+                                <td><span class="badge good">Excellente</span></td>
+                                <td><span class="badge bad">Moyenne</span></td>
+                            </tr>
+                            <tr>
+                                <td>Résistance mécanique</td>
+                                <td><span class="badge bad">Limitée</span></td>
+                                <td><span class="badge good">Élevée</span></td>
+                            </tr>
+                            <tr>
+                                <td>Biocompatibilité</td>
+                                <td><span class="badge good">Excellente</span></td>
+                                <td><span class="badge info">Variable</span></td>
+                            </tr>
+                            <tr>
+                                <td>Prix</td>
+                                <td><span class="badge bad">Élevé</span></td>
+                                <td><span class="badge info">Moyen</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Indications -->
+        <section id="indications" class="section">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon info">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h2>Indications & Contre-indications</h2>
+                </div>
+
+                <div class="two-column">
+                    <div style="border-left: 4px solid var(--accent); padding-left: 1rem;">
+                        <h3 style="color: var(--accent);">✓ Indications</h3>
+                        <p>Indiquée lorsque les <strong>impératifs esthétiques priment</strong>:</p>
+                        <ul class="list">
+                            <li><span class="list-bullet" style="background: var(--accent);"></span>Dents antérieures supérieures et inférieures pulpées ou dépulpées</li>
+                            <li><span class="list-bullet" style="background: var(--accent);"></span>Dents dévitalisées avec décoloration</li>
+                            <li><span class="list-bullet" style="background: var(--accent);"></span>Dents en malposition légère</li>
+                            <li><span class="list-bullet" style="background: var(--accent);"></span>Dents fracturées</li>
+                            <li><span class="list-bullet" style="background: var(--accent);"></span>Dents postérieures si occlusion favorable</li>
+                            <li><span class="list-bullet" style="background: var(--accent);"></span>Problèmes d'allergies aux métaux</li>
+                        </ul>
+                    </div>
+                    <div style="border-left: 4px solid var(--empress); padding-left: 1rem;">
+                        <h3 style="color: var(--empress);">✗ Contre-indications</h3>
+                        <ul class="list">
+                            <li><span class="list-bullet" style="background: var(--empress);"></span>Dents trop minces vestibulo-lingualement (dent grêle)</li>
+                            <li><span class="list-bullet" style="background: var(--empress);"></span>Couronne clinique courte (peu rétentive après taille)</li>
+                            <li><span class="list-bullet" style="background: var(--empress);"></span>Caries proximale ou du collet importantes</li>
+                            <li><span class="list-bullet" style="background: var(--empress);"></span>Occlusion en bout à bout (efforts importants)</li>
+                            <li><span class="list-bullet" style="background: var(--empress);"></span>Dysplasies ou dyschromie importante</li>
+                            <li><span class="list-bullet" style="background: var(--empress);"></span>Occlusion trop basse (supraclusion)</li>
+                            <li><span class="list-bullet" style="background: var(--empress);"></span>Dysfonctionnement ou parafonctions (bruxisme)</li>
+                            <li><span class="list-bullet" style="background: var(--empress);"></span>Épaisseur insuffisante de céramique sur face linguale</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Mémotechnique</h3>
+                <div class="diagram" style="background: var(--primary-bg);">
+                    <p style="font-size: 1.1rem; font-weight: 600;">
+                        <strong>CCC NON si:</strong><br>
+                        GRÊLE - COURTE - CARIÉE<br>
+                        BOUT À BOUT - BASSE - PARAFONCTION
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Objectifs -->
+        <section id="objectifs" class="section">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon ceramic">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                    </div>
+                    <h2>Objectifs de la Reconstruction Finale</h2>
+                </div>
+
+                <div class="pillars-diagram">
+                    <div class="pillar">
+                        <div class="pillar-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <h4>1. Esthétique</h4>
+                        <p>Meilleure translucidité en profondeur et transmission lumineuse</p>
+                    </div>
+                    <div class="pillar">
+                        <div class="pillar-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <h4>2. Pérennité</h4>
+                        <p>Résistance mécanique et respect du parodonte</p>
+                    </div>
+                    <div class="pillar">
+                        <div class="pillar-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                        </div>
+                        <h4>3. Occlusion</h4>
+                        <p>Stabilité occlusale (statique et dynamique)</p>
+                    </div>
+                </div>
+
+                <h3>1. Esthétique</h3>
+                <p>Les avantages des systèmes céramiques sont une meilleure translucidité en profondeur et une transmission plus profonde de la lumière.</p>
+                <ul class="list">
+                    <li><span class="list-bullet" style="background: var(--primary);"></span><strong>Système translucide:</strong> Si teinte du moignon sous-jacent est bonne</li>
+                    <li><span class="list-bullet" style="background: var(--primary);"></span><strong>Système opaque:</strong> Si besoin de masquer une dyschromie du moignon</li>
+                    <li><span class="list-bullet" style="background: var(--primary);"></span><strong>Semi-opaque:</strong> Compromis entre les deux</li>
+                </ul>
+
+                <h3>2. Pérennité</h3>
+                <div class="comparison-grid">
+                    <div class="comparison-card">
+                        <h4>Plan Mécanique</h4>
+                        <ul>
+                            <li>Support d'épaisseur uniforme possible</li>
+                            <li>Absence d'angles vifs ou limites inclinées</li>
+                            <li>Propriétés intrinsèques de chaque système</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>Plan Parodontal</h4>
+                        <ul>
+                            <li>Limites supra-gingivales (facilite nettoyage)</li>
+                            <li>Si intra-sulculaire: respecter l'espace biologique</li>
+                            <li>Congé large ou épaulement à angle arrondi</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>3. Occlusion</h3>
+                <div class="diagram">
+                    <p>La reconstruction céramique doit participer à la <strong>stabilité occlusale</strong> de la même façon que les autres dents adjacentes (occlusion statique et dynamique).</p>
+                    <p style="margin-top: 1rem; color: var(--empress);"><strong>⚠ Toute surcharge occlusale</strong> est susceptible de faire perdre l'acquis esthétique et parodontal, d'autant plus que la céramique est dure, cassante et peu résiliante.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Préparation -->
+        <section id="preparation" class="section">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon info">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h2>Préparation Clinique</h2>
+                </div>
+
+                <p>Les principes généraux sont régis par les <strong>propriétés mécaniques du matériau</strong>: forte résistance à la compression, mais faible résistance à la flexion et manque d'élasticité.</p>
+
+                <h3>Principes Généraux</h3>
+                <ul class="list">
+                    <li><span class="list-bullet" style="background: var(--primary);"></span>Forme homothétique à la dent naturelle → épaisseur uniforme</li>
+                    <li><span class="list-bullet" style="background: var(--primary);"></span>Dépouille faible (6° par rapport au grand axe)</li>
+                    <li><span class="list-bullet" style="background: var(--primary);"></span>Absence de zones de porte-à-faux proximales et bord libre</li>
+                    <li><span class="list-bullet" style="background: var(--primary);"></span>Éliminer tout angle vif</li>
+                </ul>
+
+                <h3>Réductions par Face - Visualisation</h3>
+                <div class="prep-visual">
+                    <h4 style="text-align: center;">Dents Antérieures</h4>
+                    <div class="prep-zones">
+                        <div class="prep-zone">
+                            <div class="prep-zone-value">1.5-2mm</div>
+                            <small>Réduction Incisale</small>
+                        </div>
+                        <div class="prep-zone">
+                            <div class="prep-zone-value">0.5mm</div>
+                            <small>Épaisseur Vestibulaire</small>
+                        </div>
+                        <div class="prep-zone">
+                            <div class="prep-zone-value">0.7-1mm</div>
+                            <small>Épaisseur Palatine</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prep-visual" style="background: var(--secondary-bg);">
+                    <h4 style="text-align: center;">Dents Postérieures</h4>
+                    <div class="prep-zones">
+                        <div class="prep-zone">
+                            <div class="prep-zone-value">1.5-2mm</div>
+                            <small>Réduction Occlusale</small>
+                        </div>
+                        <div class="prep-zone">
+                            <div class="prep-zone-value">0.5mm</div>
+                            <small>Épaisseur Chape</small>
+                        </div>
+                        <div class="prep-zone">
+                            <div class="prep-zone-value">0.8-1.2mm</div>
+                            <small>Réduction Vestibulaire</small>
+                        </div>
+                        <div class="prep-zone">
+                            <div class="prep-zone-value">1-1.2mm</div>
+                            <small>Réduction Palatine</small>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Limites de Préparation</h3>
+                <div class="comparison-grid">
+                    <div class="comparison-card">
+                        <h4>Limites Supra-gingivales</h4>
+                        <ul>
+                            <li>Respect du parodonte marginal</li>
+                            <li>Accès et nettoyage faciles du JDP</li>
+                            <li>Matériau de scellement translucide</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>Limites Intra-sulculaires</h4>
+                        <ul>
+                            <li>Masquer une dyschromie</li>
+                            <li>Augmenter la rétention</li>
+                            <li>Respecter l'espace biologique</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Types de Limites Cervical</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Avantages</th>
+                                <th>Inconvénients</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Épaulement à angle interne arrondi</strong></td>
+                                <td>Meilleure résistance à la fracture, meilleure reproduction du profil</td>
+                                <td>Nécessite plus d'espace</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Congé large</strong></td>
+                                <td>Économie tissulaire</td>
+                                <td>Appui mécanique plus faible</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Protocole de Taille</h3>
+                <div class="process-steps">
+                    <div class="step">
+                        <span class="step-number">1</span>
+                        <span>Sillons guides (2mm)</span>
+                    </div>
+                    <span class="step-arrow">→</span>
+                    <div class="step">
+                        <span class="step-number">2</span>
+                        <span>Taille bord libre</span>
+                    </div>
+                    <span class="step-arrow">→</span>
+                    <div class="step">
+                        <span class="step-number">3</span>
+                        <span>Taille vestibulaire</span>
+                    </div>
+                    <span class="step-arrow">→</span>
+                    <div class="step">
+                        <span class="step-number">4</span>
+                        <span>Taille palatine</span>
+                    </div>
+                    <span class="step-arrow">→</span>
+                    <div class="step">
+                        <span class="step-number">5</span>
+                        <span> Faces proximales</span>
+                    </div>
+                    <span class="step-arrow">→</span>
+                    <div class="step">
+                        <span class="step-number">6</span>
+                        <span> Contrôle & finition</span>
+                    </div>
+                </div>
+
+                <h3>Contrôles à Effectuer</h3>
+                <ul class="list">
+                    <li><span class="list-bullet" style="background: var(--accent);"></span>Dépouille entre face vestibulaire et palatine</li>
+                    <li><span class="list-bullet" style="background: var(--accent);"></span>Largeur de l'épaulement</li>
+                    <li><span class="list-bullet" style="background: var(--accent);"></span>Réduction de 2mm du bord libre</li>
+                    <li><span class="list-bullet" style="background: var(--accent);"></span>Biseau à 15° en direction palatine</li>
+                    <li><span class="list-bullet" style="background: var(--accent);"></span>Polissage pour meilleur état de surface</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Matériaux -->
+        <section id="materiaux" class="section">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon info">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                    </div>
+                    <h2>Les Matériaux Céramiques</h2>
+                </div>
+            </div>
+
+            <!-- Empress -->
+            <div class="technique-card empress">
+                <div class="technique-header">
+                    <div class="technique-icon empress">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <div>
+                        <h3 style="margin: 0;">Empress® - Céramique Pressée</h3>
+                        <p style="margin: 0; color: var(--text-muted); font-size: 0.9rem;">Injection sous pression de céramique chauffée</p>
+                    </div>
+                </div>
+
+                <p>Cette méthode utilise des <strong>lingotins réchauffés</strong> durant plusieurs heures, puis injectés sous pression dans un moule en revêtement. La céramique d'armature est de type feldspathique mais renforcée par des cristaux de leucite (Empress®) ou de dissilicate de lithium (Empress 2®).</p>
+
+                <h4>Étapes de Laboratoire</h4>
+                <div class="process-steps">
+                    <div class="step"><span class="step-number">1</span> Empreinte → Maître modèle</div>
+                    <span class="step-arrow">→</span>
+                    <div class="step"><span class="step-number">2</span> Vernis d'espacement</div>
+                    <span class="step-arrow">→</span>
+                    <div class="step"><span class="step-number">3</span> Maquettes en cire</div>
+                    <span class="step-arrow">→</span>
+                    <div class="step"><span class="step-number">4</span> Mise en cylindre</div>
+                    <span class="step-arrow">→</span>
+                    <div class="step"><span class="step-number">5</span> Coulée revêtement</div>
+                </div>
+
+                <div class="process-steps">
+                    <div class="step"><span class="step-number">6</span> Préchauffage</div>
+                    <span class="step-arrow">→</span>
+                    <div class="step"><span class="step-number">7</span> Introduction lingotin</div>
+                    <span class="step-arrow">→</span>
+                    <div class="step"><span class="step-number">8</span> Pressée au four</div>
+                    <span class="step-arrow">→</span>
+                    <div class="step"><span class="step-number">9</span> Sablage & finition</div>
+                    <span class="step-arrow">→</span>
+                    <div class="step"><span class="step-number">10</span> Stratification cosmétique</div>
+                </div>
+
+                <div class="badge good" style="margin-top: 1rem;">✓ Mordançable: Acide fluorhydrique + silanisation</div>
+            </div>
+
+            <!-- In-Ceram -->
+            <div class="technique-card inceram">
+                <div class="technique-header">
+                    <div class="technique-icon inceram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <div>
+                        <h3 style="margin: 0;">In-Ceram® - Barbotine</h3>
+                        <p style="margin: 0; color: var(--text-muted); font-size: 0.9rem;">Montage artisanal + frittage + infiltration</p>
+                    </div>
+                </div>
+
+                <p>Proposée par Sadoun en 1985, cette technique utilise une <strong>barbotine</strong> (suspension stable de grains dans un milieu aqueux), agglomérée sur un modèle en plâtre spécial absorbant le milieu de dispersion. La déshydratation et le frittage "soudent" les grains entre eux.</p>
+
+                <h4>Les 3 Types In-Ceram</h4>
+                <div class="pyramid-diagram">
+                    <div class="pyramid-level">
+                        <div class="pyramid-box spinell">
+                            <strong>In-Ceram® Spinell</strong>
+                            <small>Al₂O₃ + MgO • Translucidité MAX</small>
+                        </div>
+                    </div>
+                    <div class="pyramid-level">
+                        <div class="pyramid-box alumina">
+                            <strong>In-Ceram® Alumina</strong>
+                            <small>Al₂O₃ 70% • Résistance moyenne</small>
+                        </div>
+                    </div>
+                    <div class="pyramid-level">
+                        <div class="pyramid-box zirconia">
+                            <strong>In-Ceram® Zirconia</strong>
+                            <small>Al₂O₃/ZrO₂ • Résistance MAX</small>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Étapes de Laboratoire</h4>
+                <div class="process-steps">
+                    <div class="step"><span class="step-number">1</span> Préparation maître-modèle</div>
+                    <span class="step-arrow">→</span>
+                    <div class="step"><span class="step-number">2</span> Duplication MPU</div>
+                    <span class="step-arrow">→</span>
+                    <div class="step"><span class="step-number">3</span> Coulée plâtre spécial</div>
+                    <span class="step-arrow">→</span>
+                    <div class="step"><span class="step-number">4</span> Préparation barbotine</div>
+                </div>
+
+                <div class="process-steps">
+                    <div class="step"><span class="step-number">5</span> Montage barbotine</div>
+                    <span class="step-arrow">→</span>
+                    <div class="step"><span class="step-number">6</span> Cuisson frittage</div>
+                    <span class="step-arrow">→</span>
+                    <div class="step"><span class="step-number">7</span> Infiltration verre</div>
+                    <span class="step-arrow">→</span>
+                    <div class="step"><span class="step-number">8</span> Finition</div>
+                    <span class="step-arrow">→</span>
+                    <div class="step"><span class="step-number">9</span> Stratification cosmétique</div>
+                </div>
+
+                <div class="badge bad" style="margin-top: 1rem;">✗ Non mordançable: Sablage + silane + colles ou CIM</div>
+            </div>
+
+            <!-- Procera -->
+            <div class="technique-card procera">
+                <div class="technique-header">
+                    <div class="technique-icon procera">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <div>
+                        <h3 style="margin: 0;">Procera® - CFAO</h3>
+                        <p style="margin: 0; color: var(--text-muted); font-size: 0.9rem;">Conception et Fabrication Assistées par Ordinateur</p>
+                    </div>
+                </div>
+
+                <p>Mise au point à partir de 1993. Le laboratoire numérise en 3D le modèle positif unitaire grâce à un palpeur mécanique, envoie les informations à une unité de fabrication en Suède, et reçoit l'armature usinée puis frittée à 1600-1700°C pendant 3 heures.</p>
+
+                <h4>Procédé</h4>
+                <div class="diagram">
+                    <div class="diagram-flow">
+                        <div class="diagram-box">Scanner<br><small>Palpeur mécanique</small></div>
+                        <span class="diagram-arrow">→</span>
+                        <div class="diagram-box highlight">Transmission<br><small>Modem → Suède</small></div>
+                        <span class="diagram-arrow">→</span>
+                        <div class="diagram-box">Usinage<br><small>Haute pression</small></div>
+                        <span class="diagram-arrow">→</span>
+                        <div class="diagram-box">Frittage<br><small>1600-1700°C / 3h</small></div>
+                    </div>
+                </div>
+
+                <h4>Caractéristiques</h4>
+                <ul class="list">
+                    <li><span class="list-bullet" style="background: var(--procera);"></span><strong>Matériau:</strong> Alumine à 99.5% (sans phase vitreuse)</li>
+                    <li><span class="list-bullet" style="background: var(--procera);"></span><strong>Résistance:</strong> Très élevée après frittage</li>
+                    <li><span class="list-bullet" style="background: var(--procera);"></span><strong>Aspect:</strong> Blanche et opaque après frittage</li>
+                </ul>
+
+                <div class="badge bad" style="margin-top: 1rem;">✗ Non mordançable: Sablage + silane + colles ou CIM</div>
+            </div>
+
+            <!-- Empreinte Optique -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon ceramic">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                    </div>
+                    <h2>Empreinte Optique</h2>
+                </div>
+
+                <p>L'empreinte optique permet au praticien d'obtenir, au fauteuil, une <strong>image tridimensionnelle</strong> d'une ou plusieurs dents grâce à un système optique couplé à un ordinateur.</p>
+
+                <h3>Principe</h3>
+                <p>Une <strong>lumière monochrome</strong> est émise sur l'objet par un type de balayage qui diffère selon les scanners.</p>
+
+                <h3>Avantages</h3>
+                <div class="comparison-grid">
+                    <div class="comparison-card">
+                        <h4>Cliniques</h4>
+                        <ul>
+                            <li>Validation instantanée de la préparation</li>
+                            <li>Très grande précision</li>
+                            <li>Caractère inaltérable et ergonomique</li>
+                            <li>Absence d'erreur liées au matériau d'empreinte</li>
+                            <li>Confort total des patients</li>
+                            <li>Détection facile des imprécisions</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>Communication</h4>
+                        <ul>
+                            <li>Aident à la compréhension du traitement</li>
+                            <li>Correction immédiate des erreurs</li>
+                            <li>Archivage numérique</li>
+                            <li>Communication en ligne</li>
+                            <li>Suppression de l'étape de désinfection</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Inconvénients</h3>
+                <ul class="list">
+                    <li><span class="list-bullet" style="background: var(--empress);"></span>Courbe d'apprentissage obligatoire</li>
+                    <li><span class="list-bullet" style="background: var(--empress);"></span>Investissement initial important</li>
+                    <li><span class="list-bullet" style="background: var(--empress);"></span>Adaptation de la préparation aux impératifs du scanner</li>
+                    <li><span class="list-bullet" style="background: var(--empress);"></span>Difficulté d'accès aux zones postérieures</li>
+                </ul>
+
+                <h3>Workflow Numérique</h3>
+                <div class="diagram" style="background: var(--procera-bg);">
+                    <div class="diagram-flow">
+                        <div class="diagram-box">Scan MPU<br><small>Scanner intra-buccal</small></div>
+                        <span class="diagram-arrow">→</span>
+                        <div class="diagram-box">Création dossier<br><small>Définition limites</small></div>
+                        <span class="diagram-arrow">→</span>
+                        <div class="diagram-box highlight">Conception<br><small>Axe insertion, connexions</small></div>
+                        <span class="step-arrow">→</span>
+                        <div class="diagram-box">Usinage<br><small>Fraiseuse CAM</small></div>
+                        <span class="step-arrow">→</span>
+                        <div class="diagram-box">Finition<br><small>Stratification cosmétique</small></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CFAO -->
+        <section id="cfao" class="section">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon ceramic">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <h2>CFAO - Vue Détaillée</h2>
+                </div>
+
+                <h3>Étapes du Workflow Numérique</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Étape</th>
+                                <th>Action</th>
+                                <th>Logiciel</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1. Scan</strong></td>
+                                <td>Scanner MPU + antagoniste + OIM</td>
+                                <td>Scanner intra-buccal</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2. Dossier</strong></td>
+                                <td>Création fichier patient</td>
+                                <td>Logiciel CFAO</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3. Limites</strong></td>
+                                <td>Tracé de la limite cervicale</td>
+                                <td>Détection automatique</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4. Axe</strong></td>
+                                <td>Détermination axe d'insertion</td>
+                                <td>Positionnement 3D</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5. Connexions</strong></td>
+                                <td>Conception connexions bridge</td>
+                                <td>Modélisation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>6. Forme</strong></td>
+                                <td>Modification forme point par point ou par surface</td>
+                                <td>Éditionsurf</td>
+                            </tr>
+                            <tr>
+                                <td><strong>7. Usinage</strong></td>
+                                <td>Fabrication de l'armature</td>
+                                <td>Fraiseuse CAM</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Avantages de la CFAO</h3>
+                <div class="comparison-grid">
+                    <div class="comparison-card">
+                        <h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            Points Forts
+                        </h4>
+                        <ul>
+                            <li>Technique de très grande précision</li>
+                            <li>Gain de temps</li>
+                            <li>Reproductibilité des résultats</li>
+                            <li>Simplification de la chaîne prothétique</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                            Limites
+                        </h4>
+                        <ul>
+                            <li>Prix d'investissement initial élevé</li>
+                            <li>Licence annuelle du logiciel</li>
+                            <li>Prix maintenance et consommables</li>
+                            <li>Encombrement machine</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cementation -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon info">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h2>Cémentation / Assemblage</h2>
+                </div>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card" style="border-left: 4px solid var(--accent);">
+                        <h4>Matériaux Mordançables</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Empress® et Empress 2®</p>
+                        <ul>
+                            <li>Mordançage chimique (acide fluorhydrique)</li>
+                            <li>Attaque de la phase vitreuse</li>
+                            <li>Silanisation</li>
+                            <li>Assemblage avec polymère de collage</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-card" style="border-left: 4px solid var(--empress);">
+                        <h4>Matériaux Non Mordançables</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Zircone, In-Ceram®</p>
+                        <ul>
+                            <li>Mordançage peu ou pas efficace</li>
+                            <li>Sablage (50-100 μm selon matériau)</li>
+                            <li>Silane</li>
+                            <li>Colles ou ciment verre ionomère modifié</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Résumé Cémentation</h3>
+                <div class="diagram" style="background: var(--primary-bg);">
+                    <div class="diagram-flow">
+                        <div class="diagram-box ceramic-box">
+                            <strong>Empress®</strong>
+                            <small>HF + Silane + Résine</small>
+                        </div>
+                        <span class="diagram-arrow">→</span>
+                        <div class="diagram-box ceramic-box">
+                            <strong>In-Ceram®</strong>
+                            <small>Sablage + Silane + CIM</small>
+                        </div>
+                        <span class="diagram-arrow">→</span>
+                        <div class="diagram-box ceramic-box">
+                            <strong>Procera®</strong>
+                            <small>Sablage + Silane + CIM</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section id="conclusion" class="section">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon info">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h2>Conclusion</h2>
+                </div>
+
+                <div class="conclusion-box">
+                    <h2>Message Clé</h2>
+                    <p>Il est aujourd'hui possible, grâce aux systèmes céramo-céramiques, d'assurer <strong>résistance mécanique à long terme</strong>, <strong>biocompatibilité</strong> et <strong>apparence naturelle</strong>, quels que soient le secteur d'arcade et le caractère unitaire ou plural de la restauration.</p>
+                </div>
+
+                <h3>Récapitulatif des Points Essentiels</h3>
+                <div class="comparison-grid">
+                    <div class="comparison-card">
+                        <h4>✓ Quand utiliser CCC?</h4>
+                        <ul>
+                            <li>Impératifs esthétiques primant</li>
+                            <li>Dents antérieures pulpées/dépulpées</li>
+                            <li>Allergies aux métaux</li>
+                            <li>Bridges de petite étendue (Zircone)</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>✗ Quand éviter CCC?</h4>
+                        <ul>
+                            <li>Dents grêles ou couronne courte</li>
+                            <li>Parafonctions / bruxisme</li>
+                            <li>Occlusion défavorable</li>
+                            <li>Dyschromie très importante</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>🔧 Préparation</h4>
+                        <ul>
+                            <li>Dépouille 6°</li>
+                            <li>Épaulement à angle arrondi</li>
+                            <li>Absence d'angles vifs</li>
+                            <li>Réduction uniforme</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>🏭 Choix du Matériau</h4>
+                        <ul>
+                            <li><strong>Esthétique max:</strong> Spinell</li>
+                            <li><strong>Équilibre:</strong> Alumina</li>
+                            <li><strong>Résistance max:</strong> Zirconia / Procera</li>
+                            <li><strong>Facile:</strong> Empress (mordançable)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Les 3 Piliers à Retenir</h3>
+                <div class="pillars-diagram">
+                    <div class="pillar" style="border-top-color: var(--accent);">
+                        <h4>Esthétique</h4>
+                        <p>Translucidité, transmission lumineuse</p>
+                    </div>
+                    <div class="pillar" style="border-top-color: var(--inceram);">
+                        <h4>Pérennité</h4>
+                        <p>Résistance, respect parodontal</p>
+                    </div>
+                    <div class="pillar" style="border-top-color: var(--procera);">
+                        <h4>Occlusion</h4>
+                        <p>Stabilité statique et dynamique</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="nav-guides">
+            <a href="index.html" class="nav-guide-btn home-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                Accueil
+            </a>
+            <div class="nav-guides-links">
+                <span class="nav-guides-label">Autres guides:</span>
+                <a href="materiaux-empreinte.html" class="nav-guide-link">Matériaux Empreinte</a>
+                <a href="courone-ccm.html" class="nav-guide-link">CCM</a>
+                <a href="traitement-empreintes.html" class="nav-guide-link">Traitement</a>
+                <a href="cours-ceramique.html" class="nav-guide-link">Céramiques</a>
+            </div>
+        </div>
+    </main>
+
+    <button class="scroll-top" onclick="scrollToTop()" aria-label="Retour en haut">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                updateThemeIcon(true);
+            }
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const sectionId = this.dataset.section;
+                    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                    document.getElementById(sectionId).classList.add('active');
+                    
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                header.addEventListener('click', function() {
+                    this.parentElement.classList.toggle('open');
+                });
+            });
+
+            const scrollBtn = document.querySelector('.scroll-top');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 400) {
+                    scrollBtn.classList.add('visible');
+                } else {
+                    scrollBtn.classList.remove('visible');
+                }
+            });
+        });
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            
+            if (isDark) {
+                html.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            
+            updateThemeIcon(!isDark);
+        }
+
+        function updateThemeIcon(isDark) {
+            const sunIcon = document.querySelector('.sun-icon');
+            const moonIcon = document.querySelector('.moon-icon');
+            
+            if (isDark) {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            } else {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

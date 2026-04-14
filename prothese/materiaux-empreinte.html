@@ -1,0 +1,1992 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Matériaux à Empreintes - Guide Visuel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0891B2;
+            --primary-dark: #0e7490;
+            --primary-light: #06b6d4;
+            --primary-bg: #ecfeff;
+            --secondary: #4F46E5;
+            --secondary-bg: #eef2ff;
+            --accent: #059669;
+            --accent-bg: #d1fae5;
+            --warning: #d97706;
+            --warning-bg: #fef3c7;
+            --danger: #dc2626;
+            --danger-bg: #fee2e2;
+            --rigid-color: #059669;
+            --rigid-bg: #ecfdf5;
+            --elastic-color: #7c3aed;
+            --elastic-bg: #f5f3ff;
+            --hydro-color: #ea580c;
+            --hydro-bg: #fff7ed;
+            --elasto-color: #0891b2;
+            --elasto-bg: #ecfeff;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --text-light: #94a3b8;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --radius-lg: 16px;
+            --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 3rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: clamp(1.75rem, 5vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.15);
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+        }
+
+        /* Navigation */
+        .nav-container {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0.25rem;
+            padding: 0.5rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1rem;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: var(--radius-sm);
+            white-space: nowrap;
+            transition: all var(--transition);
+            min-height: 44px;
+        }
+
+        .nav-btn:hover {
+            background: var(--border-light);
+            color: var(--text);
+        }
+
+        .nav-btn:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        .nav-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .nav-btn svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Cards */
+        .card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-light);
+            transition: box-shadow var(--transition);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .card-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .card-icon.rigid { background: var(--rigid-bg); color: var(--rigid-color); }
+        .card-icon.elastic { background: var(--elastic-bg); color: var(--elastic-color); }
+        .card-icon.hydro { background: var(--hydro-bg); color: var(--hydro-color); }
+        .card-icon.elasto { background: var(--elasto-bg); color: var(--elasto-color); }
+        .card-icon.info { background: var(--primary-bg); color: var(--primary); }
+
+        .card h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: -0.01em;
+        }
+
+        .card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--text);
+        }
+
+        .card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 1.25rem 0 0.5rem;
+            color: var(--text);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        /* Classification Tree */
+        .tree-container {
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .tree-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .tree {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .tree-node {
+            background: var(--surface);
+            padding: 0.875rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            transition: all var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .tree-node:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-md);
+        }
+
+        .tree-node:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        .tree-node.main {
+            background: var(--primary);
+            color: white;
+            font-size: 1rem;
+            padding: 1rem 2rem;
+        }
+
+        .tree-branches {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tree-branch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tree-connector {
+            width: 2px;
+            height: 24px;
+            background: var(--border);
+        }
+
+        .tree-sub {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .tree-leaf {
+            background: var(--surface);
+            padding: 0.5rem 0.875rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 500;
+            box-shadow: var(--shadow-sm);
+            border-left: 3px solid;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .tree-leaf:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .tree-leaf:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        .tree-leaf.rigid { border-color: var(--rigid-color); color: var(--rigid-color); }
+        .tree-leaf.elastic { border-color: var(--elastic-color); color: var(--elastic-color); }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        th, td {
+            padding: 0.875rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: var(--bg);
+            font-weight: 600;
+            color: var(--text);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        tbody tr {
+            transition: background var(--transition);
+        }
+
+        tbody tr:hover {
+            background: var(--bg);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Lists */
+        .list {
+            list-style: none;
+        }
+
+        .list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .list li:last-child {
+            border-bottom: none;
+        }
+
+        .list-bullet {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-top: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.625rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge.good { background: var(--accent-bg); color: var(--accent); }
+        .badge.medium { background: var(--warning-bg); color: var(--warning); }
+        .badge.poor { background: var(--danger-bg); color: var(--danger); }
+        .badge.info { background: var(--primary-bg); color: var(--primary); }
+
+        /* Process Flow */
+        .process {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.625rem 0.875rem;
+            background: var(--bg);
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .process-step small {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .process-arrow {
+            color: var(--text-light);
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        /* Formula */
+        .formula {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 1.25rem;
+            border-radius: var(--radius);
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            margin: 1rem 0;
+            border: 1px solid #fbbf24;
+            color: var(--text);
+        }
+
+        /* Comparison Grid */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .comparison-card {
+            background: var(--bg);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            border: 1px solid var(--border-light);
+            transition: all var(--transition);
+        }
+
+        .comparison-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .comparison-card h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .comparison-card ul {
+            list-style: none;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .comparison-card li {
+            padding: 0.25rem 0;
+        }
+
+        /* Property Tags */
+        .property {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.375rem 0.75rem;
+            background: var(--bg);
+            border-radius: var(--radius-sm);
+            margin: 0.25rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text);
+            border: 1px solid var(--border-light);
+        }
+
+        .property-icon {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        .property-icon.high { background: var(--accent-bg); color: var(--accent); }
+        .property-icon.medium { background: var(--warning-bg); color: var(--warning); }
+        .property-icon.low { background: var(--danger-bg); color: var(--danger); }
+
+        /* Accordion */
+        .accordion {
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin: 1rem 0;
+            background: var(--surface);
+        }
+
+        .accordion-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.25rem;
+            background: var(--bg);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text);
+            transition: background var(--transition);
+            min-height: 56px;
+        }
+
+        .accordion-header:hover {
+            background: var(--border-light);
+        }
+
+        .accordion-header:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: -2px;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 1.25rem;
+        }
+
+        .accordion.open .accordion-content {
+            display: block;
+            animation: slideDown 0.2s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .accordion-arrow {
+            transition: transform var(--transition);
+            color: var(--text-muted);
+        }
+
+        .accordion.open .accordion-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Diagram */
+        .diagram {
+            background: var(--rigid-bg);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .diagram h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .diagram-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .diagram-box {
+            background: var(--surface);
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-sm);
+            min-width: 100px;
+            font-size: 0.85rem;
+        }
+
+        .diagram-box small {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .diagram-box.highlight {
+            background: var(--primary);
+            color: white;
+        }
+
+        .diagram-box.highlight small {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .diagram-arrow {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+        }
+
+        /* Pie Chart */
+        .pie-chart {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+
+        .pie {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--rigid-color) 0% 40%,
+                var(--elastic-color) 40% 47%,
+                var(--hydro-color) 47% 50%,
+                var(--text-light) 50% 100%
+            );
+            position: relative;
+        }
+
+        .pie::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 55%;
+            height: 55%;
+            background: var(--surface);
+            border-radius: 50%;
+        }
+
+        .pie-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .legend-color {
+            width: 14px;
+            height: 14px;
+            border-radius: 4px;
+        }
+
+        /* Temperature Chart */
+        .temp-chart {
+            position: relative;
+            height: 48px;
+            margin: 2rem 0;
+            background: linear-gradient(to right, #3b82f6, #f59e0b, #ef4444);
+            border-radius: var(--radius-sm);
+            overflow: visible;
+        }
+
+        .temp-markers {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .temp-point {
+            position: absolute;
+            top: -28px;
+            transform: translateX(-50%);
+            background: var(--surface);
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-sm);
+            font-size: 0.7rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .tab {
+            padding: 0.75rem 1.25rem;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.875rem;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all var(--transition);
+            min-height: 44px;
+        }
+
+        .tab:hover {
+            color: var(--text);
+        }
+
+        .tab:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: -2px;
+        }
+
+        .tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Conclusion */
+        .conclusion-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .conclusion-box h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: white;
+        }
+
+        .conclusion-box p {
+            font-size: 1rem;
+            opacity: 0.95;
+            color: white;
+        }
+
+        /* Scroll to top */
+        .scroll-top {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all var(--transition);
+            min-height: 44px;
+            min-width: 44px;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-top:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        .scroll-top:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        .scroll-top svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .nav-guides {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem;
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+            border: 1px solid var(--border-light);
+        }
+
+        .nav-guide-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: var(--primary);
+            color: white;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all var(--transition);
+        }
+
+        .nav-guide-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .nav-guide-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .nav-guides-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-guides-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .nav-guide-link {
+            padding: 0.5rem 0.875rem;
+            background: var(--bg);
+            color: var(--text-muted);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all var(--transition);
+        }
+
+        .nav-guide-link:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 2rem 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .main {
+                padding: 1rem;
+            }
+
+            .card {
+                padding: 1.25rem;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tree-branches {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .process {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .process-arrow {
+                transform: rotate(90deg);
+            }
+
+            .pie-chart {
+                flex-direction: column;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .nav-container,
+            .scroll-top {
+                display: none;
+            }
+
+            .section {
+                display: block !important;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>Les Matériaux à Empreintes</h1>
+            <p>Guide Visuel Complet - Département de Prothèse Conjointe</p>
+            <span class="header-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                Guide Visuel Éducatif
+            </span>
+        </div>
+    </header>
+
+    <nav class="nav-container" role="navigation" aria-label="Navigation principale">
+        <div class="nav">
+            <button class="nav-btn active" data-section="overview" aria-current="page">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                Vue d'ensemble
+            </button>
+            <button class="nav-btn" data-section="rigides">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                Matériaux Rigides
+            </button>
+            <button class="nav-btn" data-section="hydrocolloides">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                Hydrocolloïdes
+            </button>
+            <button class="nav-btn" data-section="elastomeres">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                Élastomères
+            </button>
+            <button class="nav-btn" data-section="conclusion">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Conclusion
+            </button>
+        </div>
+    </nav>
+
+    <main class="main">
+        <!-- Vue d'ensemble -->
+        <section id="overview" class="section active" role="region" aria-labelledby="overview-title">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon info">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    </div>
+                    <h2 id="overview-title">Généralités</h2>
+                </div>
+
+                <h3>1.1 Définition</h3>
+                <p>L'empreinte est un <strong>enregistrement en négatif</strong> de la topographie d'une région de la cavité buccale ou d'un modèle (techniques indirectes).</p>
+                
+                <div class="diagram">
+                    <div class="diagram-flow">
+                        <div class="diagram-box highlight">Moule (Négatif)</div>
+                        <span class="diagram-arrow">→</span>
+                        <div class="diagram-box">Moulage</div>
+                        <span class="diagram-arrow">→</span>
+                        <div class="diagram-box highlight">Modèle (Positif)</div>
+                    </div>
+                </div>
+                <p>Son moulage permet d'obtenir une <strong>réplique en positif</strong>.</p>
+
+                <h3>1.2 Objectif</h3>
+                <p>L'objectif de l'empreinte est la <strong>reproduction de toute ou une partie des arcades dentaires</strong> afin d'obtenir des modèles de travail.</p>
+                
+                <div class="diagram">
+                    <div class="diagram-flow">
+                        <div class="diagram-box">Modèles Primaires<br><small>(Étude)</small></div>
+                        <span class="diagram-arrow">↔</span>
+                        <div class="diagram-box highlight">Diagnostic<br>& Plan</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon info">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <h2>Qualités Recherchées</h2>
+                </div>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card">
+                        <h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                            Manipulation
+                        </h4>
+                        <p style="color: var(--text-muted); font-size: 0.85rem;">Facilité d'utilisation</p>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            Temps
+                        </h4>
+                        <p style="color: var(--text-muted); font-size: 0.85rem;">Travail long, prise court</p>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                            Humidité
+                        </h4>
+                        <p style="color: var(--text-muted); font-size: 0.85rem;">Hydrophilie et tolérance</p>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            Précision
+                        </h4>
+                        <p style="color: var(--text-muted); font-size: 0.85rem;">Reproduction des détails</p>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+                            Stabilité
+                        </h4>
+                        <p style="color: var(--text-muted); font-size: 0.85rem;">Dimensionnelle stable</p>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            Résistance
+                        </h4>
+                        <p style="color: var(--text-muted); font-size: 0.85rem;">Au déchirement</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tree-container">
+                <h3 class="tree-title">Classification des Matériaux à Empreinte</h3>
+                <div class="tree">
+                    <div class="tree-node main" tabindex="0">Matériaux à Empreinte</div>
+                    <div class="tree-connector"></div>
+                    <div class="tree-branches">
+                        <div class="tree-branch">
+                            <div class="tree-node">Comportement Rigide</div>
+                            <div class="tree-connector"></div>
+                            <div class="tree-sub">
+                                <button class="tree-leaf rigid" data-target="rigides">Plâtre</button>
+                                <button class="tree-leaf rigid" data-target="rigides">Oxyde Zn-Eugénol</button>
+                                <button class="tree-leaf rigid" data-target="rigides">Thermoplastiques</button>
+                            </div>
+                        </div>
+                        <div class="tree-branch">
+                            <div class="tree-node">Comportement Élastique</div>
+                            <div class="tree-connector"></div>
+                            <div class="tree-sub">
+                                <button class="tree-leaf elastic" data-target="hydrocolloides">Hydrocolloïdes</button>
+                                <button class="tree-leaf elastic" data-target="elastomeres">Élastomères</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="tabs">
+                    <button class="tab active" data-tab="hydro">Hydrocolloïdes</button>
+                    <button class="tab" data-tab="elasto">Élastomères</button>
+                </div>
+                <div id="hydro-tab" class="tab-content active">
+                    <div class="diagram-flow" style="justify-content: flex-start;">
+                        <div class="diagram-box">Réversibles<br><small>(HCR)</small></div>
+                        <span class="diagram-arrow">↔</span>
+                        <div class="diagram-box">Ir-réversibles<br><small>(HCIR)</small></div>
+                    </div>
+                </div>
+                <div id="elasto-tab" class="tab-content">
+                    <div class="diagram-flow" style="justify-content: flex-start;">
+                        <div class="diagram-box">Polysulfures</div>
+                        <div class="diagram-box">Polyéthers</div>
+                        <div class="diagram-box">Silicones</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Matériaux Rigides -->
+        <section id="rigides" class="section" role="region" aria-labelledby="rigides-title">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon rigid">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                    </div>
+                    <h2 id="rigides-title">2.1 Les Matériaux Rigides</h2>
+                </div>
+            </div>
+
+            <!-- Plâtre -->
+            <div class="accordion open">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="true">
+                    <span>2.1.1 Le Plâtre</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <h4>Indications</h4>
+                    <ul class="list">
+                        <li><span class="list-bullet" style="background: var(--rigid-color);"></span>Matériaux de confection des modèles d'étude et de travail</li>
+                        <li><span class="list-bullet" style="background: var(--rigid-color);"></span>Le plâtre à empreinte est utilisé pour enregistrer de manière statique les surfaces muqueuses de l'édenté total</li>
+                    </ul>
+
+                    <h4>Composition</h4>
+                    <p>Le <strong>gypse</strong> constitue la matière première du plâtre. Ce dihydrate de sulfate de calcium (CaSO₄), déshydraté par une cuisson au four, se transforme en plâtre.</p>
+                    
+                    <div class="diagram">
+                        <div class="diagram-flow">
+                            <div class="diagram-box">Gypse<br><small>CaSO₄·2H₂O</small></div>
+                            <span class="diagram-arrow">→</span>
+                            <div class="diagram-box highlight">Cuisson</div>
+                            <span class="diagram-arrow">→</span>
+                            <div class="diagram-box">Plâtre<br><small>CaSO₄·½H₂O</small></div>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Désignation</th>
+                                    <th>Caractéristiques</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Type I</strong></td>
+                                    <td>Plâtre pour empreinte</td>
+                                    <td>Usage spécifique</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Type II</strong></td>
+                                    <td>Plâtre dentaire (Paris)</td>
+                                    <td>Fragile</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Type III</strong></td>
+                                    <td>Plâtre pierre</td>
+                                    <td>Dur</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Type IV</strong></td>
+                                    <td>Plâtre pierre amélioré</td>
+                                    <td>Extra dur</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4>Réaction de Prise</h4>
+                    <div class="process">
+                        <div class="process-step">1. Eau dans bol</div>
+                        <span class="process-arrow">→</span>
+                        <div class="process-step">2. Verser plâtre</div>
+                        <span class="process-arrow">→</span>
+                        <div class="process-step">3. Spatulation 30s</div>
+                        <span class="process-arrow">→</span>
+                        <div class="process-step">4. Consistance 1-2 min</div>
+                    </div>
+
+                    <div class="formula">
+                        2(CaSO₄·½H₂O) + 3H₂O → 2(CaSO₄·2H₂O) + chaleur
+                    </div>
+
+                    <h4>Facteurs Influençant le Temps de Prise</h4>
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                Augmente le temps
+                            </h4>
+                            <ul>
+                                <li>Eau froide</li>
+                                <li>Retardateurs (carbonate K/Na)</li>
+                                <li>↑ Rapport eau/poudre</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                                Diminue le temps
+                            </h4>
+                            <ul>
+                                <li>Malaxage rapide</li>
+                                <li>Accélérateurs (sulfate K)</li>
+                                <li>↓ Rapport eau/poudre</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h4>Propriétés</h4>
+                    <div>
+                        <span class="property"><span class="property-icon low">−</span> Résistance: Faible</span>
+                        <span class="property"><span class="property-icon high">+</span> Précision: Bonne</span>
+                        <span class="property"><span class="property-icon high">+</span> Stabilité: Très bonne</span>
+                        <span class="property"><span class="property-icon high">+</span> Hydrophile</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Oxyde de Zinc-Eugénol -->
+            <div class="accordion">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                    <span>2.1.2 La Pâte d'Oxyde de Zinc-Eugénol</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <h4>Indications</h4>
+                    <ul class="list">
+                        <li><span class="list-bullet" style="background: var(--rigid-color);"></span><strong>Prothèse amovible complète</strong> : prise d'empreintes secondaires</li>
+                        <li><span class="list-bullet" style="background: var(--rigid-color);"></span><strong>Prothèse amovible partielle</strong> : prise d'empreintes dans les secteurs édentés</li>
+                    </ul>
+
+                    <h4>Composition - Système à Deux Pâtes</h4>
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Base</h4>
+                            <ul>
+                                <li>Oxyde de zinc (80%)</li>
+                                <li>Huiles (19%)</li>
+                                <li>Agent colorant</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Catalyseur</h4>
+                            <ul>
+                                <li>Eugénol (56%)</li>
+                                <li>Résine (16%)</li>
+                                <li>Huile d'olive</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h4>Réaction de Prise</h4>
+                    <div class="process">
+                        <div class="process-step">Deux bandes égales</div>
+                        <span class="process-arrow">→</span>
+                        <div class="process-step">Spatuler</div>
+                        <span class="process-arrow">→</span>
+                        <div class="process-step">Pâte homogène</div>
+                        <span class="process-arrow">→</span>
+                        <div class="process-step highlight-box" style="background: var(--warning-bg);">Eugénolate de Zn</div>
+                    </div>
+
+                    <h4>Propriétés</h4>
+                    <div>
+                        <span class="property"><span class="property-icon low">−</span> Résistance: Faible</span>
+                        <span class="property"><span class="property-icon medium">~</span> Élasticité: Faible</span>
+                        <span class="property"><span class="property-icon high">+</span> Précision: Excellente</span>
+                        <span class="property"><span class="property-icon high">+</span> Stabilité: Remarkable</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compositions Thermoplastiques -->
+            <div class="accordion">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                    <span>2.1.3 Les Compositions Thermoplastiques</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <h4>Indications</h4>
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Prothèse Adjointe Totale</h4>
+                            <ul>
+                                <li>Portes empreintes individuels (PEI)</li>
+                                <li>Joint périphérique</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Prothèse Conjointe</h4>
+                            <ul>
+                                <li>Empreinte des préparations</li>
+                                <li>Dents dévitalisées</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h4>Composition</h4>
+                    <div class="pie-chart">
+                        <div class="pie"></div>
+                        <div class="pie-legend">
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: var(--rigid-color);"></div>
+                                <span>Résine (~40%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: var(--elastic-color);"></div>
+                                <span>Cires (~7%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: var(--hydro-color);"></div>
+                                <span>Acide stéarique (~3%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: var(--text-light);"></div>
+                                <span>Charges (~50%)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>Température d'Utilisation (Pâte de Kerr)</h4>
+                    <div class="temp-chart">
+                        <span class="temp-point" style="left: 15%;">Rouge: 55-56°C</span>
+                        <span class="temp-point" style="left: 50%;">Grise: 53-54°C</span>
+                        <span class="temp-point" style="left: 85%;">Verte: 50-51°C</span>
+                    </div>
+
+                    <h4>Propriétés</h4>
+                    <div>
+                        <span class="property"><span class="property-icon low">−</span> Enregistrement détails: Mauvais</span>
+                        <span class="property"><span class="property-icon low">−</span> Après refroidissement: Cassant</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hydrocolloïdes -->
+        <section id="hydrocolloides" class="section" role="region" aria-labelledby="hydro-title">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon hydro">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                    </div>
+                    <h2 id="hydro-title">2.2.1 Les Hydrocolloïdes</h2>
+                </div>
+
+                <p>Ce sont des <strong>polysaccharides</strong> extraits d'algues marines sous forme de liquide ou de gel.</p>
+
+                <div class="diagram">
+                    <h4>Mécanisme de Gélification</h4>
+                    <div class="diagram-flow">
+                        <div class="diagram-box">HCR<br><small>Agent: ↑ T°</small></div>
+                        <span class="diagram-arrow">↔</span>
+                        <div class="diagram-box">HCIR<br><small>Agent: Sulfate Ca</small></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hydrocolloïdes Réversibles -->
+            <div class="accordion">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                    <span>Hydrocolloïdes Réversibles (HCR)</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <h4>Indications</h4>
+                    <ul class="list">
+                        <li><span class="list-bullet" style="background: var(--hydro-color);"></span>Préparation coronaire périphérique à limite supra ou juxta-gingivale</li>
+                        <li><span class="list-bullet" style="background: var(--hydro-color);"></span>Préparation cavitaire peu profonde et simple</li>
+                    </ul>
+
+                    <h4>Composition</h4>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Composant</th>
+                                    <th>Rôle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Agar-agar</strong></td>
+                                    <td>Constituant de base (algues rouges)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Sulfate de potassium</strong></td>
+                                    <td>Compense l'effet retardateur du Borax</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Borax</strong></td>
+                                    <td>↑ Résistance et viscosité</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Thymol</strong></td>
+                                    <td>Bactéricide</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4>Réaction de Prise</h4>
+                    <div class="process">
+                        <div class="process-step">Chauffer 100°C<br><small>8-12 min</small></div>
+                        <span class="process-arrow">→</span>
+                        <div class="process-step">Stockage 65°C</div>
+                        <span class="process-arrow">→</span>
+                        <div class="process-step">Tension 45°C<br><small>2 min</small></div>
+                        <span class="process-arrow">→</span>
+                        <div class="process-step">Refroidissement</div>
+                    </div>
+
+                    <h4>Propriétés</h4>
+                    <div>
+                        <span class="property"><span class="property-icon high">+</span> Grande précision</span>
+                        <span class="property"><span class="property-icon high">+</span> Pouvoir mouillant</span>
+                        <span class="property"><span class="property-icon medium">~</span> Faible élasticité</span>
+                        <span class="property"><span class="property-icon low">−</span> Stabilité: Faible</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hydrocolloïdes Irréversibles -->
+            <div class="accordion">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                    <span>Hydrocolloïdes Irréversibles (HCIR) - Algínates</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <h4>Classes d'Alginates</h4>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Classe</th>
+                                    <th>Indications</th>
+                                    <th>Précision</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="badge good">Classe A</span></td>
+                                    <td>Prothèse fixée (unitaire, inlay)</td>
+                                    <td>20 μm</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge medium">Classe B</span></td>
+                                    <td>Prothèse amovible partielle</td>
+                                    <td>50 μm</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge poor">Classe C</span></td>
+                                    <td>Étude, primaires, duplicatas</td>
+                                    <td>75 μm</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4>Composition</h4>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Composant</th>
+                                    <th>%</th>
+                                    <th>Rôle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Charges</td>
+                                    <td>60%</td>
+                                    <td>Contrôle de consistance</td>
+                                </tr>
+                                <tr>
+                                    <td>Sels d'acide alginique</td>
+                                    <td>12%</td>
+                                    <td>K, Na, Mg, Ammonium</td>
+                                </tr>
+                                <tr>
+                                    <td>Dihydrate sulfate Ca</td>
+                                    <td>12%</td>
+                                    <td>Réacteur</td>
+                                </tr>
+                                <tr>
+                                    <td>Borax</td>
+                                    <td>0.2%</td>
+                                    <td>↑ Densité et résistance</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4>Protocole de Prise</h4>
+                    <div class="process">
+                        <div class="process-step">1. Choix porte-empreinte</div>
+                        <span class="process-arrow">→</span>
+                        <div class="process-step">2. Eau + poudre</div>
+                        <span class="process-arrow">→</span>
+                        <div class="process-step">3. Spatulation</div>
+                        <span class="process-arrow">→</span>
+                        <div class="process-step">4. Prise ~3.5 min</div>
+                    </div>
+
+                    <h4>Propriétés</h4>
+                    <div>
+                        <span class="property"><span class="property-icon low">−</span> Résistance déchirement: Faible</span>
+                        <span class="property"><span class="property-icon high">+</span> Précision: Bonne</span>
+                        <span class="property"><span class="property-icon low">−</span> Stabilité: Faible</span>
+                        <span class="property"><span class="property-icon high">+</span> Hydrophile</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Élastomères -->
+        <section id="elastomeres" class="section" role="region" aria-labelledby="elasto-title">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon elasto">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <h2 id="elasto-title">2.2.2 Les Élastomères</h2>
+                </div>
+
+                <p>Les élastomères sont des <strong>caoutchoucs synthétiques</strong>, substances macromoléculaires possédant des propriétés élastiques caractéristiques.</p>
+
+                <h4>Avantages</h4>
+                <ul class="list">
+                    <li><span class="list-bullet" style="background: var(--elasto-color);"></span>Toutes techniques d'empreintes</li>
+                    <li><span class="list-bullet" style="background: var(--elasto-color);"></span>Toutes situations cliniques</li>
+                    <li><span class="list-bullet" style="background: var(--elasto-color);"></span>Pas d'effets secondaires</li>
+                    <li><span class="list-bullet" style="background: var(--elasto-color);"></span>Compatibles avec tous matériaux</li>
+                </ul>
+
+                <div class="diagram">
+                    <h4>Les 3 Familles d'Élastomères</h4>
+                    <div class="diagram-flow">
+                        <div class="diagram-box" style="border: 2px solid var(--rigid-color);">Polysulfures</div>
+                        <div class="diagram-box" style="border: 2px solid var(--elastic-color);">Polyéthers</div>
+                        <div class="diagram-box" style="border: 2px solid var(--hydro-color);">Silicones</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Polysulfures -->
+            <div class="accordion">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                    <span>2.2.2.1 Les Polysulfures</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <h4>Indications</h4>
+                    <p>Utilisés surtout en <strong>prothèse adjointe totale</strong></p>
+
+                    <h4>Composition</h4>
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Base</h4>
+                            <ul>
+                                <li>Polysulfure de caoutchouc (80%)</li>
+                                <li>ZnO + CaSO₄</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Catalyseur</h4>
+                            <ul>
+                                <li>Peroxyde de plomb (77%)</li>
+                                <li>Soufre + Huile de ricin</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h4>Viscosités</h4>
+                    <div class="diagram-flow" style="justify-content: flex-start;">
+                        <div class="diagram-box">Heavy<br><small>Haute</small></div>
+                        <div class="diagram-box">Regular<br><small>Moyenne</small></div>
+                        <div class="diagram-box">Light<br><small>Basse</small></div>
+                    </div>
+
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Viscosité</th>
+                                    <th>Temps travail</th>
+                                    <th>Temps prise</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Basse</td>
+                                    <td>4-7 min</td>
+                                    <td>7-10 min</td>
+                                </tr>
+                                <tr>
+                                    <td>Moyenne/Haute</td>
+                                    <td>3-6 min</td>
+                                    <td>6-8 min</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4>Propriétés</h4>
+                    <div>
+                        <span class="property"><span class="property-icon high">+</span> Résistance: Bonne</span>
+                        <span class="property"><span class="property-icon high">+</span> Précision: Bonne</span>
+                        <span class="property"><span class="property-icon low">−</span> Stabilité: Faible (0.4-0.5%)</span>
+                        <span class="property"><span class="property-icon low">−</span> Hydrophobe</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Polyéthers -->
+            <div class="accordion">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                    <span>2.2.2.2 Les Polyéthers</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Produit de base</strong> : Tétra-méthylène glycol avec groupe terminal imine</p>
+                    <p>Généralement <strong>monophase</strong> (ex: Impregum)</p>
+
+                    <h4>Indications</h4>
+                    <ul class="list">
+                        <li><span class="list-bullet" style="background: var(--elasto-color);"></span>Reconstructions corono-radiculaires</li>
+                        <li><span class="list-bullet" style="background: var(--elasto-color);"></span>Préparation cavitaire peu profonde</li>
+                        <li><span class="list-bullet" style="background: var(--elasto-color);"></span>Dents sans contre-dépouilles importantes</li>
+                    </ul>
+
+                    <h4>Propriétés</h4>
+                    <div>
+                        <span class="property"><span class="property-icon high">+</span> Dureté: Très élevée</span>
+                        <span class="property"><span class="property-icon high">+</span> Stabilité: Satisfaisante</span>
+                        <span class="property"><span class="property-icon high">+</span> Précision: Grande</span>
+                        <span class="property"><span class="property-icon high">+</span> Prise: Rapide</span>
+                        <span class="property"><span class="property-icon high">+</span> Hydrophile</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Silicones -->
+            <div class="accordion">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                    <span>2.2.2.3 Les Silicones</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <p>Composé d'une <strong>longue chaîne macromoléculaire</strong> : alternance d'atomes de silicium et d'oxygène.</p>
+
+                    <h4>Deux Types de Polymérisation</h4>
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>🔥 Condensation</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Élimination de petites molecules (eau)</p>
+                            <hr style="margin: 0.75rem 0; border: none; border-top: 1px solid var(--border);">
+                            <p><strong>Matériau:</strong> Poly-dimethylsiloxanes</p>
+                            <p><strong>Indications:</strong> Recouvrement total, limite intra-sulculaire</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>✨ Addition</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Sans élimination de molecules</p>
+                            <hr style="margin: 0.75rem 0; border: none; border-top: 1px solid var(--border);">
+                            <p><strong>Matériau:</strong> Vinyl polysiloxanes</p>
+                            <p><strong>Indications:</strong> Facette, inlay, onlay</p>
+                        </div>
+                    </div>
+
+                    <h4>Silicones par Addition (VPS) - Propriétés</h4>
+                    <div>
+                        <span class="property"><span class="property-icon high">+</span> Plusieurs viscosités</span>
+                        <span class="property"><span class="property-icon high">+</span> Stabilité: Grande</span>
+                        <span class="property"><span class="property-icon high">+</span> Mouillabilité</span>
+                        <span class="property"><span class="property-icon high">+</span> Résistance déformation</span>
+                        <span class="property"><span class="property-icon high">+</span> Hydrophile</span>
+                        <span class="property"><span class="property-icon high">+</span> Compatible matériaux réplique</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section id="conclusion" class="section" role="region" aria-labelledby="conclusion-title">
+            <div class="conclusion-box">
+                <h2 id="conclusion-title">Conclusion</h2>
+                <p>Il n'existe pas de matériau d'empreinte <strong>idéal et universel</strong>.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon info">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                    </div>
+                    <h2>Tableau Récapitulatif</h2>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Matériau</th>
+                                <th>Type</th>
+                                <th>Précision</th>
+                                <th>Stabilité</th>
+                                <th>Hydrophilie</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Plâtre</strong></td>
+                                <td>Rigide</td>
+                                <td><span class="badge good">Bonne</span></td>
+                                <td><span class="badge good">Très bonne</span></td>
+                                <td><span class="badge good">Oui</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>ZOE</strong></td>
+                                <td>Rigide</td>
+                                <td><span class="badge good">Excellente</span></td>
+                                <td><span class="badge good">Remarkable</span></td>
+                                <td><span class="badge good">Oui</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Thermoplastiques</strong></td>
+                                <td>Rigide</td>
+                                <td><span class="badge poor">Mauvaise</span></td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td><strong>HCR</strong></td>
+                                <td>Élastique</td>
+                                <td><span class="badge good">Grande</span></td>
+                                <td><span class="badge poor">Faible</span></td>
+                                <td><span class="badge good">Oui</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>HCIR (Alginates)</strong></td>
+                                <td>Élastique</td>
+                                <td><span class="badge medium">Bonne</span></td>
+                                <td><span class="badge poor">Faible</span></td>
+                                <td><span class="badge good">Oui</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Polysulfures</strong></td>
+                                <td>Élastomère</td>
+                                <td><span class="badge good">Bonne</span></td>
+                                <td><span class="badge poor">Faible</span></td>
+                                <td><span class="badge poor">Non</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Polyéthers</strong></td>
+                                <td>Élastomère</td>
+                                <td><span class="badge good">Grande</span></td>
+                                <td><span class="badge medium">Satisfaisante</span></td>
+                                <td><span class="badge good">Oui</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Silicones VPS</strong></td>
+                                <td>Élastomère</td>
+                                <td><span class="badge good">Grande</span></td>
+                                <td><span class="badge good">Grande</span></td>
+                                <td><span class="badge good">Oui</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon info">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    </div>
+                    <h2>Message Final</h2>
+                </div>
+                <p style="font-size: 1.1rem; text-align: center; color: var(--text);">
+                    La connaissance approfondie des matériaux à empreinte permet aux praticiens d'offrir des <strong>soins personnalisés et de haute qualité</strong>, répondant aux besoins spécifiques de chaque patient.
+                </p>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="nav-guides">
+            <a href="index.html" class="nav-guide-btn home-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                Accueil
+            </a>
+            <div class="nav-guides-links">
+                <span class="nav-guides-label">Autres guides:</span>
+                <a href="courone-ccc.html" class="nav-guide-link">CCC</a>
+                <a href="courone-ccm.html" class="nav-guide-link">CCM</a>
+                <a href="traitement-empreintes.html" class="nav-guide-link">Traitement</a>
+                <a href="cours-ceramique.html" class="nav-guide-link">Céramiques</a>
+            </div>
+        </div>
+    </main>
+
+    <button class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Retour en haut">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <script>
+        // Navigation
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.nav-btn').forEach(b => {
+                    b.classList.remove('active');
+                    b.removeAttribute('aria-current');
+                });
+                btn.classList.add('active');
+                btn.setAttribute('aria-current', 'page');
+                
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                const target = document.getElementById(btn.dataset.section);
+                if (target) target.classList.add('active');
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // Tabs
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                const content = document.getElementById(tab.dataset.tab + '-tab');
+                if (content) content.classList.add('active');
+            });
+        });
+
+        // Accordion
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const accordion = header.parentElement;
+                const isOpen = accordion.classList.contains('open');
+                
+                // Close all accordions in same parent
+                accordion.parentElement.querySelectorAll('.accordion').forEach(a => {
+                    a.classList.remove('open');
+                    a.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+                });
+                
+                // Toggle current
+                if (!isOpen) {
+                    accordion.classList.add('open');
+                    header.setAttribute('aria-expanded', 'true');
+                }
+            });
+
+            // Keyboard support
+            header.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    header.click();
+                }
+            });
+        });
+
+        // Tree leaf navigation
+        document.querySelectorAll('.tree-leaf').forEach(leaf => {
+            leaf.addEventListener('click', () => {
+                const target = leaf.dataset.target;
+                if (target) {
+                    document.querySelectorAll('.nav-btn').forEach(b => {
+                        b.classList.remove('active');
+                        b.removeAttribute('aria-current');
+                    });
+                    const navBtn = document.querySelector(`[data-section="${target}"]`);
+                    if (navBtn) {
+                        navBtn.classList.add('active');
+                        navBtn.setAttribute('aria-current', 'page');
+                    }
+                    
+                    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                    const section = document.getElementById(target);
+                    if (section) section.classList.add('active');
+                    
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Scroll to top button
+        window.addEventListener('scroll', () => {
+            const btn = document.querySelector('.scroll-top');
+            if (window.scrollY > 300) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        }, { passive: true });
+
+        // Respect reduced motion preference
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.documentElement.style.scrollBehavior = 'auto';
+        }
+    </script>
+</body>
+</html>
