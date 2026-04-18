@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principes Généraux de Restauration - Guide d'Étude</title>
+    <meta name="description" content="Guide d'étude sur les principes généraux de restauration en médecine dentistry">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0891B2;
+            --primary-dark: #0e7490;
+            --primary-bg: #ecfeff;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-lg: 24px;
+            --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+            --font-scale: 1;
+        }
+        html.dark-mode {
+            --primary: #06b6d4;
+            --primary-dark: #0891B2;
+            --primary-bg: #164e63;
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --text: #f1f5f9;
+            --text-muted: #cbd5e1;
+            --border: #334155;
+            --border-light: #475569;
+        }
+        html.text-size-small { --font-scale: 0.9; }
+        html.text-size-large { --font-scale: 1.1; }
+        html.text-size-xlarge { --font-scale: 1.25; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; font-size: calc(16px * var(--font-scale)); }
+        
+        p { margin-bottom: 1rem; color: var(--text); }
+        ul { margin-bottom: 1rem; list-style: none; }
+        ul li { margin-bottom: 0.5rem; color: var(--text-muted); }
+        strong { color: var(--text); font-weight: 600; }
+        
+        .card { background: var(--surface); border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 1.5rem; box-shadow: var(--shadow); border: 1px solid var(--border-light); transition: box-shadow var(--transition); }
+        .card:hover { box-shadow: var(--shadow-md); }
+        .card-header { display: flex; align-items: center; gap: 1.25rem; margin-bottom: 1.5rem; }
+        .card-icon { width: 52px; height: 52px; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--primary-bg); color: var(--primary); }
+        .card-icon svg { width: 26px; height: 26px; }
+        .card h2 { font-size: 1.5rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--border); }
+        .card h3 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--text); padding-left: 0.75rem; border-left: 3px solid var(--primary); }
+        .card h4 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; color: var(--text); display: flex; align-items: center; gap: 0.5rem; }
+        .card h4::before { content: ''; width: 6px; height: 6px; background: var(--primary); border-radius: 50%; }
+        .card p { color: var(--text-muted); margin-bottom: 1rem; line-height: 1.75; }
+        
+        .accordion-content { display: none; padding: 1.5rem 2rem; }
+        .accordion-content > p { margin-bottom: 1.25rem; color: var(--text-muted); }
+        .accordion-content > ul { margin: 1rem 0 1.5rem 0.5rem; }
+        .accordion-content > ul li { margin-bottom: 0.75rem; color: var(--text-muted); line-height: 1.7; padding-left: 0.5rem; }
+        .accordion-content > h4 { margin-top: 2rem; margin-bottom: 1rem; }
+        
+        .accordion-header { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; background: var(--bg); cursor: pointer; font-weight: 600; font-size: 1rem; color: var(--text); transition: all var(--transition); min-height: 60px; border-left: 4px solid transparent; }
+        .accordion-header:hover { background: var(--border-light); border-left-color: var(--primary); }
+        .accordion.open .accordion-header { background: var(--primary-bg); border-left-color: var(--primary); color: var(--primary); }
+        
+        .comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin: 1.25rem 0; }
+        .comparison-card { background: var(--bg); border-radius: var(--radius); padding: 1.5rem; border: 1px solid var(--border); transition: all var(--transition); }
+        .comparison-card:hover { border-color: var(--primary); box-shadow: 0 4px 12px rgba(8, 145, 178, 0.1); }
+        .comparison-card h4 { font-size: 1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; color: var(--text); }
+        .comparison-card h4 svg { color: var(--primary); }
+        .comparison-card ul { list-style: none; font-size: 0.9rem; color: var(--text-muted); }
+        .comparison-card li { padding: 0.5rem 0; padding-left: 1.25rem; position: relative; line-height: 1.5; }
+        .comparison-card li::before { content: '•'; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white; padding: 3rem 1.5rem;
+            position: relative; overflow: hidden;
+        }
+        .header::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .header-content { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+        .header h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 0.5rem; }
+        .header p { font-size: 1.125rem; opacity: 0.9; font-weight: 400; }
+        .header-badge { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; padding: 0.5rem 1rem; background: rgba(255,255,255,0.15); border-radius: 100px; font-size: 0.875rem; font-weight: 500; backdrop-filter: blur(4px); }
+
+        .nav-container { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+        .nav { max-width: 1200px; margin: 0 auto; display: flex; gap: 0.25rem; padding: 0.5rem; overflow-x: auto; scrollbar-width: none; }
+        .nav::-webkit-scrollbar { display: none; }
+        .nav-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1rem; border: none; background: transparent; color: var(--text-muted); font-size: 0.875rem; font-weight: 500; cursor: pointer; border-radius: var(--radius-sm); white-space: nowrap; transition: all var(--transition); min-height: 44px; }
+         .nav-btn:hover { background: var(--border-light); color: var(--text); }
+         .nav-btn.active { background: var(--primary); color: white; }
+
+         .controls-bar { display: flex; align-items: center; gap: 1.5rem; padding: 0.75rem 1.5rem; background: var(--surface); border-bottom: 1px solid var(--border); justify-content: flex-end; max-width: 100%; overflow-x: auto; }
+         .controls-group { display: flex; align-items: center; gap: 0.5rem; }
+         .controls-label { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); }
+         .control-btn { display: flex; align-items: center; justify-content: center; padding: 0.5rem 0.75rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; color: var(--text); font-size: 0.8rem; transition: all var(--transition); min-width: 36px; min-height: 36px; }
+         .control-btn:hover { background: var(--border-light); color: var(--primary); }
+         .control-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+         
+         .key-takeaways { background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(6, 182, 212, 0.04) 100%); border-left: 4px solid var(--primary); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2rem; margin-top: 2rem; }
+         .key-takeaways h3 { color: var(--primary); font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+         .key-takeaways h3::before { content: '✓'; font-weight: 800; }
+         .key-takeaways ul { margin: 0; padding-left: 1.5rem; }
+         .key-takeaways li { margin-bottom: 0.5rem; color: var(--text); line-height: 1.6; font-size: 0.95rem; }
+         .key-takeaways li::marker { color: var(--primary); font-weight: bold; }
+
+        .main { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
+        .section { display: none; animation: fadeIn 0.3s ease; }
+        .section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+        .card { background: var(--surface); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.25rem; box-shadow: var(--shadow); border: 1px solid var(--border-light); transition: box-shadow var(--transition); }
+        .card:hover { box-shadow: var(--shadow-md); }
+        .card-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+        .card-icon { width: 48px; height: 48px; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--primary-bg); color: var(--primary); }
+        .card-icon svg { width: 24px; height: 24px; }
+        .card h2 { font-size: 1.25rem; font-weight: 700; color: var(--text); letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+        .card h3 { font-size: 1.125rem; font-weight: 600; margin: 1.5rem 0 0.75rem; color: var(--text); }
+         .card h4 { font-size: 1rem; font-weight: 600; margin: 1.25rem 0 0.5rem; color: var(--text); }
+         .card p { color: var(--text-muted); margin-bottom: 0.75rem; }
+         .card ul { margin-top: 1.25rem; margin-bottom: 1.25rem; padding-inline-start: 2rem; list-style: none; }
+         .card ul li { margin-bottom: 0.875rem; color: var(--text-muted); line-height: 1.75; position: relative; padding-left: 0.75rem; }
+         .card ul li::before { content: '•'; position: absolute; left: -0.75rem; color: var(--primary); font-weight: 600; font-size: 1.25rem; }
+         .card ol { margin-top: 1.25rem; margin-bottom: 1.25rem; padding-inline-start: 0; list-style: none; counter-reset: item; }
+         .card ol li { margin-bottom: 1rem; color: var(--text-muted); line-height: 1.75; position: relative; padding-left: 2.5rem; counter-increment: item; }
+         .card ol li::before { content: counter(item); position: absolute; left: 0; top: 0; background: var(--primary-bg); color: var(--primary); width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: 600; font-size: 0.875rem; }
+
+        .diagram { background: var(--primary-bg); border-radius: var(--radius); padding: 1.5rem; text-align: center; margin: 1rem 0; }
+        .diagram-flow { display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
+        .diagram-box { background: var(--surface); padding: 0.75rem 1rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); min-width: 100px; font-size: 0.85rem; }
+        .diagram-box small { display: block; font-size: 0.7rem; color: var(--text-muted); margin-top: 0.25rem; }
+        .diagram-box.highlight { background: var(--primary); color: white; }
+        .diagram-box.highlight small { color: rgba(255,255,255,0.8); }
+        .diagram-arrow { font-size: 1.25rem; color: var(--text-muted); }
+
+        .comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin: 1rem 0; }
+        .comparison-card { background: var(--bg); border-radius: var(--radius); padding: 1.25rem; border: 1px solid var(--border-light); transition: all var(--transition); }
+        .comparison-card:hover { border-color: var(--primary); box-shadow: var(--shadow-sm); }
+        .comparison-card h4 { font-size: 0.9rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+        .comparison-card ul { list-style: none; font-size: 0.85rem; color: var(--text-muted); }
+        .comparison-card li { padding: 0.25rem 0; }
+
+        .property { display: inline-flex; align-items: center; gap: 0.375rem; padding: 0.375rem 0.75rem; background: var(--bg); border-radius: var(--radius-sm); margin: 0.25rem; font-size: 0.8rem; font-weight: 500; color: var(--text); border: 1px solid var(--border-light); }
+        .property-icon { width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; }
+        .property-icon.high { background: #d1fae5; color: #059669; }
+        .property-icon.medium { background: #fef3c7; color: #d97706; }
+        .property-icon.low { background: #fee2e2; color: #dc2626; }
+
+        .accordion { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0; background: var(--surface); }
+        .accordion-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; background: var(--bg); cursor: pointer; font-weight: 600; font-size: 0.95rem; color: var(--text); transition: background var(--transition); min-height: 56px; }
+         .accordion-header:hover { background: var(--border-light); }
+         .accordion-content { display: none; padding: 1.25rem; }
+         .accordion-content p { margin-bottom: 1.25rem; color: #475569; line-height: 1.75; }
+         .accordion-content ul { margin: 1.25rem 0; padding-inline-start: 2rem; list-style: none; }
+         .accordion-content ul li { margin-bottom: 0.875rem; color: #475569; line-height: 1.75; position: relative; padding-left: 0.75rem; }
+         .accordion-content ul li::before { content: '•'; position: absolute; left: -0.75rem; color: var(--primary); font-weight: 600; font-size: 1.25rem; }
+         .accordion-content h4 { margin-top: 1.5rem; margin-bottom: 1rem; color: #334155; font-size: 1.1rem; font-weight: 600; }
+        .accordion.open .accordion-content { display: block; animation: slideDown 0.2s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+        .accordion-arrow { transition: transform var(--transition); color: var(--text-muted); }
+        .accordion.open .accordion-arrow { transform: rotate(180deg); }
+
+        .table-container { overflow-x: auto; margin: 1rem 0; border-radius: var(--radius); border: 1px solid var(--border); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+        th, td { padding: 0.875rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+        th { background: var(--bg); font-weight: 600; color: var(--text); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        tbody tr:last-child td { border-bottom: none; }
+        tbody tr:hover { background: var(--bg); }
+
+        .conclusion-box { background: linear-gradient(135deg, var(--primary) 0%, #4F46E5 100%); color: white; padding: 2rem; border-radius: var(--radius-lg); text-align: center; margin: 1.5rem 0; }
+        .conclusion-box h2 { font-size: 1.5rem; margin-bottom: 0.75rem; color: white; }
+        .conclusion-box p { font-size: 1rem; opacity: 0.95; color: white; }
+
+        .nav-guides { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; padding: 1.5rem; background: var(--surface); border-radius: var(--radius-lg); box-shadow: var(--shadow); margin-top: 2rem; border: 1px solid var(--border-light); }
+        .nav-guide-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.25rem; background: var(--primary); color: white; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.9rem; text-decoration: none; }
+        .nav-guide-btn:hover { background: var(--primary-dark); }
+        .nav-guide-btn svg { width: 18px; height: 18px; }
+        .nav-guides-links { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-left: auto; }
+        .nav-guides-label { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+        .nav-guide-link { padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.85rem; color: var(--text-muted); text-decoration: none; transition: all var(--transition); }
+        .nav-guide-link:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-bg); }
+
+        @media (max-width: 768px) {
+            .header { padding: 2rem 1rem; }
+            .header h1 { font-size: 1.5rem; }
+            .main { padding: 1rem; }
+            .card { padding: 1.25rem; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .diagram-flow { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>Principes Généraux de Restauration</h1>
+            <p>Guide d'Étude - Biomatériaux et techniques de restauration</p>
+            <span class="header-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                Pr El Ouarti Imane
+            </span>
+        </div>
+    </header>
+
+    <nav class="nav-container" role="navigation" aria-label="Navigation principale">
+        <div class="nav">
+            <button class="nav-btn active" data-section="introduction">Introduction</button>
+            <button class="nav-btn" data-section="environnement">Environnement</button>
+            <button class="nav-btn" data-section="occlusales">Faces occlusales</button>
+            <button class="nav-btn" data-section="proximales">Faces proximales</button>
+            <button class="nav-btn" data-section="cervicales">Faces cervicales</button>
+            <button class="nav-btn" data-section="conclusion">Conclusion</button>
+        </div>
+    </nav>
+
+     <div class="controls-bar">
+         <div class="controls-group">
+             <span class="controls-label">Thème:</span>
+             <button class="control-btn" id="theme-toggle" title="Basculer le mode sombre">🌙</button>
+         </div>
+         <div class="controls-group">
+             <span class="controls-label">Taille:</span>
+             <button class="control-btn text-size-btn" data-size="small" title="Petite taille">A-</button>
+             <button class="control-btn text-size-btn active" data-size="normal" title="Taille normale">A</button>
+             <button class="control-btn text-size-btn" data-size="large" title="Grande taille">A+</button>
+             <button class="control-btn text-size-btn" data-size="xlarge" title="Très grande taille">A++</button>
+         </div>
+     </div>
+
+     <main class="main">
+         <section id="introduction" class="section active" role="region">
+             <div class="card">
+                 <div class="card-header">
+                     <div class="card-icon">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                     </div>
+                     <h2>Introduction</h2>
+                 </div>
+                 <p>Guide d'étude sur les principes généraux de restauration en médecine dentaire.</p>
+
+                 <div class="key-takeaways">
+                     <h3>À retenir</h3>
+                     <ul>
+                         <li>Point de contact: role dans mastication et protection de la papille</li>
+                         <li>Restauration CL II: coffrage, écartement, galbage matrice essentiel</li>
+                         <li>Faces proximales doivent être convexes avec serrage cervical optimal</li>
+                     </ul>
+                 </div>
+
+                 <div class="nav-guides" style="margin-top: 1.5rem;">
+                     <a href="index.html" class="nav-guide-btn">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                         Retour
+                     </a>
+                     <div class="nav-guides-links">
+                         <a href="composites-dentaires.html" class="nav-guide-link">Composites</a>
+                         <a href="compomeres.html" class="nav-guide-link">Compomères</a>
+                         <a href="cvi.html" class="nav-guide-link">CVI</a>
+                         <a href="matrices.html" class="nav-guide-link">Matrices</a>
+                         <a href="restaurations-adhesifs.html" class="nav-guide-link">Adhésifs</a>
+                     </div>
+                 </div>
+             </div>
+         </section>
+
+        <section id="environnement" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h2>1- Environnement de la dent</h2>
+                </div>
+            </div>
+
+            <div class="accordion open">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="true">
+                    <span>Contexte parodontal</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <p>En présence de tartre ou d'inflammation gingivale la restauration définitive ne peut être entreprise qu'après détartrage et assainissement parodontal.</p>
+                    <p>En présence de carie proximale ou cervicale, la gencive irritée peut s'hypertrophier donnant un polype gingival remplissant la cavité carieuse.</p>
+                    <p>La restauration ne peut être faite qu'après élimination du polype gingival avec une chirurgie parodontale.</p>
+                    <p>La réalisation de la restauration ne peut être faite en présence d'un saignement gingival.</p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                    <span>Contexte occlusal</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <p>En présence de parafonction, d'interférences ou de prématurités, la restauration coronaire ne peut être faite avant une ré-équilibration occlusale qui peut être faite soit par:</p>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-muted);">
+                        <li style="margin-bottom: 0.5rem;">Un meulage occlusal soigneux</li>
+                        <li style="margin-bottom: 0.5rem;">Prothèse fixée rétablissant l'occlusion</li>
+                        <li style="margin-bottom: 0.5rem;">Un traitement ODF</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="nav-guides" style="margin-top: 1.5rem;">
+                <a href="index.html" class="nav-guide-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Retour
+                </a>
+                <div class="nav-guides-links">
+                    <a href="composites-dentaires.html" class="nav-guide-link">Composites</a>
+                    <a href="compomeres.html" class="nav-guide-link">Compomères</a>
+                    <a href="cvi.html" class="nav-guide-link">CVI</a>
+                    <a href="matrices.html" class="nav-guide-link">Matrices</a>
+                    <a href="restaurations-adhesifs.html" class="nav-guide-link">Adhésifs</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="occlusales" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h2>2- Principes de restauration des faces occlusales</h2>
+                </div>
+            </div>
+
+            <div class="accordion open">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="true">
+                    <span>Rappel sur l'anatomie et la fonction occlusale</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <p>La face occlusale est la face de la dent qui entre en contact avec la ou les dents antagonistes lors des mouvements mandibulaires.</p>
+                    <p><strong>L'anatomie occlusale est constituée de:</strong></p>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-muted);">
+                        <li style="margin-bottom: 0.5rem;"><strong>Formes convexes:</strong> les crêtes marginales, les cuspides pour les canines, prémolaires et molaires et le bord libre pour les incisives</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Formes concaves:</strong> sillons, fosses et fossettes</li>
+                    </ul>
+                    <p>La morphologie de la couronne dentaire est étroitement liée à la fonction. Cette morphologie doit être bien comprise et fidèlement reproduite dans les restaurations éventuelles.</p>
+                    <p>La restauration de la face ou d'une partie de la face occlusale ne consiste pas seulement à remodeler les cuspides, sillons, fosses et fossettes. Il faut faire en sorte que ce remodelage permette des contacts normaux entre les dents lors des différents mouvements mandibulaires.</p>
+                    <h4>L'occlusion</h4>
+                    <p>L'occlusion dentaire représente l'état, à un instant donné du rapport inter arcade défini par au moins un point de contact occlusal.</p>
+                    <p><strong>Occlusion statique:</strong> est l'inter-cuspidation c'est-à-dire l'interpénétration des cuspides dans les sillons, fosses et fossettes antagonistes.</p>
+                    <p>L'inter-cuspidation maximale est favorisée par une morphologie convexe des surfaces occlusales des dents cuspidées qui permet un engrènement précis et des contacts punctiformes des deux arcades.</p>
+                    <p>Pendant la phase dynamique, le mouvement de la mandibule se fait de manière excentrée par rapport au maxillaire aussi bien en propulsion qu'en latéralité.</p>
+                    <p>Lors des mouvements de la mandibule, les cuspides quitTent les fosses antagonistes et glissent sans obstacle dans les sillons. La représentation de ces mouvements fait apparaître au niveau de la face occlusale de chaque dent un dessin en forme de « patte d'oiseau ».</p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                    <span>Choix du matériau de restauration</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <p>Les matériaux pour les restaurations occlusales doivent être de bonne propriétés mécaniques:</p>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-muted);">
+                        <li style="margin-bottom: 0.5rem;">Amalgames, composites micro-hybrides ou condensables pour les restaurations directes</li>
+                        <li style="margin-bottom: 0.5rem;">Les alliages métalliques et les céramiques pour les restaurations indirectes</li>
+                    </ul>
+                    <p><strong>Le choix d'un matériau se fait:</strong></p>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-muted);">
+                        <li style="margin-bottom: 0.5rem;">En fonction du risque carieux: exemple amalgames pour les patients à haut risque carieux</li>
+                        <li style="margin-bottom: 0.5rem;">En fonction de la situation de la dent: exemple composite pour les dents visibles au sourire</li>
+                        <li style="margin-bottom: 0.5rem;">En fonction de la perte de substance: exemple dent fragilisée avec perte des structures axiales, favoriser les techniques avec collage</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                    <span>Phase restauratrice</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <h4>1- Analyse préalable de l'occlusion du patient</h4>
+                    <p>Analyse statique et dynamique à l'aide d'un papier articulé. But: dépister les éventuels troubles occlusaux.</p>
+                    <h4>2- Nettoyage de la carie</h4>
+                    <p>Éviter autant que possible les contacts occlusaux dans le profil cavitaire</p>
+                    <h4>3- Modelage occlusal</h4>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-muted);">
+                        <li style="margin-bottom: 0.5rem;">Reproduction des structures convexes (crêtes et cuspides) en prenant appui sur les structures résiduelles</li>
+                        <li style="margin-bottom: 0.5rem;">Sculpture occlusale avant la prise du matériau</li>
+                        <li style="margin-bottom: 0.5rem;">Éviter de faire des surfaces occlusales avec une pente cuspidienne faible ou exagérée</li>
+                    </ul>
+                    <p><strong>Pente cuspidienne accentuée</strong> (sillons trop creux): absence de contacts ponctuels, les dents antagonistes vont égresser pour chercher le contact</p>
+                    <p><strong>Pente cuspidienne faible:</strong> prématurités et absence de désocclusion pendant l'occlusion dynamique</p>
+                    <h4>4- Vérification de l'occlusion et éventuelles retouches</h4>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-muted);">
+                        <li style="margin-bottom: 0.5rem;">Utilisation du papier articulé sur dents asséchées</li>
+                        <li style="margin-bottom: 0.5rem;">Vérification de l'occlusion statique: avoir des contacts répartis aussi bien sur la dent que sur la restauration avec absence de surcharges occlusales</li>
+                        <li style="margin-bottom: 0.5rem;">Vérification occlusale dynamique: la sculpture doit libérer tous les sillons de la patte d'oiseau</li>
+                        <li style="margin-bottom: 0.5rem;">Élimination des interférences et des prématurités</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="nav-guides" style="margin-top: 1.5rem;">
+                <a href="index.html" class="nav-guide-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Retour
+                </a>
+                <div class="nav-guides-links">
+                    <a href="composites-dentaires.html" class="nav-guide-link">Composites</a>
+                    <a href="compomeres.html" class="nav-guide-link">Compomères</a>
+                    <a href="cvi.html" class="nav-guide-link">CVI</a>
+                    <a href="matrices.html" class="nav-guide-link">Matrices</a>
+                    <a href="restaurations-adhesifs.html" class="nav-guide-link">Adhésifs</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="proximales" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+                    </div>
+                    <h2>3- Principes de restauration des faces proximales</h2>
+                </div>
+            </div>
+
+            <div class="accordion open">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="true">
+                    <span>Rappel de l'anatomie et de la physiologie proximale</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <p>La face mésiale et distale sont convexes. Les 2 dents se touchent par le point de contact.</p>
+                    <p>L'espace inter-dentaire est rempli par la papille gingivale.</p>
+                    <p>Sulcus gingival ou sillon gingival</p>
+                    <p>Septum interdentaire: os alvéolaire reliant la table osseuse V et la table L/P. C'est le support de la papille interdentaire.</p>
+                    <h4>Le point de contact</h4>
+                    <p><strong>Rôle dans la mastication:</strong></p>
+                    <p>Lors de la mastication, les aliments triturés se répartissent selon 2 directions:</p>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-muted);">
+                        <li style="margin-bottom: 0.5rem;">Versant occlusal de la crête marginale pour être broyé (la majorité)</li>
+                        <li style="margin-bottom: 0.5rem;">Versant proximal: il sera séparé en 2 masses qui glissent le long des faces vestibulaire et linguale ou palatine des papilles interdentaires pour rejoindre les culs de sac gingivo-muqueux où la langue et les joues les récupèrent pour les renvoyer sur la table occlusale (cycle masticatoire)</li>
+                    </ul>
+                    <p><strong>Rôle de protection:</strong></p>
+                    <p>Protection de la papille interdentaire et rôle de calage</p>
+                    <p><strong>Évolution du point de contact avec l'âge:</strong></p>
+                    <p>Point de contact punctiforme chez le sujet jeune → Surface de contact chez le sujet âgé</p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                    <span>Principes de restauration pour les dents postérieures</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <h4>Préalables</h4>
+                    <p>Assainissement parodontal: détartrage, élimination d'éventuel polype gingival</p>
+                    <h4>Choix du matériau</h4>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-muted);">
+                        <li style="margin-bottom: 0.5rem;"><strong>Petites cavités proximales</strong> (à accès directe ou slot): CVI et composites fluides</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Cavités tunnels:</strong> technique laminée (CVI/composite hybride ou condensable)</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Cavités de moyenne étendue</strong> englobant la crête marginale et le point de contact: composite microhybride ou condensable ou amalgame (en fonction du risque carieux)</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Cavités avec fragilisation</strong> de la structure dentaire résiduelle: restaurations indirectes</li>
+                    </ul>
+                    <h4>Analyse occlusale</h4>
+                    <p>Occlusion statique et dynamique associée à une équilibration occlusale</p>
+                    <h4>Phase restauratrice</h4>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-muted);">
+                        <li style="margin-bottom: 0.5rem;">Choix du système de coffrage avec ou sans porte matrice: en fonction de la perte de substance (biface ou triface)</li>
+                        <li style="margin-bottom: 0.5rem;">Écartement des dents: utilisation d'un coin interdentaire associé à un porte matrice séparateur ou non. Le coin interdentaire permet de parfaire les sertissage cervical et de compenser l'épaisseur de la bande matrice en réalisant un écartement des dents lors de la restauration ce qui permet d'avoir un point de contact serré</li>
+                        <li style="margin-bottom: 0.5rem;">Galbage de la matrice pour avoir une face proximale convexe</li>
+                        <li style="margin-bottom: 0.5rem;">Modelage de la restauration: le remplissage commence toujours de la partie cervicale en remontant en occlusale</li>
+                        <li style="margin-bottom: 0.5rem;">Sculpture du versant interne et externe de la crête marginale</li>
+                        <li style="margin-bottom: 0.5rem;">Sculpture des versants internes des cuspides en prenant appui sur les structures dentaires résiduelles</li>
+                        <li style="margin-bottom: 0.5rem;">Respecter la pente cuspidienne</li>
+                        <li style="margin-bottom: 0.5rem;">Une fois la restauration réalisée: examiner l'occlusion statique et dynamique et éliminer les éventuelles sur-occlusions et les interférences</li>
+                    </ul>
+                    <h4>Contrôle de la restauration</h4>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-muted);">
+                        <li style="margin-bottom: 0.5rem;">Absence de débordement en cervical</li>
+                        <li style="margin-bottom: 0.5rem;">Face proximale convexe</li>
+                        <li style="margin-bottom: 0.5rem;">Point de contact serré et punctiforme et bien situé</li>
+                        <li style="margin-bottom: 0.5rem;">Crête marginale en continuité avec la crête marginale de la dent contigüe</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                    <span>Principes de restauration pour les dents antérieures</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <h4>Préalables</h4>
+                    <p>Assainissement parodontal: détartrage, élimination d'éventuel polype gingival</p>
+                    <h4>Choix du matériau de restauration</h4>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-muted);">
+                        <li style="margin-bottom: 0.5rem;">Pour les restaurations avec un composite micro-hybride ou nano-chargé</li>
+                        <li style="margin-bottom: 0.5rem;">Pour les restaurations avec des facettes ou couronnes en céramique ou en composite de laboratoire</li>
+                    </ul>
+                    <h4>Analyse occlusale</h4>
+                    <p>Occlusion statique et dynamique associée à une équilibration occlusale</p>
+                    <h4>Analyse esthétique</h4>
+                    <p><strong>Les principaux éléments anatomiques à considérer pour restaurer les dents antérieures sont:</strong></p>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-muted);">
+                        <li style="margin-bottom: 0.5rem;">La symétrie</li>
+                        <li style="margin-bottom: 0.5rem;">La situation des bords libres par rapport aux antagonistes</li>
+                        <li style="margin-bottom: 0.5rem;">L'alignement des collets</li>
+                        <li style="margin-bottom: 0.5rem;">La situation des contacts proximaux</li>
+                        <li style="margin-bottom: 0.5rem;">La forme des embrasures cervicales et occlusales</li>
+                        <li style="margin-bottom: 0.5rem;">Les axes coronaires</li>
+                        <li style="margin-bottom: 0.5rem;">Formes des angles incisifs: droits en mésial et...</li>
+                    </ul>
+                    <h4>Phase restauratrice</h4>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-muted);">
+                        <li style="margin-bottom: 0.5rem;">Choix du système de coffrage: matrice celluloïd de HAWE</li>
+                        <li style="margin-bottom: 0.5rem;">Écartement des dents: utilisation d'un coin interdentaire</li>
+                        <li style="margin-bottom: 0.5rem;">Montage couche par couche de composite polymérisées séparément</li>
+                        <li style="margin-bottom: 0.5rem;">Reproduire la convexité de la face proximale dans les deux sens (Occluso-cervical et Vestibulo-linguale)</li>
+                        <li style="margin-bottom: 0.5rem;">Situer le point de contact à sa position physiologique</li>
+                        <li style="margin-bottom: 0.5rem;">Dégager les embrasures cervicales: seront logées par les papilles inter-dentaires</li>
+                        <li style="margin-bottom: 0.5rem;">Reproduire l'embrasure occlusale</li>
+                        <li style="margin-bottom: 0.5rem;">Reproduire la forme des angles incisifs et situer le bord libre dans sa situation physiologique</li>
+                        <li style="margin-bottom: 0.5rem;">Contrôler l'occlusion statique et dynamique</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="nav-guides" style="margin-top: 1.5rem;">
+                <a href="index.html" class="nav-guide-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Retour
+                </a>
+                <div class="nav-guides-links">
+                    <a href="composites-dentaires.html" class="nav-guide-link">Composites</a>
+                    <a href="compomeres.html" class="nav-guide-link">Compomères</a>
+                    <a href="cvi.html" class="nav-guide-link">CVI</a>
+                    <a href="matrices.html" class="nav-guide-link">Matrices</a>
+                    <a href="restaurations-adhesifs.html" class="nav-guide-link">Adhésifs</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="cervicales" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h2>4- Principes de restauration des faces cervicales</h2>
+                </div>
+            </div>
+
+            <div class="accordion open">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="true">
+                    <span>Physiologie du tiers cervical</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <p>Au niveau des faces vestibulaires mandibulaires, on note un effet déflecteur comparable à celui du versant vestibulaire des papilles gingivales inter-dentaires.</p>
+                    <p>Cet effet déflecteur est assuré par le bombé cervical vestibulaire qui surplombe le sulcus assurant ainsi la déflection du bol alimentaire et protégeant de même, le parodonte marginale.</p>
+                    <p>Toute altération du bombé (perte de substance, mauvaise restauration ou malposition de la dent: version vestibulaire surtout) perturbe l'effet déflecteur et entraîne une pathologie parodontale traumatique.</p>
+                    <p>A la mandibule, sur les dents cuspidées, le bombé lingual surplombe nettement le tiers cervical de la face linguale et son rôle dans la déflection des aliments interesse peu la gencive et le collet à ce niveau. Le nettoyage de cette zone est largement assuré par les bords de la langue.</p>
+                    <p>Au maxillaire supérieure, par l'obliquité de la pente de la voûte palatine, on se retrouve d'avantage dans les circonstances physiologiques de la face vestibulaire.</p>
+                    <p>Le bombé cervical s'atténue avec l'âge, parallèlement à la récession gingivale, ce qui est tout à fait physiologique.</p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                    <span>Restauration du tiers cervical</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <h4>Choix du matériau de restauration</h4>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-muted);">
+                        <li style="margin-bottom: 0.5rem;">Il n'y a pas d'exigence mécanique à ce niveau</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Les CVI</strong> sont indiqués en cas de risque carieux élevé et en présence de limites cémentaires et sous gingivales</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Les composites</strong> sont indiqués en présence d'exigences esthétiques et en présence d'une épaisseur suffisante d'émail au niveau du bord de la cavité (émail périphérique)</li>
+                        <li style="margin-bottom: 0.5rem;">On peut utiliser la technique laminée CVI/ composite en cas de lésions profondes et étendues</li>
+                    </ul>
+                    <h4>Restauration vestibulaire</h4>
+                    <p>La restauration du bombé cervical vestibulaire est indispensable et cette convexité ne doit être ni exagérée ni atténuée.</p>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-muted);">
+                        <li style="margin-bottom: 0.5rem;"><strong>Bombé cervical vestibulaire atténué:</strong> n'entraînera pas de déflection correcte du bol alimentaire: agression du parodonte marginal cervical qui se traduira par une inflammation et par une récession gingivale</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Bombé exagéré:</strong> aura un effet sur la rétention de la plaque bactérienne en entravant le nettoyage correcte</li>
+                        <li style="margin-bottom: 0.5rem;">Le bombé cervical s'atténue avec l'âge, donc il faut en tenir compte lors de la restauration</li>
+                    </ul>
+                    <h4>Restauration linguale ou palatine</h4>
+                    <p>Les restaurations cervicales doivent être seulement en continuité avec la face en question</p>
+                    <p>Une attention toute particulière à l'état de surface de ces restaurations qui doivent être parfaitement polies, finies avec un profil d'émergence correcte évitant toute accumulation de plaque dentaire à ce niveau</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion" class="section" role="region">
+            <div class="conclusion-box">
+                <h2>Conclusion</h2>
+                <p>Le rôle de la restauration est de substituer la partie détruite de la dent afin de rétablir la forme qui est étroitement liée à la fonction.</p>
+                <p style="margin-top: 1rem;">Le choix du matériau de restauration est très important, il se fera en fonction de chaque situation clinique.</p>
+                <p style="margin-top: 1rem;">La mise en œuvre doit être rigoureuse afin de réaliser une restauration durable et de qualité.</p>
+            </div>
+
+            <div class="nav-guides">
+                <a href="index.html" class="nav-guide-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Retour
+                </a>
+                <div class="nav-guides-links">
+                    <span class="nav-guides-label">Autres guides:</span>
+                    <a href="composites-dentaires.html" class="nav-guide-link">Composites</a>
+                    <a href="compomeres.html" class="nav-guide-link">Compomères</a>
+                    <a href="cvi.html" class="nav-guide-link">CVI</a>
+                    <a href="matrices.html" class="nav-guide-link">Matrices</a>
+                    <a href="restaurations-adhesifs.html" class="nav-guide-link">Adhésifs</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.section).classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const accordion = header.parentElement;
+                accordion.classList.toggle('open');
+            });
+        });
+    </script>
+    <script>
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        
+        if (savedTheme === 'dark') {
+            htmlElement.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark-mode');
+            const isDark = htmlElement.classList.contains('dark-mode');
+            themeToggle.textContent = isDark ? '☀️' : '🌙';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+
+        // Text Size Controls
+        const textSizeButtons = document.querySelectorAll('.text-size-btn');
+        const savedTextSize = localStorage.getItem('textSize') || 'normal';
+        
+        textSizeButtons.forEach(btn => {
+            if (btn.dataset.size === savedTextSize) {
+                btn.classList.add('active');
+            }
+        });
+        
+        if (savedTextSize !== 'normal') {
+            htmlElement.classList.add('text-size-' + savedTextSize);
+        }
+        
+        textSizeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const size = btn.dataset.size;
+                textSizeButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                htmlElement.classList.remove('text-size-small', 'text-size-large', 'text-size-xlarge');
+                if (size !== 'normal') {
+                    htmlElement.classList.add('text-size-' + size);
+                }
+                localStorage.setItem('textSize', size);
+            });
+        });
+    </script>
+</body>
+</html>

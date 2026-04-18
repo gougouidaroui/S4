@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Composites Dentaires - Guide d'Étude</title>
+    <meta name="description" content="Guide d'étude sur les composites dentaires en médecine dentaire">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0891B2;
+            --primary-dark: #0e7490;
+            --primary-bg: #ecfeff;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-lg: 24px;
+            --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+            --font-scale: 1;
+        }
+        html.dark-mode {
+            --primary: #06b6d4;
+            --primary-dark: #0891B2;
+            --primary-bg: #164e63;
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --text: #f1f5f9;
+            --text-muted: #cbd5e1;
+            --border: #334155;
+            --border-light: #475569;
+        }
+        html.text-size-small { --font-scale: 0.9; }
+        html.text-size-large { --font-scale: 1.1; }
+        html.text-size-xlarge { --font-scale: 1.25; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; font-size: calc(16px * var(--font-scale)); }
+        
+        p { margin-bottom: 1rem; color: var(--text); }
+        .card ul {
+            margin-top: 1.25rem;
+            margin-bottom: 1.25rem;
+            padding-inline-start: 2rem;
+            list-style: none;
+        }
+
+        .card ul li {
+            margin-bottom: 0.875rem;
+            color: var(--text-muted);
+            line-height: 1.75;
+            position: relative;
+            padding-left: 0.75rem;
+        }
+
+        .card ul li::before {
+            content: '•';
+            position: absolute;
+            left: -0.75rem;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+
+        .card ol {
+            margin-top: 1.25rem;
+            margin-bottom: 1.25rem;
+            padding-inline-start: 0;
+            list-style: none;
+            counter-reset: item;
+        }
+
+        .card ol li {
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+            line-height: 1.75;
+            position: relative;
+            padding-left: 2.5rem;
+            counter-increment: item;
+        }
+
+        .card ol li::before {
+            content: counter(item);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: var(--primary-bg);
+            color: var(--primary);
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        strong { color: var(--text); font-weight: 600; }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white; padding: 3rem 1.5rem;
+            position: relative; overflow: hidden;
+        }
+        .header::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .header-content { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+        .header h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 0.5rem; }
+        .header p { font-size: 1.125rem; opacity: 0.9; font-weight: 400; }
+        .header-badge { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; padding: 0.5rem 1rem; background: rgba(255,255,255,0.15); border-radius: 100px; font-size: 0.875rem; font-weight: 500; backdrop-filter: blur(4px); }
+
+        .nav-container { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+        html.dark-mode .nav-container { background: rgba(30, 41, 59, 0.95); }
+        .nav { max-width: 1200px; margin: 0 auto; display: flex; gap: 0.25rem; padding: 0.5rem; overflow-x: auto; scrollbar-width: none; }
+        .nav::-webkit-scrollbar { display: none; }
+        .nav-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1rem; border: none; background: transparent; color: var(--text-muted); font-size: 0.875rem; font-weight: 500; cursor: pointer; border-radius: var(--radius-sm); white-space: nowrap; transition: all var(--transition); min-height: 44px; }
+         .nav-btn:hover { background: var(--border-light); color: var(--text); }
+         .nav-btn.active { background: var(--primary); color: white; }
+
+         .controls-bar { display: flex; align-items: center; gap: 1.5rem; padding: 0.75rem 1.5rem; background: var(--surface); border-bottom: 1px solid var(--border); justify-content: flex-end; max-width: 100%; overflow-x: auto; }
+         .controls-group { display: flex; align-items: center; gap: 0.5rem; }
+         .controls-label { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); }
+         .control-btn { display: flex; align-items: center; justify-content: center; padding: 0.5rem 0.75rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; color: var(--text); font-size: 0.8rem; transition: all var(--transition); min-width: 36px; min-height: 36px; }
+         .control-btn:hover { background: var(--border-light); color: var(--primary); }
+         .control-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+         
+         .key-takeaways { background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(6, 182, 212, 0.04) 100%); border-left: 4px solid var(--primary); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2rem; margin-top: 2rem; }
+         .key-takeaways h3 { color: var(--primary); font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+         .key-takeaways h3::before { content: '✓'; font-weight: 800; }
+         .key-takeaways ul { margin: 0; padding-left: 1.5rem; }
+         .key-takeaways li { margin-bottom: 0.5rem; color: var(--text); line-height: 1.6; font-size: 0.95rem; }
+         .key-takeaways li::marker { color: var(--primary); font-weight: bold; }
+
+        .main { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
+        .section { display: none; animation: fadeIn 0.3s ease; }
+        .section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+        .card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            margin-top: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-light);
+            transition: box-shadow var(--transition);
+        }
+        .card:hover { box-shadow: var(--shadow-md); }
+        .card-header { display: flex; align-items: center; gap: 1.25rem; margin-bottom: 1.5rem; }
+        .card-icon { width: 52px; height: 52px; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--primary-bg); color: var(--primary); }
+        .card-icon svg { width: 26px; height: 26px; }
+        .card h2 { font-size: 1.5rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid var(--border); }
+        .card h3 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1.25rem; color: var(--text); }
+        .card h4 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 1rem; color: var(--text); }
+        .card p { color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.75; }
+
+        .diagram { background: var(--primary-bg); border-radius: var(--radius); padding: 1.5rem; text-align: center; margin: 1rem 0; }
+        .diagram-flow { display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
+        .diagram-box { background: var(--surface); padding: 0.75rem 1rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); min-width: 100px; font-size: 0.85rem; }
+        .diagram-box small { display: block; font-size: 0.7rem; color: var(--text-muted); margin-top: 0.25rem; }
+        .diagram-box.highlight { background: var(--primary); color: white; }
+        .diagram-box.highlight small { color: rgba(255,255,255,0.8); }
+        .diagram-arrow { font-size: 1.25rem; color: var(--text-muted); }
+
+        .comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin: 1.25rem 0; }
+        .comparison-card { background: var(--bg); border-radius: var(--radius); padding: 1.5rem; border: 1px solid var(--border); transition: all var(--transition); }
+        .comparison-card:hover { border-color: var(--primary); box-shadow: 0 4px 12px rgba(8, 145, 178, 0.1); }
+        .comparison-card h4 { font-size: 1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; color: var(--text); }
+        .comparison-card h4 svg { color: var(--primary); }
+        .comparison-card ul { list-style: none; font-size: 0.9rem; color: var(--text-muted); }
+        .comparison-card li { padding: 0.5rem 0; padding-left: 1.25rem; position: relative; line-height: 1.5; }
+        .comparison-card li::before { content: '•'; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
+
+        .accordion { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0; background: var(--surface); }
+        .accordion-header { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; background: var(--bg); cursor: pointer; font-weight: 600; font-size: 1rem; color: var(--text); transition: all var(--transition); min-height: 60px; border-left: 4px solid transparent; }
+        .accordion-header:hover { background: var(--border-light); border-left-color: var(--primary); }
+        .accordion.open .accordion-header { background: var(--primary-bg); border-left-color: var(--primary); color: var(--primary); }
+         .accordion-content { display: none; padding: 1.5rem; }
+         .accordion-content p { margin-bottom: 1.25rem; color: var(--text-muted); line-height: 1.75; }
+         .accordion-content h4 { margin-top: 1.5rem; margin-bottom: 1rem; color: var(--text); font-size: 1.1rem; font-weight: 600; }
+         .accordion-content ul { margin: 1.25rem 0; padding-inline-start: 2rem; list-style: none; }
+         .accordion-content ul li { margin-bottom: 0.875rem; color: var(--text-muted); line-height: 1.75; position: relative; padding-left: 0.75rem; }
+         .accordion-content ul li::before { content: '•'; position: absolute; left: -0.75rem; color: var(--primary); font-weight: 600; font-size: 1.25rem; }
+         .accordion-content ol { margin: 1.25rem 0; padding-inline-start: 0; list-style: none; counter-reset: item; }
+         .accordion-content ol li { margin-bottom: 1rem; color: #475569; line-height: 1.75; position: relative; padding-left: 2.5rem; counter-increment: item; }
+         .accordion-content ol li::before { content: counter(item); position: absolute; left: 0; top: 0; background: var(--primary-bg); color: var(--primary); width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: 600; font-size: 0.875rem; }
+        .accordion.open .accordion-content { display: block; animation: slideDown 0.2s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+        .accordion-arrow { transition: transform var(--transition); color: var(--text-muted); }
+        .accordion.open .accordion-arrow { transform: rotate(180deg); }
+
+        .table-container { overflow-x: auto; margin: 1rem 0; border-radius: var(--radius); border: 1px solid var(--border); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+        th, td { padding: 0.875rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+        th { background: var(--bg); font-weight: 600; color: var(--text); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        tbody tr:last-child td { border-bottom: none; }
+        tbody tr:hover { background: var(--bg); }
+
+        .chart-section { margin: 2rem 0; padding: 1.5rem; background: var(--surface); border-radius: var(--radius-lg); box-shadow: var(--shadow); border: 1px solid var(--border-light); }
+        .chart-section h3 { text-align: center; margin-bottom: 0.5rem; color: var(--text); }
+        .chart-section .chart-desc { text-align: center; color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.9rem; }
+        .chart-wrapper { position: relative; height: 350px; width: 100%; }
+        .chart-wrapper-doughnut { position: relative; height: 300px; }
+        @media (max-width: 768px) {
+            .chart-wrapper { height: 280px; }
+            .chart-wrapper-doughnut { height: 250px; }
+        }
+
+        .conclusion-box { background: linear-gradient(135deg, var(--primary) 0%, #4F46E5 100%); color: white; padding: 2rem; border-radius: var(--radius-lg); text-align: center; margin: 1.5rem 0; }
+        .conclusion-box h2 { font-size: 1.5rem; margin-bottom: 0.75rem; color: white; }
+        .conclusion-box p { font-size: 1rem; opacity: 0.95; color: white; }
+
+        .nav-guides { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; padding: 1.5rem; background: var(--surface); border-radius: var(--radius-lg); box-shadow: var(--shadow); margin-top: 2rem; border: 1px solid var(--border-light); }
+        .nav-guide-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.25rem; background: var(--primary); color: white; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.9rem; text-decoration: none; }
+        .nav-guide-btn:hover { background: var(--primary-dark); }
+        .nav-guide-btn svg { width: 18px; height: 18px; }
+        .nav-guides-links { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-left: auto; }
+        .nav-guides-label { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+        .nav-guide-link { padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.85rem; color: var(--text-muted); text-decoration: none; transition: all var(--transition); }
+        .nav-guide-link:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-bg); }
+
+        @media (max-width: 768px) {
+            .header { padding: 2rem 1rem; }
+            .header h1 { font-size: 1.5rem; }
+            .main { padding: 1rem; }
+            .card { padding: 1.25rem; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .diagram-flow { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>Les Composites Dentaires</h1>
+            <p>Guide d'Étude - Biomatériaux et techniques de restauration</p>
+            <span class="header-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                Pr El Ouarti Imane
+            </span>
+        </div>
+    </header>
+
+    <nav class="nav-container" role="navigation" aria-label="Navigation principale">
+        <div class="nav">
+            <button class="nav-btn active" data-section="definition">Définition</button>
+            <button class="nav-btn" data-section="composition">Composition</button>
+            <button class="nav-btn" data-section="reaction">Réaction de prise</button>
+            <button class="nav-btn" data-section="classification">Classification</button>
+            <button class="nav-btn" data-section="proprietes">Propriétés</button>
+            <button class="nav-btn" data-section="indications">Indications</button>
+            <button class="nav-btn" data-section="manipulation">Mise en œuvre</button>
+            <button class="nav-btn" data-section="conclusion">Conclusion</button>
+        </div>
+    </nav>
+
+    <div class="controls-bar">
+        <div class="controls-group">
+            <span class="controls-label">Thème:</span>
+            <button class="control-btn" id="theme-toggle" title="Basculer le mode sombre">🌙</button>
+        </div>
+        <div class="controls-group">
+            <span class="controls-label">Taille:</span>
+            <button class="control-btn text-size-btn" data-size="small" title="Petite taille">A-</button>
+            <button class="control-btn text-size-btn active" data-size="normal" title="Taille normale">A</button>
+            <button class="control-btn text-size-btn" data-size="large" title="Grande taille">A+</button>
+            <button class="control-btn text-size-btn" data-size="xlarge" title="Très grande taille">A++</button>
+                </div>
+     </div>
+
+     <main class="main">
+         <section id="definition" class="section active" role="region">
+             <div class="card">
+                 <div class="card-header">
+                     <div class="card-icon">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                     </div>
+                     <h2>Définition</h2>
+                 </div>
+                 <p>Les composites sont des <strong>matériaux adhésifs</strong> formés par l'union de deux constituants non miscibles:</p>
+                 <ul>
+                     <li>Une matrice organique (résine)</li>
+                     <li>Une phase dispersée minérale (charges)</li>
+                 </ul>
+             </div>
+
+             <div class="key-takeaways">
+                 <h3>À retenir</h3>
+                 <ul>
+                     <li>Les composites sont des matériaux adhésifs formés de résine + charges</li>
+                     <li>Propriétés intermédiaires entre résine seule et charges seules</li>
+                     <li>Matériaux de restauration esthétiques et durables</li>
+                 </ul>
+             </div>
+
+             <div class="nav-guides" style="margin-top: 1.5rem;">
+                 <a href="index.html" class="nav-guide-btn">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                     Retour
+                 </a>
+                 <div class="nav-guides-links">
+                     <a href="compomeres.html" class="nav-guide-link">Compomères</a>
+                     <a href="cvi.html" class="nav-guide-link">CVI</a>
+                     <a href="matrices.html" class="nav-guide-link">Matrices</a>
+                     <a href="principes-generaux.html" class="nav-guide-link">Principes</a>
+                     <a href="restaurations-adhesifs.html" class="nav-guide-link">Adhésifs</a>
+                 </div>
+             </div>
+         </section>
+
+         <section id="composition" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                    </div>
+                    <h2>Composition</h2>
+                </div>
+                <p>La matrice résineuse constitue <strong>24% à 50%</strong> du volume du composite et contient:</p>
+                <ul>
+                    <li>La résine matricelle</li>
+                    <li>Les abaisseurs de viscosité</li>
+                    <li>Le système de polymérisation</li>
+                    <li>Des adjuvants</li>
+                </ul>
+            </div>
+
+            <div class="chart-section">
+                <h3>Composition typique d'un composite</h3>
+                <p class="chart-desc">Répartition volumétrique des composants</p>
+                <div class="chart-wrapper-doughnut">
+                    <canvas id="compositionChart"></canvas>
+                </div>
+            </div>
+
+            <div class="accordion open">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="true">
+                    <span>La matrice résineuse</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <h4>Monomères</h4>
+                    <p>Les Monomères R-diméthacrylates dérivés du <strong>Bis-GMA</strong> et des polyuréthanes constituent le composé chimiquement actif du composite.</p>
+                    
+                    <div class="diagram">
+                        <div class="diagram-flow">
+                            <div class="diagram-box">Bis-GMA<br><small>Rétraction: 3-5%</small></div>
+                            <span class="diagram-arrow">+</span>
+                            <div class="diagram-box">UDMA<br><small>Rétraction: 5-9%</small></div>
+                            <span class="diagram-arrow">→</span>
+                            <div class="diagram-box highlight">Matrice</div>
+                        </div>
+                    </div>
+
+                    <h4>Points forts et faibles</h4>
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Points forts</h4>
+                            <ul>
+                                <li>Aspect esthétique</li>
+                                <li>Adhésion</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Points faibles</h4>
+                            <ul>
+                                <li>Rétraction de prise</li>
+                                <li>Coefficient d'expansion thermique élevé</li>
+                                <li>Propriétés mécaniques réduites</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                    <span>Les charges</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <p>Les charges constituent la phase inorganique des composites. On distingue les macrocharges (1 à 50µm) et les microcharges (0.04µm = 40nm).</p>
+                    <p>Le pourcentage de charge varie entre <strong>20-77% en volume</strong>.</p>
+                    <h4>Les charges permettent:</h4>
+                    <ul>
+                        <li>Une augmentation des propriétés mécaniques</li>
+                        <li>Une amélioration des propriétés physiques</li>
+                        <li>La radio-opacité du matériau</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                    <span>L'agent de couplage</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <p>Le <strong>Silane</strong> est un agent de couplage organo-minéral qui permet la liaison entre les charges et la matrice résineuse.</p>
+                    <p>La dégradation des liaisons entre les charges et la matrice aboutit à une décohésion et un vieillissement prématuré.</p>
+                </div>
+            </div>
+
+            <div class="nav-guides" style="margin-top: 1.5rem;">
+                <a href="index.html" class="nav-guide-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Retour
+                </a>
+                <div class="nav-guides-links">
+                    <a href="compomeres.html" class="nav-guide-link">Compomères</a>
+                    <a href="cvi.html" class="nav-guide-link">CVI</a>
+                    <a href="matrices.html" class="nav-guide-link">Matrices</a>
+                    <a href="principes-generaux.html" class="nav-guide-link">Principes</a>
+                    <a href="restaurations-adhesifs.html" class="nav-guide-link">Adhésifs</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="reaction" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h2>Réaction de prise</h2>
+                </div>
+                <p>Le degré de conversion correspond au pourcentage de doubles liaisons C=C qui se convertit en liaisons C-C lors de la polymérisation.</p>
+            </div>
+
+            <div class="accordion open">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="true">
+                    <span>Chémo-polymérisation</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <h4>Avantages:</h4>
+                    <ul>
+                        <li>Cinétique de prise lente</li>
+                    </ul>
+                    <h4>Inconvénients:</h4>
+                    <ul>
+                        <li>Incorporation de bulles d'air</li>
+                        <li>Augmentation des rugosités de surface</li>
+                        <li>Risque élevé de discolorations extrinsèques</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                    <span>Photo-polymérisation</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <h4>Facteurs influençant la qualité:</h4>
+                    <ul>
+                        <li>Teinte du composite</li>
+                        <li>Qualité de la source lumineuse</li>
+                        <li>Distance lampe/matériau</li>
+                        <li>Durée d'exposition (40sec minimum)</li>
+                    </ul>
+                    <h4>Avantages:</h4>
+                    <ul>
+                        <li>Temps de travail modulable</li>
+                        <li>Porosité moindre</li>
+                        <li>Grande stabilité de teinte</li>
+                        <li>Meilleur taux de conversion</li>
+                    </ul>
+                    <h4>Inconvénients:</h4>
+                    <ul>
+                        <li>Profondeur de polymérisation limitée (~2mm)</li>
+                        <li>Risque d'insuffisance au niveau des zones profondes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="nav-guides" style="margin-top: 1.5rem;">
+                <a href="index.html" class="nav-guide-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Retour
+                </a>
+                <div class="nav-guides-links">
+                    <a href="compomeres.html" class="nav-guide-link">Compomères</a>
+                    <a href="cvi.html" class="nav-guide-link">CVI</a>
+                    <a href="matrices.html" class="nav-guide-link">Matrices</a>
+                    <a href="principes-generaux.html" class="nav-guide-link">Principes</a>
+                    <a href="restaurations-adhesifs.html" class="nav-guide-link">Adhésifs</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="classification" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                    </div>
+                    <h2>Classification</h2>
+                </div>
+            </div>
+
+            <div class="accordion open">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="true">
+                    <span>Selon la viscosité</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>Composites fluides</strong>: charges submicroniques, élastique élevée</li>
+                        <li><strong>Composites universels</strong>: viscosité moyenne</li>
+                        <li><strong>Composites condensables</strong>: résistent à la condensation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                    <span>Selon la taille des charges</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>Macrochargés</strong>: 10 à 100 µm</li>
+                        <li><strong>Microchargés</strong>: 0,04 µm</li>
+                        <li><strong>Hybrides</strong>: plusieurs tailles et compositions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="chart-section">
+                <h3>Comparaison des types de composites</h3>
+                <p class="chart-desc">Propriétés comparatives selon le type de composite</p>
+                <div class="chart-wrapper">
+                    <canvas id="typesChart"></canvas>
+                </div>
+            </div>
+
+            <div class="nav-guides" style="margin-top: 1.5rem;">
+                <a href="index.html" class="nav-guide-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Retour
+                </a>
+                <div class="nav-guides-links">
+                    <a href="compomeres.html" class="nav-guide-link">Compomères</a>
+                    <a href="cvi.html" class="nav-guide-link">CVI</a>
+                    <a href="matrices.html" class="nav-guide-link">Matrices</a>
+                    <a href="principes-generaux.html" class="nav-guide-link">Principes</a>
+                    <a href="restaurations-adhesifs.html" class="nav-guide-link">Adhésifs</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="proprietes" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h2>Propriétés</h2>
+                </div>
+                <p>L'augmentation du pourcentage de résine entraîne:</p>
+                <ul>
+                    <li>Augmentation du coefficient d'expansion thermique</li>
+                    <li>Augmentation de la rétraction de prise</li>
+                    <li>Augmentation de l'absorption d'eau</li>
+                    <li>Diminution de la résistance à la traction et compression</li>
+                </ul>
+            </div>
+
+            <div class="accordion open">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="true">
+                    <span>Propriétés mécaniques</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>Dureté</strong>: Micro-chargés, Fluides &lt; autres composites &lt; Dentine &lt; Email</li>
+                        <li><strong>Résistance à la flexion</strong>: Hybrides &gt; autres composites</li>
+                        <li><strong>Résistance à la traction</strong>: Hybrides &gt; Macro chargés &gt; Amalgame &gt; Micro-chargés &gt; Fluides</li>
+                        <li><strong>Module d'élasticité</strong>: Les hybrides sont les plus proches de la dentine</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                    <span>Propriétés physiques</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>Rétraction de prise</strong>: 1,5 à 5% en volume</li>
+                        <li><strong>Facteur C</strong>: nombre de surfaces collées/surfaces libres (élève = retrait important)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="nav-guides" style="margin-top: 1.5rem;">
+                <a href="index.html" class="nav-guide-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Retour
+                </a>
+                <div class="nav-guides-links">
+                    <a href="compomeres.html" class="nav-guide-link">Compomères</a>
+                    <a href="cvi.html" class="nav-guide-link">CVI</a>
+                    <a href="matrices.html" class="nav-guide-link">Matrices</a>
+                    <a href="principes-generaux.html" class="nav-guide-link">Principes</a>
+                    <a href="restaurations-adhesifs.html" class="nav-guide-link">Adhésifs</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="indications" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h2>Indications</h2>
+                </div>
+            </div>
+
+            <div class="accordion open">
+                <div class="accordion-header" role="button" tabindex="0" aria-expanded="true">
+                    <span>Types de composites</span>
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>Universels</strong>: Restaurations antérieures et postérieures</li>
+                        <li><strong>Condensables</strong>: Cavités postérieures, reconstitutions corono-radiculaires</li>
+                        <li><strong>Fluides</strong>: Scellement puits/fissures, micro-cavitations, cavités cervicales</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="nav-guides" style="margin-top: 1.5rem;">
+                <a href="index.html" class="nav-guide-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Retour
+                </a>
+                <div class="nav-guides-links">
+                    <a href="compomeres.html" class="nav-guide-link">Compomères</a>
+                    <a href="cvi.html" class="nav-guide-link">CVI</a>
+                    <a href="matrices.html" class="nav-guide-link">Matrices</a>
+                    <a href="principes-generaux.html" class="nav-guide-link">Principes</a>
+                    <a href="restaurations-adhesifs.html" class="nav-guide-link">Adhésifs</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="manipulation" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+                    </div>
+                    <h2>Mise en œuvre</h2>
+                </div>
+                <ol>
+                    <li><strong>Isolation</strong>: Avec champ opératoire (digue)</li>
+                    <li><strong>Mordançage</strong>: Acide orthophosphorique 37% - 30sec émail, 15sec dentine</li>
+                    <li><strong>Rinçage et séchage</strong>: Éliminer toute trace d'acide</li>
+                    <li><strong>Application adhésif</strong>: Imprégner les deux tissus, photopolymériser 40sec</li>
+                    <li><strong>Montage par stratification</strong>: Couches ne dépassant pas 2mm, polymérisation entre chaque</li>
+                    <li><strong>Finition et polissage</strong>: Sous irrigation abondante</li>
+                </ol>
+            </div>
+
+            <div class="nav-guides" style="margin-top: 1.5rem;">
+                <a href="index.html" class="nav-guide-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Retour
+                </a>
+                <div class="nav-guides-links">
+                    <a href="compomeres.html" class="nav-guide-link">Compomères</a>
+                    <a href="cvi.html" class="nav-guide-link">CVI</a>
+                    <a href="matrices.html" class="nav-guide-link">Matrices</a>
+                    <a href="principes-generaux.html" class="nav-guide-link">Principes</a>
+                    <a href="restaurations-adhesifs.html" class="nav-guide-link">Adhésifs</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion" class="section" role="region">
+            <div class="conclusion-box">
+                <h2>Conclusion</h2>
+                <p>Les composites sont des matériaux adhésifs esthétiques avec des performances adéquates qui permettent de les qualifier comme matériaux de restaurations définitives.</p>
+                <p style="margin-top: 1rem;">Le choix doit se faire selon la situation clinique et le protocole opératoire doit être rigoureux pour la réussite de la restauration.</p>
+            </div>
+
+            <div class="nav-guides">
+                <a href="index.html" class="nav-guide-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Retour
+                </a>
+                <div class="nav-guides-links">
+                    <span class="nav-guides-label">Autres guides:</span>
+                    <a href="compomeres.html" class="nav-guide-link">Compomères</a>
+                    <a href="cvi.html" class="nav-guide-link">CVI</a>
+                    <a href="matrices.html" class="nav-guide-link">Matrices</a>
+                    <a href="principes-generaux.html" class="nav-guide-link">Principes</a>
+                    <a href="restaurations-adhesifs.html" class="nav-guide-link">Adhésifs</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.section).classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const accordion = header.parentElement;
+                accordion.classList.toggle('open');
+            });
+        });
+
+        // Chart: Composition Doughnut
+        const compCtx = document.getElementById('compositionChart');
+        if (compCtx) {
+            new Chart(compCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Matrice résineuse', 'Charges', 'Agent de couplage'],
+                    datasets: [{
+                        data: [35, 60, 5],
+                        backgroundColor: ['rgba(8, 145, 178, 0.85)', 'rgba(107, 114, 128, 0.85)', 'rgba(245, 158, 11, 0.85)'],
+                        borderColor: ['rgba(8, 145, 178, 1)', 'rgba(107, 114, 128, 1)', 'rgba(245, 158, 11, 1)'],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { padding: 15, usePointStyle: true, font: { family: "'Inter', sans-serif", size: 12 } } },
+                        tooltip: { backgroundColor: 'rgba(15, 23, 42, 0.9)', titleFont: { family: "'Inter', sans-serif", size: 13 }, bodyFont: { family: "'Inter', sans-serif", size: 12 }, padding: 12, cornerRadius: 8, callbacks: { label: function(context) { return context.label + ': ' + context.raw + '%'; } } }
+                    }
+                }
+            });
+        }
+
+        // Chart: Types Comparison Bar
+        const typesCtx = document.getElementById('typesChart');
+        if (typesCtx) {
+            new Chart(typesCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Résistance', 'Esthétique', 'Facilité pol.', 'Polymerisation', 'Usure'],
+                    datasets: [
+                        { label: 'Microhybrid', data: [90, 70, 65, 80, 75], backgroundColor: 'rgba(8, 145, 178, 0.8)', borderColor: 'rgba(8, 145, 178, 1)', borderWidth: 1, borderRadius: 4 },
+                        { label: 'Nanocomposite', data: [85, 95, 90, 85, 80], backgroundColor: 'rgba(6, 182, 212, 0.8)', borderColor: 'rgba(6, 182, 212, 1)', borderWidth: 1, borderRadius: 4 },
+                        { label: 'Flowable', data: [50, 90, 85, 90, 45], backgroundColor: 'rgba(245, 158, 11, 0.8)', borderColor: 'rgba(245, 158, 11, 1)', borderWidth: 1, borderRadius: 4 },
+                        { label: 'Condensable', data: [95, 60, 55, 75, 90], backgroundColor: 'rgba(107, 114, 128, 0.8)', borderColor: 'rgba(107, 114, 128, 1)', borderWidth: 1, borderRadius: 4 }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: { position: 'bottom', labels: { padding: 15, usePointStyle: true, font: { family: "'Inter', sans-serif", size: 11 } } },
+                        tooltip: { backgroundColor: 'rgba(15, 23, 42, 0.9)', titleFont: { family: "'Inter', sans-serif", size: 13 }, bodyFont: { family: "'Inter', sans-serif", size: 12 }, padding: 12, cornerRadius: 8, callbacks: { label: function(context) { return context.dataset.label + ': ' + context.raw + '/100'; } } }
+                    },
+                    scales: {
+                        x: { beginAtZero: true, max: 100, grid: { color: 'rgba(226, 232, 240, 0.5)' }, ticks: { font: { family: "'Inter', sans-serif", size: 11 }, callback: function(value) { return value + '%'; } } },
+                        y: { grid: { display: false }, ticks: { font: { family: "'Inter', sans-serif", size: 11 } } }
+                    }
+                }
+            });
+        }
+    </script>
+
+    <script>
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        
+        if (savedTheme === 'dark') {
+            htmlElement.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark-mode');
+            const isDark = htmlElement.classList.contains('dark-mode');
+            themeToggle.textContent = isDark ? '☀️' : '🌙';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+
+        // Text Size Controls
+        const textSizeButtons = document.querySelectorAll('.text-size-btn');
+        const savedTextSize = localStorage.getItem('textSize') || 'normal';
+        
+        textSizeButtons.forEach(btn => {
+            if (btn.dataset.size === savedTextSize) {
+                btn.classList.add('active');
+            }
+        });
+        
+        if (savedTextSize !== 'normal') {
+            htmlElement.classList.add('text-size-' + savedTextSize);
+        }
+        
+        textSizeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const size = btn.dataset.size;
+                textSizeButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                htmlElement.classList.remove('text-size-small', 'text-size-large', 'text-size-xlarge');
+                if (size !== 'normal') {
+                    htmlElement.classList.add('text-size-' + size);
+                }
+                localStorage.setItem('textSize', size);
+            });
+        });
+    </script>
+</body>
+</html>
