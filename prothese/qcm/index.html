@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="QCM Biomatériaux - Flashcards pour réviser">
+    <meta name="theme-color" content="#667eea">
+    <title>QCM Biomatériaux - Flashcards</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --primary-light: #e0e7ff;
+            --success: #16a34a;
+            --success-bg: #dcfce7;
+            --error: #dc2626;
+            --error-bg: #fef2f2;
+            --warning: #d97706;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-500: #6b7280;
+            --gray-700: #374151;
+            --gray-900: #111827;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.15);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: 200ms ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            font-size: 20px;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .nav-bar {
+            width: 100%;
+            max-width: 560px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: var(--white);
+            border-radius: var(--radius);
+            margin-bottom: 14px;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            color: var(--gray-700);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 10px 14px;
+            border-radius: 6px;
+            transition: all var(--transition);
+            min-height: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-btn:hover {
+            background: var(--gray-100);
+            color: var(--primary);
+        }
+
+        .nav-btn:disabled {
+            color: var(--gray-400);
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .nav-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .nav-title {
+            font-size: 1.1rem;
+            color: var(--gray-700);
+            font-weight: 700;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 560px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+            margin-bottom: 14px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--white);
+            transition: width var(--transition);
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .question-number {
+            font-size: 0.65rem;
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: var(--primary-light);
+            padding: 3px 6px;
+            border-radius: 3px;
+        }
+
+        .score-badge {
+            font-size: 0.7rem;
+            color: var(--gray-700);
+            background: var(--gray-100);
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .question-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            line-height: 1.35;
+            margin-bottom: 16px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: border-color var(--transition), background var(--transition);
+            font-size: 0.85rem;
+            color: var(--gray-900);
+            background: var(--white);
+            min-height: 40px;
+        }
+
+        .option:hover:not(.disabled):not(.correct-answer):not(.wrong-selection) {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        .option.selected:not(.disabled) {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option-marker {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--gray-400);
+            border-radius: 50%;
+            margin-right: 10px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--gray-500);
+            transition: all var(--transition);
+        }
+
+        .option.selected .option-marker {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .option.correct-answer {
+            border-color: var(--success);
+            background: var(--success-bg);
+            color: var(--success);
+        }
+
+        .option.wrong-selection {
+            border-color: var(--error);
+            background: var(--error-bg);
+            color: var(--error);
+        }
+
+        .option.disabled {
+            cursor: default;
+        }
+
+        .option.correct-answer .option-marker,
+        .option.wrong-selection .option-marker {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+
+        .option.wrong-selection .option-marker {
+            background: var(--error);
+            border-color: var(--error);
+        }
+
+        .result-banner {
+            display: none;
+            padding: 12px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .result-banner.show {
+            display: block;
+        }
+
+        .result-banner.correct {
+            background: var(--success-bg);
+            color: var(--success);
+        }
+
+        .result-banner.incorrect {
+            background: var(--error-bg);
+            color: var(--error);
+        }
+
+        .result-banner-text {
+            font-weight: 600;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .result-banner-detail {
+            font-size: 0.95rem;
+            opacity: 0.85;
+        }
+
+        .actions {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px 16px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+            min-height: 50px;
+            border-radius: 8px;
+            border: none;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--gray-100);
+            color: var(--gray-700);
+            border: 1px solid var(--gray-200);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gray-200);
+            border-color: var(--gray-300);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .completion-screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 32px 20px;
+        }
+
+        .completion-screen.show {
+            display: flex;
+        }
+
+        .completion-icon {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 20px;
+        }
+
+        .completion-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+
+        .completion-score {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+
+        .history-panel {
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .history-panel.show {
+            display: flex;
+        }
+
+        .history-item {
+            padding: 10px 12px;
+            background: var(--gray-100);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 3px solid transparent;
+            transition: background var(--transition);
+        }
+
+        .history-item:hover {
+            background: var(--gray-200);
+        }
+
+        .history-item.correct {
+            border-left-color: var(--success);
+        }
+
+        .history-item.incorrect {
+            border-left-color: var(--error);
+        }
+
+        .history-item.revealed {
+            border-left-color: var(--warning);
+        }
+
+        .history-icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        @media (max-width: 540px) {
+            body {
+                padding: 12px;
+                font-size: 18px;
+            }
+
+            .container {
+                max-width: 100%;
+            }
+
+            .nav-bar {
+                padding: 10px 12px;
+            }
+
+            .nav-title {
+                font-size: 1rem;
+            }
+
+            .nav-btn {
+                padding: 8px 10px;
+                font-size: 0.9rem;
+                min-height: 36px;
+            }
+
+            .nav-btn svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .card {
+                padding: 18px;
+            }
+
+            .question-text {
+                font-size: 1.1rem;
+            }
+
+            .question-header {
+                margin-bottom: 12px;
+            }
+
+            .question-number {
+                font-size: 0.75rem;
+            }
+
+            .score-badge {
+                font-size: 0.85rem;
+            }
+
+            .option {
+                padding: 12px 14px;
+                font-size: 0.95rem;
+                min-height: 48px;
+            }
+
+            .option-marker {
+                width: 22px;
+                height: 22px;
+                font-size: 11px;
+                margin-right: 10px;
+            }
+
+            .btn {
+                padding: 12px 10px;
+                font-size: 0.95rem;
+                min-height: 46px;
+            }
+
+            .result-banner-text {
+                font-size: 0.95rem;
+            }
+
+            .result-banner-detail {
+                font-size: 0.85rem;
+            }
+
+            .actions {
+                gap: 8px;
+            }
+
+            .completion-screen {
+                padding: 28px 18px;
+            }
+
+            .completion-icon {
+                width: 56px;
+                height: 56px;
+            }
+
+            .completion-title {
+                font-size: 1.4rem;
+            }
+
+            .completion-score {
+                font-size: 1.65rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .nav-btn span {
+                display: none;
+            }
+
+            .nav-btn {
+                padding: 10px;
+            }
+
+            .question-text {
+                font-size: 1.05rem;
+            }
+
+            .option {
+                font-size: 0.9rem;
+                padding: 10px 12px;
+            }
+
+            .option-marker {
+                width: 20px;
+                height: 20px;
+                font-size: 10px;
+            }
+
+            .btn {
+                font-size: 0.9rem;
+                padding: 10px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="sr-only">Aller au contenu principal</a>
+    <nav class="nav-bar" role="navigation" aria-label="Navigation principale">
+        <button class="nav-btn" id="prevBtn" onclick="prevQuestion()" aria-label="Question précédente">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            <span>Précédent</span>
+        </button>
+        <span class="nav-title" aria-live="polite"><span id="currentNum">1</span> / <span id="totalNum">58</span></span>
+        <button class="nav-btn" onclick="toggleHistory()" aria-label="Afficher l'historique" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Historique</span>
+        </button>
+        <button class="nav-btn" onclick="window.location.href='../index.html'" aria-label="Retour aux cours">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Accueil</span>
+        </button>
+    </nav>
+
+    <main class="container" id="main-content" role="main" aria-label="Quiz">
+        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Progression du quiz">
+            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+        </div>
+
+        <div class="card" id="card" role="region" aria-live="polite">
+            <div class="question-header">
+                <div class="question-number" id="qNumber">QUESTION 1</div>
+                <div class="score-badge" id="scoreBadge">Score: 0/0</div>
+            </div>
+            <div class="question-text" id="qText">Question goes here?</div>
+            <div class="options" id="options"></div>
+
+            <div class="result-banner" id="resultBanner" role="alert" aria-live="assertive">
+                <div class="result-banner-text" id="resultBannerText"></div>
+                <div class="result-banner-detail" id="resultBannerDetail"></div>
+            </div>
+
+            <div class="actions">
+                <button class="btn btn-secondary" id="checkBtn" onclick="checkAnswer()">Valider</button>
+                <button class="btn btn-secondary" id="revealBtn" onclick="revealAnswer()">Révéler</button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" style="display:none">Suivant</button>
+            </div>
+
+            <div class="history-panel" id="historyPanel"></div>
+        </div>
+
+        <div class="completion-screen" id="completionScreen" role="status" aria-label="Fin de session">
+            <svg class="completion-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" stroke="var(--success)" stroke-width="2"/>
+                <path d="M8 12l2 2 4-4" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="completion-title">Session terminée!</div>
+            <div class="completion-score" id="finalScore" aria-live="polite">Score: 0/0</div>
+            <button class="btn btn-primary" onclick="restart()" aria-label="Recommencer le quiz">Recommencer</button>
+        </div>
+    </main>
+
+    <script>
+        const checkSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true" style="width:18px;height:18px"><path d="M5 12l5 5L20 7"/></svg>';
+        const crossSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true" style="width:18px;height:18px"><path d="M6 18l12-12M18 6L6 18"/></svg>';
+        const revealSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="width:18px;height:18px"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
+
+        const questions = [
+            {
+                id: 15,
+                text: "Un matériau d'empreinte doit présenter les qualités suivantes",
+                options: [
+                    { text: "De bonnes propriétés hydrophiles", correct: true },
+                    { text: "Une odeur et un goût désagréables", correct: false },
+                    { text: "Une élasticité diminuée", correct: false },
+                    { text: "Une instabilité dimensionnelle", correct: false }
+                ]
+            },
+            {
+                id: 16,
+                text: "La diminution du temps de prise du plâtre est observée en cas de",
+                options: [
+                    { text: "Utilisation d'eau chaude", correct: true },
+                    { text: "Utilisation d'accélérateurs chimiques", correct: true },
+                    { text: "Utilisation de retardateurs chimiques", correct: false },
+                    { text: "Diminution du rapport eau/poudre", correct: true }
+                ]
+            },
+            {
+                id: 17,
+                text: "Les matériaux d'empreinte élastiques prennent deux états qui sont",
+                options: [
+                    { text: "Etat élastique permettant d'enregistrer les volumes", correct: false },
+                    { text: "Etat plastique permettant d'enregistrer le volume", correct: true },
+                    { text: "Etat élastique permettant le retour à l'état initial", correct: true },
+                    { text: "Etat plastique permettant le retour à l'état initial", correct: false }
+                ]
+            },
+            {
+                id: 18,
+                text: "La polymérisation du poly-dimethylsiloxane entraîne",
+                options: [
+                    { text: "Variation dimensionnelle", correct: false },
+                    { text: "Expansion", correct: false },
+                    { text: "Retrait volumique", correct: true },
+                    { text: "Stabilité dimensionnelle", correct: false }
+                ]
+            },
+            {
+                id: 37,
+                text: "Les propriétés de la pâte d'oxyde de zinc eugenol sont",
+                options: [
+                    { text: "Bonne résistance à la compression", correct: false },
+                    { text: "Matériau peu élastique", correct: true },
+                    { text: "Stabilité dimensionnelle remarquable", correct: true },
+                    { text: "Matériau hydrophile", correct: true }
+                ]
+            },
+            {
+                id: 38,
+                text: "La réticulation du poly-dimethylsiloxane élimine",
+                options: [
+                    { text: "Oxygène", correct: false },
+                    { text: "Silicium", correct: false },
+                    { text: "Eau", correct: false },
+                    { text: "Ethanol", correct: true }
+                ]
+            },
+            {
+                id: 39,
+                text: "Les propriétés des hydrocolloïdes irréversibles sont",
+                options: [
+                    { text: "Grande résistance au déchirement", correct: false },
+                    { text: "Matériau hydrophobe", correct: false },
+                    { text: "Faible stabilité dimensionnelle", correct: true },
+                    { text: "Goût agréable pour le patient", correct: true }
+                ]
+            },
+            {
+                id: 40,
+                text: "Les hydrocolloïdes réversibles présentent une forme élastique à l'état",
+                options: [
+                    { text: "Liquide", correct: false },
+                    { text: "Sol", correct: false },
+                    { text: "Gel", correct: true },
+                    { text: "Fluide", correct: false }
+                ]
+            },
+            {
+                id: 69,
+                text: "Les Polysulfures sont indiqués en",
+                options: [
+                    { text: "Prothèse conjointe", correct: false },
+                    { text: "Prothèse adjointe", correct: false },
+                    { text: "Prothèse adjointe totale", correct: true },
+                    { text: "Orthodontie", correct: false }
+                ]
+            },
+            {
+                id: 70,
+                text: "Les propriétés du poly-dimethyloxane sont",
+                options: [
+                    { text: "Hydrophobe", correct: true },
+                    { text: "Temps de prise long", correct: false },
+                    { text: "Hydrophile", correct: false },
+                    { text: "Mauvaise stabilité dimensionnelle", correct: true }
+                ]
+            },
+            {
+                id: 71,
+                text: "Les propriétés du vinylpolysiloxane sont",
+                options: [
+                    { text: "Meilleures propriétés élastiques", correct: true },
+                    { text: "Mauvaise stabilité dimensionnelle", correct: false },
+                    { text: "Faible résistance à la déformation", correct: false },
+                    { text: "Hydrophile", correct: true }
+                ]
+            },
+            {
+                id: 73,
+                text: "La pâte d'oxyde de zinc eugenol est composée de",
+                options: [
+                    { text: "Résine", correct: false },
+                    { text: "Huile", correct: false },
+                    { text: "Agent colorant", correct: false },
+                    { text: "Eugenol", correct: true }
+                ]
+            },
+            {
+                id: 74,
+                text: "Un matériau d'empreinte doit présenter les qualités suivantes",
+                options: [
+                    { text: "Temps de prise rapide", correct: true },
+                    { text: "Résistance au déchirement élevée", correct: true },
+                    { text: "Elasticité élevée", correct: true },
+                    { text: "Instabilité dimensionnelle", correct: false }
+                ]
+            },
+            {
+                id: 75,
+                text: "Les matériaux d'empreintes élastiques sont",
+                options: [
+                    { text: "Silicones", correct: true },
+                    { text: "Hydrocolloïdes", correct: true },
+                    { text: "Polysulfures", correct: true },
+                    { text: "Plâtres", correct: false }
+                ]
+            },
+            {
+                id: 76,
+                text: "L'augmentation du temps de prise du plâtre est observée en cas de",
+                options: [
+                    { text: "Malaxage rapide", correct: false },
+                    { text: "Utilisation d'eau froide", correct: true },
+                    { text: "Utilisation de retardateurs", correct: true },
+                    { text: "Augmentation du rapport eau/poudre", correct: true }
+                ]
+            },
+            {
+                id: 87,
+                text: "Parmi les qualités requises pour un matériau d'empreinte, on trouve",
+                options: [
+                    { text: "Temps de prise rapide", correct: false },
+                    { text: "Résistance au déchirement élevée", correct: true },
+                    { text: "Faible élasticité", correct: false },
+                    { text: "Stabilité dimensionnelle", correct: true }
+                ]
+            },
+            {
+                id: 88,
+                text: "Parmi les matériaux élastiques, on trouve",
+                options: [
+                    { text: "Hydrocolloïdes réversibles", correct: true },
+                    { text: "Alginates", correct: true },
+                    { text: "Silicones", correct: true },
+                    { text: "Pâtes ZnO-E", correct: false }
+                ]
+            },
+            {
+                id: 89,
+                text: "Le plâtre à empreinte est indiqué",
+                options: [
+                    { text: "Surfaces muqueuses édenté total", correct: true },
+                    { text: "Surfaces d'appui édenté partiel", correct: false },
+                    { text: "Limites cervicales PAC", correct: false },
+                    { text: "Dentiers", correct: false }
+                ]
+            },
+            {
+                id: 90,
+                text: "Selon la composition des plâtres, on distingue",
+                options: [
+                    { text: "Plâtre empreinte Type I", correct: true },
+                    { text: "Plâtre dentaire Type II", correct: false },
+                    { text: "Pierre Type III", correct: false },
+                    { text: "Plâtre extra-dur Type IV", correct: false }
+                ]
+            },
+            {
+                id: 91,
+                text: "La spatulation du plâtre se fait pendant",
+                options: [
+                    { text: "30 secondes", correct: true },
+                    { text: "60 secondes", correct: false },
+                    { text: "2 minutes", correct: false },
+                    { text: "5 minutes", correct: false }
+                ]
+            },
+            {
+                id: 92,
+                text: "Le temps de prise du plâtre à empreinte augmente si",
+                options: [
+                    { text: "Eau froide", correct: true },
+                    { text: "Augmentation du rapport eau/poudre", correct: true },
+                    { text: "Malaxage rapide", correct: false },
+                    { text: "Diminution du rapport eau/poudre", correct: false }
+                ]
+            },
+            {
+                id: 93,
+                text: "Parmi les propriétés des plâtres à empreinte, on trouve",
+                options: [
+                    { text: "Précision des surfaces", correct: true },
+                    { text: "Faible toxicité", correct: true },
+                    { text: "Très bonne stabilité dimensionnelle", correct: true },
+                    { text: "Grande résistance mécanique", correct: false }
+                ]
+            },
+            {
+                id: 94,
+                text: "La pâte d'oxyde de zinc-eugénol est indiquée",
+                options: [
+                    { text: "Empreinte primaire PAC", correct: true },
+                    { text: "Empreinte PAP", correct: true },
+                    { text: "Prothèse totale", correct: false },
+                    { text: "Couronnes", correct: false }
+                ]
+            },
+            {
+                id: 95,
+                text: " Parmi les composants de la pâte d'oxyde de zinc-eugénol, on trouve",
+                options: [
+                    { text: "Oxyde de zinc 50%", correct: false },
+                    { text: "Eugenol 50%", correct: false },
+                    { text: "Résine", correct: true },
+                    { text: "Agent colorant", correct: true }
+                ]
+            },
+            {
+                id: 96,
+                text: "Le temps de prise de la pâte d'oxyde de zinc-eugénol diminue si",
+                options: [
+                    { text: "Température diminuée", correct: false },
+                    { text: "Présence d'eau ou d'humidité", correct: true },
+                    { text: "Plaque froide", correct: false },
+                    { text: "Ajout d'accélérateur", correct: false }
+                ]
+            },
+            {
+                id: 97,
+                text: "Parmi les propriétés de la pâte d'oxyde de zinc-eugénol, on trouve",
+                options: [
+                    { text: "Précision des surfaces", correct: true },
+                    { text: "Grande élasticité", correct: false },
+                    { text: "Stabilité dimensionnelle remarquable", correct: true },
+                    { text: "Hydrophobie", correct: false }
+                ]
+            },
+            {
+                id: 98,
+                text: "Les compositions thermoplastiques sont indiquées pour",
+                options: [
+                    { text: "Ports d'empreintes individuels PAC", correct: true },
+                    { text: "Joint périphérique PEI", correct: true },
+                    { text: "Empreinte dents isolées vivantes", correct: false },
+                    { text: "Prothèse totale", correct: false }
+                ]
+            },
+            {
+                id: 99,
+                text: "Les matériaux thermoplastiques sont introduits en bouche à une température de",
+                options: [
+                    { text: "40°C", correct: false },
+                    { text: "28°C", correct: false },
+                    { text: "45°C", correct: false },
+                    { text: "37°C", correct: true }
+                ]
+            },
+            {
+                id: 100,
+                text: "Parmi les propriétés des matériaux thermoplastiques, on trouve",
+                options: [
+                    { text: "Bon enregistrement des détails", correct: false },
+                    { text: "Mauvais enregistrement des détails", correct: true },
+                    { text: "Refroidissement rapide", correct: false },
+                    { text: "Fracture après refroidissement", correct: true }
+                ]
+            },
+            {
+                id: 101,
+                text: "Les matériaux élastiques prennent 2 états, lesquels ?",
+                options: [
+                    { text: "Plastique", correct: true },
+                    { text: "Elastique", correct: true },
+                    { text: "Semi-élastique", correct: false },
+                    { text: "Rigide", correct: false }
+                ]
+            },
+            {
+                id: 102,
+                text: "Les hydrocolloïdes existent sous forme",
+                options: [
+                    { text: "Sol", correct: true },
+                    { text: "Gel", correct: true },
+                    { text: "Pâte", correct: false },
+                    { text: "Liquide", correct: false }
+                ]
+            },
+            {
+                id: 103,
+                text: "Les hydrocolloïdes réversibles sont indiqués dans",
+                options: [
+                    { text: "Limites sous-gingivales", correct: false },
+                    { text: "Limites juxta-gingivales", correct: true },
+                    { text: "Limites supra-gingivales", correct: true },
+                    { text: "Cavités peu profondes", correct: true }
+                ]
+            },
+            {
+                id: 104,
+                text: "Selon la classe des alginates, ils sont indiqués dans",
+                options: [
+                    { text: "Classe A: Prothèse adjointe partielle", correct: false },
+                    { text: "Classe B: Prothèse fixe unitaire", correct: false },
+                    { text: "Classe C: Duplicatas", correct: true },
+                    { text: "Classe D: Orthodontie", correct: false }
+                ]
+            },
+            {
+                id: 105,
+                text: "Le temps de prise de l'alginate est en moyenne",
+                options: [
+                    { text: "3.5 minutes", correct: true },
+                    { text: "10 minutes", correct: false },
+                    { text: "15 minutes", correct: false },
+                    { text: "2 minutes", correct: false }
+                ]
+            },
+            {
+                id: 106,
+                text: "Parmi les propriétés de l'alginate, on trouve",
+                options: [
+                    { text: "Résistance au déchirement faible", correct: true },
+                    { text: "Grande stabilité dimensionnelle", correct: false },
+                    { text: "Résistance à la compression", correct: false },
+                    { text: "Manipulation aisée", correct: true }
+                ]
+            },
+            {
+                id: 107,
+                text: "Les élastomères polysulfures sont indiqués",
+                options: [
+                    { text: "Reconstructions coronoradiculaires", correct: false },
+                    { text: "Prothèse adjointe complète", correct: true },
+                    { text: "Cavités peu profondes", correct: false },
+                    { text: "Sans contre-dépouilles", correct: false }
+                ]
+            },
+            {
+                id: 108,
+                text: "Parmi les viscosités des élastomères polysulfures, on trouve",
+                options: [
+                    { text: "Plastique", correct: false },
+                    { text: "Light", correct: true },
+                    { text: "Sol", correct: false },
+                    { text: "Gel", correct: false }
+                ]
+            },
+            {
+                id: 109,
+                text: "Parmi les propriétés des élastomères polysulfures, on trouve",
+                options: [
+                    { text: "Grande stabilité dimensionnelle", correct: false },
+                    { text: "Faible résistance au déchirement", correct: false },
+                    { text: "Bonne précision des surfaces", correct: true },
+                    { text: "Elasticité plus importante que les silicone", correct: false }
+                ]
+            },
+            {
+                id: 110,
+                text: "Parmi les propriétés des élastomères polyéthers, on trouve",
+                options: [
+                    { text: "Stabilité dimensionnelle satisfaisante", correct: true },
+                    { text: "Grande précision des détails", correct: true },
+                    { text: "Faible rigidité", correct: false },
+                    { text: "Prise rapide", correct: true }
+                ]
+            },
+            {
+                id: 111,
+                text: "Selon le mode de polymérisation des élastomères silicones, on trouve",
+                options: [
+                    { text: "Addition", correct: true },
+                    { text: "Condensation", correct: true },
+                    { text: "Photo", correct: false },
+                    { text: "Thermo", correct: false }
+                ]
+            },
+            {
+                id: 112,
+                text: "Un élastomère silicone nécessite un temps de travail de 3 min et une prise de 6 min ?",
+                options: [
+                    { text: "Silicones condensation", correct: true },
+                    { text: "Silicones addition", correct: false },
+                    { text: "Silicones photo", correct: false },
+                    { text: "Silicones thermo", correct: false }
+                ]
+            },
+            {
+                id: 113,
+                text: "Quel type de silicone peut être indiqué pour des facettes ?",
+                options: [
+                    { text: "Silicones addition", correct: true },
+                    { text: "Silicones condensation", correct: false },
+                    { text: "Silicones photo", correct: false },
+                    { text: "Silicones thermo", correct: false }
+                ]
+            },
+            {
+                id: 114,
+                text: "Lequel des élastomères silicones suivants est hydrophobe ?",
+                options: [
+                    { text: "Silicones condensation", correct: true },
+                    { text: "Silicones addition", correct: false },
+                    { text: "Silicones photo", correct: false },
+                    { text: "Silicones thermo", correct: false }
+                ]
+            },
+            {
+                id: 115,
+                text: "Lequel des élastomères silicones est composé d'une base, d'un activateur et du light ?",
+                options: [
+                    { text: "Silicones condensation", correct: true },
+                    { text: "Silicones addition", correct: false },
+                    { text: "Silicones photo", correct: false },
+                    { text: "Silicones thermo", correct: false }
+                ]
+            },
+            {
+                id: 136,
+                text: "La décontamination de l'empreinte se fait par",
+                options: [
+                    { text: "Immersion eau oxygénée", correct: false },
+                    { text: "Rinçage eau robinet", correct: false },
+                    { text: "Vaporisation bactéricide", correct: true },
+                    { text: "Immersion eau javel diluée", correct: true }
+                ]
+            },
+            {
+                id: 137,
+                text: "Le cahier des charges des solutions désinfectantes doit permettre",
+                options: [
+                    { text: "Efficacité microbiologique", correct: true },
+                    { text: "Stabilité de la forme du matériau", correct: true },
+                    { text: "Asséchement rapide", correct: false },
+                    { text: "Absorption rapide", correct: false }
+                ]
+            },
+            {
+                id: 138,
+                text: "Les solutions disinfectantes se répartition en quatre familles dont",
+                options: [
+                    { text: "Formaldéhyde", correct: true },
+                    { text: "Glutaraldéhyde", correct: true },
+                    { text: "Nitrate de chlorure", correct: false },
+                    { text: "Hypochlorite de sodium", correct: true }
+                ]
+            },
+            {
+                id: 140,
+                text: "Le délai de coulé des matériaux d'empreintes suivants est",
+                options: [
+                    { text: "Silicone A: 4h", correct: false },
+                    { text: "Hydrocolloïdes: 3h", correct: false },
+                    { text: "Polyéthers: 12h", correct: true },
+                    { text: "Polysulfures: 6h", correct: true }
+                ]
+            },
+            {
+                id: 141,
+                text: "Parmi les critères d'un matériau de réplique, on trouve",
+                options: [
+                    { text: "Capacité reproduire les détails", correct: true },
+                    { text: "Résistance à la fracture", correct: true },
+                    { text: "Facilité de manipulation", correct: true },
+                    { text: "Délai de durcissement 60s", correct: false }
+                ]
+            },
+            {
+                id: 142,
+                text: "Parmi les matériaux de réplique disponibles, on trouve",
+                options: [
+                    { text: "Plâtres", correct: true },
+                    { text: "Résines époxy", correct: true },
+                    { text: "Métaux électro-déposés", correct: true },
+                    { text: "Polyméthanes", correct: false }
+                ]
+            },
+            {
+                id: 143,
+                text: "Parmi les caractéristiques du plâtre de coulée, on trouve",
+                options: [
+                    { text: "Excellente précision dimensionnelle", correct: true },
+                    { text: "Bonne résistance à l'abrasion", correct: false },
+                    { text: "Dureté satisfaisante", correct: false },
+                    { text: "Compatibilité avec tous les matériaux", correct: true }
+                ]
+            },
+            {
+                id: 144,
+                text: "Parmi les caractéristiques des résines époxy, on trouve",
+                options: [
+                    { text: "Compatibilité avec les hydrocolloïdes", correct: false },
+                    { text: "Bonne résistance à l'abrasion", correct: true },
+                    { text: "Excellente stabilité dimensionnelle", correct: false },
+                    { text: "Temps de polymérisation rapide (30min)", correct: false }
+                ]
+            },
+            {
+                id: 145,
+                text: "Parmi les caractéristiques des métaux électro-déposés, on trouve",
+                options: [
+                    { text: "Excellente reproduction des détails", correct: true },
+                    { text: "Mise en œuvre facile", correct: false },
+                    { text: "Résistance à l'abrasion remarquable (argent)", correct: false },
+                    { text: "Très bonne précision dimensionnelle", correct: false }
+                ]
+            },
+            {
+                id: 146,
+                text: "Les polysulfures sont indiqués en",
+                options: [
+                    { text: "Prothèse conjointe", correct: false },
+                    { text: "Prothèse adjointe", correct: false },
+                    { text: "Prothèse adjointe totale", correct: true },
+                    { text: "Orthodontie", correct: false }
+                ]
+            },
+            {
+                id: 147,
+                text: "Les propriétés des polysulfures sont",
+                options: [
+                    { text: "Faible stabilité dimensionnelle", correct: true },
+                    { text: "Bonne précision des surfaces", correct: true },
+                    { text: "Matériau hydrophobe", correct: true },
+                    { text: "Odeur agréable", correct: false }
+                ]
+            },
+            {
+                id: 148,
+                text: "Les propriétés des polyéthers sont",
+                options: [
+                    { text: "Faible rigidité", correct: false },
+                    { text: "Matériau hydrophile", correct: true },
+                    { text: "Grande précision des détails", correct: true },
+                    { text: "Dureté de prise très élevée", correct: true }
+                ]
+            },
+            {
+                id: 149,
+                text: "Les propriétés du poly-dimethylsiloxane sont",
+                options: [
+                    { text: "Hydrophobe", correct: true },
+                    { text: "Temps de prise long", correct: false },
+                    { text: "Hydrophile", correct: false },
+                    { text: "Mauvaise stabilité dimensionnelle", correct: true }
+                ]
+            },
+            {
+                id: 150,
+                text: "Les propriétés du vinylpolysiloxane sont",
+                options: [
+                    { text: "Meilleures propriétés élastiques", correct: true },
+                    { text: "Mauvaise stabilité dimensionnelle", correct: false },
+                    { text: "Faible résistance à la déformation", correct: false },
+                    { text: "Hydrophile", correct: true }
+                ]
+            }
+        ];
+
+        let shuffledQuestions = [];
+        let currentIndex = 0;
+        let selectedOptions = [];
+        let totalPoints = 0;
+        let maxPoints = 0;
+        let answered = false;
+
+        function getScoreText() {
+            return maxPoints > 0 ? `${Math.round(totalPoints * 10) / 10}/${maxPoints}` : `0/${maxPoints}`;
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function init() {
+            shuffledQuestions = shuffleArray([...questions]);
+            document.getElementById('totalNum').textContent = shuffledQuestions.length;
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const q = shuffledQuestions[currentIndex];
+            document.getElementById('currentNum').textContent = currentIndex + 1;
+            document.getElementById('qNumber').textContent = `QUESTION ${q.id}`;
+            document.getElementById('qText').textContent = q.text;
+            document.getElementById('scoreBadge').textContent = 'Score: ' + getScoreText();
+
+            const progress = ((currentIndex) / shuffledQuestions.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.querySelector('[role="progressbar"]').setAttribute('aria-valuenow', Math.round(progress));
+
+            document.getElementById('prevBtn').disabled = currentIndex === 0;
+
+            const optionsEl = document.getElementById('options');
+            optionsEl.innerHTML = '';
+
+            selectedOptions = [];
+            answered = false;
+
+            q.options.forEach((opt, idx) => {
+                const label = document.createElement('div');
+                label.className = 'option';
+                label.setAttribute('role', 'checkbox');
+                label.setAttribute('aria-checked', 'false');
+                label.setAttribute('tabindex', '0');
+                label.innerHTML = `<span class="option-marker">${String.fromCharCode(65 + idx)}</span>${opt.text}`;
+                label.onclick = () => toggleOption(idx, label);
+                label.onkeydown = (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleOption(idx, label);
+                    }
+                };
+                optionsEl.appendChild(label);
+            });
+
+            document.getElementById('checkBtn').style.display = 'inline-block';
+            document.getElementById('revealBtn').style.display = 'inline-block';
+            document.getElementById('nextBtn').style.display = 'none';
+            document.getElementById('resultBanner').classList.remove('show');
+
+            document.getElementById('historyPanel').classList.remove('show');
+        }
+
+        function toggleOption(idx, el) {
+            if (answered) return;
+
+            const q = shuffledQuestions[currentIndex];
+
+            if (selectedOptions.includes(idx)) {
+                selectedOptions = selectedOptions.filter(i => i !== idx);
+                el.classList.remove('selected');
+                el.setAttribute('aria-checked', 'false');
+            } else {
+                selectedOptions.push(idx);
+                el.classList.add('selected');
+                el.setAttribute('aria-checked', 'true');
+            }
+        }
+
+        function checkAnswer() {
+            answered = true;
+            const q = shuffledQuestions[currentIndex];
+            const optionsEl = document.getElementById('options');
+            const optionEls = optionsEl.querySelectorAll('.option');
+
+            const correctCount = q.options.filter(o => o.correct).length;
+            const selectedCorrect = selectedOptions.filter(idx => q.options[idx].correct).length;
+            const hasSelection = selectedOptions.length > 0;
+            const hasWrongSelection = selectedOptions.some(idx => !q.options[idx].correct);
+
+            let earnedPoints = 0;
+            let isFullyCorrect = false;
+            let scoreDisplay = '';
+
+            if (hasSelection && !hasWrongSelection) {
+                if (selectedCorrect === correctCount) {
+                    earnedPoints = 1;
+                    isFullyCorrect = true;
+                    scoreDisplay = selectedCorrect + '/' + correctCount;
+                } else if (selectedCorrect > 0) {
+                    earnedPoints = selectedCorrect / correctCount;
+                    scoreDisplay = selectedCorrect + '/' + correctCount;
+                } else {
+                    scoreDisplay = '0/' + correctCount;
+                }
+                totalPoints += earnedPoints;
+            } else {
+                scoreDisplay = '0/' + correctCount;
+            }
+            maxPoints += 1;
+
+            q.options.forEach((opt, idx) => {
+                const el = optionEls[idx];
+                el.classList.add('disabled');
+
+                if (opt.correct) {
+                    el.classList.add('correct-answer');
+                } else if (selectedOptions.includes(idx)) {
+                    el.classList.add('wrong-selection');
+                }
+            });
+
+            recordAnswer(selectedOptions, isFullyCorrect);
+
+            const banner = document.getElementById('resultBanner');
+            const bannerText = document.getElementById('resultBannerText');
+            const bannerDetail = document.getElementById('resultBannerDetail');
+
+            if (isFullyCorrect) {
+                banner.className = 'result-banner show correct';
+                bannerText.innerHTML = checkSvg + ' Correct! (' + scoreDisplay + ')';
+            } else if (!hasSelection) {
+                banner.className = 'result-banner show incorrect';
+                bannerText.innerHTML = revealSvg + ' Pas de réponse';
+            } else if (hasWrongSelection) {
+                banner.className = 'result-banner show incorrect';
+                bannerText.innerHTML = crossSvg + ' Incorrect (' + scoreDisplay + ')';
+            } else {
+                banner.className = 'result-banner show incorrect';
+                bannerText.innerHTML = crossSvg + ' Partiel (' + scoreDisplay + ')';
+            }
+
+            const correctAnswers = q.options.filter(o => o.correct).map(o => o.text).join(', ');
+            bannerDetail.textContent = correctAnswers;
+
+            document.getElementById('checkBtn').style.display = 'none';
+            document.getElementById('revealBtn').style.display = 'none';
+            document.getElementById('nextBtn').style.display = 'inline-block';
+            document.getElementById('scoreBadge').textContent = 'Score: ' + getScoreText();
+        }
+
+        function revealAnswer() {
+            answered = true;
+            const q = shuffledQuestions[currentIndex];
+            const optionsEl = document.getElementById('options');
+            const optionEls = optionsEl.querySelectorAll('.option');
+
+            const correctCount = q.options.filter(o => o.correct).length;
+            maxPoints += 1;
+
+            q.options.forEach((opt, idx) => {
+                const el = optionEls[idx];
+                el.classList.add('disabled');
+
+                if (opt.correct) {
+                    el.classList.add('correct-answer');
+                }
+            });
+
+            recordAnswer(null, 'revealed');
+
+            const correctAnswers = q.options.filter(o => o.correct).map(o => o.text).join(', ');
+            const banner = document.getElementById('resultBanner');
+            banner.className = 'result-banner show incorrect';
+            document.getElementById('resultBannerText').innerHTML = revealSvg + ' Réponse (0/' + correctCount + ')';
+            document.getElementById('resultBannerDetail').textContent = correctAnswers;
+
+            document.getElementById('checkBtn').style.display = 'none';
+            document.getElementById('revealBtn').style.display = 'none';
+            document.getElementById('nextBtn').style.display = 'inline-block';
+            document.getElementById('scoreBadge').textContent = 'Score: ' + getScoreText();
+        }
+
+        function recordAnswer(selectedIndices, type) {
+            const q = shuffledQuestions[currentIndex];
+            const key = type === 'revealed' ? 'qcmRevealedHistory' : 'qcmHistory';
+            const history = JSON.parse(localStorage.getItem(key) || '[]');
+
+            if (type === 'revealed') {
+                history.push({ questionId: q.id, index: currentIndex });
+            } else {
+                history.push({ questionId: q.id, selected: selectedIndices, correct: type, index: currentIndex });
+            }
+            localStorage.setItem(key, JSON.stringify(history));
+        }
+
+        function nextQuestion() {
+            currentIndex++;
+            if (currentIndex >= shuffledQuestions.length) {
+                showCompletion();
+            } else {
+                renderQuestion();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                renderQuestion();
+            }
+        }
+
+        function toggleHistory() {
+            const panel = document.getElementById('historyPanel');
+            const btn = document.querySelector('[onclick="toggleHistory()"]');
+            const expanded = panel.classList.contains('show');
+
+            if (expanded) {
+                panel.classList.remove('show');
+                btn.setAttribute('aria-expanded', 'false');
+                return;
+            }
+
+            panel.innerHTML = '';
+            btn.setAttribute('aria-expanded', 'true');
+
+            const history = JSON.parse(localStorage.getItem('qcmHistory') || '[]');
+            const revealed = JSON.parse(localStorage.getItem('qcmRevealedHistory') || '[]');
+
+            if (history.length === 0 && revealed.length === 0) {
+                panel.innerHTML = '<div style="color: var(--gray-500); font-size: 0.85rem; text-align: center;">Aucune historique</div>';
+                panel.classList.add('show');
+                return;
+            }
+
+            const checkIcon = '<svg class="history-icon" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>';
+            const crossIcon = '<svg class="history-icon" viewBox="0 0 24 24" fill="none" stroke="var(--error)" stroke-width="2"><path d="M6 18l12-12M18 6L6 18"/></svg>';
+            const eyeIcon = '<svg class="history-icon" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
+
+            for (let item of history) {
+                const div = document.createElement('div');
+                div.className = 'history-item' + (item.correct ? ' correct' : ' incorrect');
+                div.setAttribute('role', 'button');
+                div.setAttribute('tabindex', '0');
+                div.setAttribute('aria-label', 'Question ' + item.questionId + ': ' + (item.correct ? 'correcte' : 'incorrecte'));
+                div.innerHTML = '<span>Q' + item.questionId + '</span>' + (item.correct ? checkIcon : crossIcon);
+                div.onclick = () => jumpToQuestion(item.index);
+                div.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') jumpToQuestion(item.index); };
+                panel.appendChild(div);
+            }
+            for (let item of revealed) {
+                const div = document.createElement('div');
+                div.className = 'history-item revealed';
+                div.setAttribute('role', 'button');
+                div.setAttribute('tabindex', '0');
+                div.setAttribute('aria-label', 'Question ' + item.questionId + ': révélée');
+                div.innerHTML = '<span>Q' + item.questionId + '</span>' + eyeIcon;
+                div.onclick = () => jumpToQuestion(item.index);
+                div.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') jumpToQuestion(item.index); };
+                panel.appendChild(div);
+            }
+            panel.classList.add('show');
+        }
+
+        function jumpToQuestion(index) {
+            currentIndex = index;
+            renderQuestion();
+            document.getElementById('historyPanel').classList.remove('show');
+        }
+
+        function showCompletion() {
+            document.getElementById('card').style.display = 'none';
+            document.querySelector('.nav-bar').style.display = 'none';
+            document.querySelector('.progress-bar').style.display = 'none';
+            document.getElementById('completionScreen').classList.add('show');
+            document.getElementById('finalScore').textContent = 'Score: ' + getScoreText();
+        }
+
+        function restart() {
+            localStorage.removeItem('qcmHistory');
+            localStorage.removeItem('qcmRevealedHistory');
+            shuffledQuestions = shuffleArray([...questions]);
+            currentIndex = 0;
+            totalPoints = 0;
+            maxPoints = 0;
+            document.getElementById('card').style.display = 'flex';
+            document.querySelector('.nav-bar').style.display = 'flex';
+            document.querySelector('.progress-bar').style.display = 'block';
+            document.getElementById('completionScreen').classList.remove('show');
+            document.getElementById('totalNum').textContent = shuffledQuestions.length;
+            renderQuestion();
+        }
+
+        init();
+    </script>
+</body>
+</html>
