@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulpites Aigües et Chroniques - Guide d'Étude</title>
+    <meta name="description" content="Guide d'étude sur les pulpites aigües et chroniques">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #EC4899;
+            --primary-dark: #DB2777;
+            --primary-bg: #FCE7F3;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-lg: 24px;
+            --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+            --font-scale: 1;
+        }
+        html.dark-mode {
+            --primary: #F472B6;
+            --primary-dark: #EC4899;
+            --primary-bg: #500724;
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --text: #f1f5f9;
+            --text-muted: #cbd5e1;
+            --border: #334155;
+            --border-light: #475569;
+        }
+        html.text-size-small { --font-scale: 0.9; }
+        html.text-size-large { --font-scale: 1.1; }
+        html.text-size-xlarge { --font-scale: 1.25; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; font-size: calc(16px * var(--font-scale)); }
+        p { margin-bottom: 1rem; color: var(--text); }
+        .card ul { margin-top: 1.25rem; margin-bottom: 1.25rem; padding-inline-start: 2rem; list-style: none; }
+        .card ul li { margin-bottom: 0.875rem; color: var(--text-muted); line-height: 1.75; position: relative; padding-left: 0.75rem; }
+        .card ul li::before { content: '•'; position: absolute; left: -0.75rem; color: var(--primary); font-weight: 600; font-size: 1.25rem; }
+        .card ol { margin-top: 1.25rem; margin-bottom: 1.25rem; padding-inline-start: 0; list-style: none; counter-reset: item; }
+        .card ol li { margin-bottom: 1rem; color: var(--text-muted); line-height: 1.75; position: relative; padding-left: 2.5rem; counter-increment: item; }
+        .card ol li::before { content: counter(item); position: absolute; left: 0; top: 0; background: var(--primary-bg); color: var(--primary); width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: 600; font-size: 0.875rem; }
+        strong { color: var(--text); font-weight: 600; }
+        .header { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: white; padding: 3rem 1.5rem; position: relative; overflow: hidden; }
+        .header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; }
+        .header-content { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+        .header h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 0.5rem; }
+        .header p { font-size: 1.125rem; opacity: 0.9; font-weight: 400; }
+        .header-badge { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; padding: 0.5rem 1rem; background: rgba(255,255,255,0.15); border-radius: 100px; font-size: 0.875rem; font-weight: 500; backdrop-filter: blur(4px); }
+        .nav-container { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+        html.dark-mode .nav-container { background: rgba(30, 41, 59, 0.95); }
+        .nav { max-width: 1200px; margin: 0 auto; display: flex; gap: 0.25rem; padding: 0.5rem; overflow-x: auto; scrollbar-width: none; }
+        .nav::-webkit-scrollbar { display: none; }
+        .nav-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1rem; border: none; background: transparent; color: var(--text-muted); font-size: 0.875rem; font-weight: 500; cursor: pointer; border-radius: var(--radius-sm); white-space: nowrap; transition: all var(--transition); min-height: 44px; }
+        .nav-btn:hover { background: var(--border-light); color: var(--text); }
+        .nav-btn.active { background: var(--primary); color: white; }
+        .controls-bar { display: flex; align-items: center; gap: 1.5rem; padding: 0.75rem 1.5rem; background: var(--surface); border-bottom: 1px solid var(--border); justify-content: flex-end; max-width: 100%; overflow-x: auto; }
+        .controls-group { display: flex; align-items: center; gap: 0.5rem; }
+        .controls-label { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); }
+        .control-btn { display: flex; align-items: center; justify-content: center; padding: 0.5rem 0.75rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; color: var(--text); font-size: 0.8rem; transition: all var(--transition); min-width: 36px; min-height: 36px; }
+        .control-btn:hover { background: var(--border-light); color: var(--primary); }
+        .control-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .key-takeaways { background: linear-gradient(135deg, rgba(236, 72, 153, 0.08) 0%, rgba(236, 72, 153, 0.04) 100%); border-left: 4px solid var(--primary); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2rem; margin-top: 2rem; }
+        .key-takeaways h3 { color: var(--primary); font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .key-takeaways h3::before { content: '✓'; font-weight: 800; }
+        .key-takeaways ul { margin: 0; padding-left: 1.5rem; }
+        .key-takeaways li { margin-bottom: 0.5rem; color: var(--text); line-height: 1.6; font-size: 0.95rem; }
+        .key-takeaways li::marker { color: var(--primary); font-weight: bold; }
+        .main { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
+        .section { display: none; animation: fadeIn 0.3s ease; }
+        .section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        .card { background: var(--surface); border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 1.5rem; margin-top: 1.5rem; box-shadow: var(--shadow); border: 1px solid var(--border-light); transition: box-shadow var(--transition); }
+        .card:hover { box-shadow: var(--shadow-md); }
+        .card-header { display: flex; align-items: center; gap: 1.25rem; margin-bottom: 1.5rem; }
+        .card-icon { width: 52px; height: 52px; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--primary-bg); color: var(--primary); }
+        .card-icon svg { width: 26px; height: 26px; }
+        .card h2 { font-size: 1.5rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid var(--border); }
+        .card h3 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1.25rem; color: var(--text); }
+        .card h4 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 1rem; color: var(--text); }
+        .card p { color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.75; }
+        .diagram { background: var(--primary-bg); border-radius: var(--radius); padding: 1.5rem; text-align: center; margin: 1rem 0; }
+        .diagram-flow { display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
+        .diagram-box { background: var(--surface); padding: 0.75rem 1rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); min-width: 100px; font-size: 0.85rem; }
+        .diagram-box small { display: block; font-size: 0.7rem; color: var(--text-muted); margin-top: 0.25rem; }
+        .diagram-box.highlight { background: var(--primary); color: white; }
+        .diagram-box.highlight small { color: rgba(255,255,255,0.8); }
+        .diagram-arrow { font-size: 1.25rem; color: var(--text-muted); }
+        .comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin: 1.25rem 0; }
+        .comparison-card { background: var(--bg); border-radius: var(--radius); padding: 1.5rem; border: 1px solid var(--border); transition: all var(--transition); }
+        .comparison-card:hover { border-color: var(--primary); box-shadow: 0 4px 12px rgba(236, 72, 153, 0.1); }
+        .comparison-card h4 { font-size: 1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; color: var(--text); }
+        .comparison-card h4 svg { color: var(--primary); }
+        .comparison-card ul { list-style: none; font-size: 0.9rem; color: var(--text-muted); }
+        .comparison-card li { padding: 0.5rem 0; padding-left: 1.25rem; position: relative; line-height: 1.5; }
+        .comparison-card li::before { content: '•'; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
+        .conclusion-box { background: linear-gradient(135deg, var(--primary) 0%, #DB2777 100%); color: white; padding: 2rem; border-radius: var(--radius-lg); text-align: center; margin: 1.5rem 0; }
+        .conclusion-box h2 { font-size: 1.5rem; margin-bottom: 0.75rem; color: white; }
+         .conclusion-box p { font-size: 1rem; opacity: 0.95; color: white; }
+
+         .nav-guides { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; padding: 1.5rem; background: var(--surface); border-radius: var(--radius-lg); box-shadow: var(--shadow); margin-top: 2rem; border: 1px solid var(--border-light); }
+         .nav-guide-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.25rem; background: var(--primary); color: white; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all var(--transition); }
+         .nav-guide-btn:hover { background: var(--primary-dark); }
+         .nav-guide-btn svg { width: 18px; height: 18px; }
+         .nav-guides-links { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-left: auto; }
+         .nav-guides-label { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+         .nav-guide-link { padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.85rem; color: var(--text-muted); text-decoration: none; transition: all var(--transition); }
+         .nav-guide-link:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-bg); }
+
+        @media (max-width: 768px) {
+            .header { padding: 2rem 1rem; }
+            .header h1 { font-size: 1.5rem; }
+            .header p { font-size: 1rem; }
+            .main { padding: 1rem; }
+            .card { padding: 1.25rem; margin-bottom: 1rem; }
+            .card h2 { font-size: 1.25rem; }
+            .card h3 { font-size: 1.1rem; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .diagram-flow { flex-direction: column; gap: 1rem; }
+            .diagram-box { width: 100%; max-width: 300px; }
+            .nav-guides { 
+                flex-direction: column; 
+                align-items: center; 
+                text-align: center; 
+                gap: 1rem; 
+                padding: 1rem;
+            }
+            .nav-guides-links { 
+                justify-content: center; 
+                margin-left: 0; 
+                gap: 0.5rem;
+            }
+            .nav-guide-btn { 
+                justify-content: center; 
+                width: 100%; 
+                max-width: 300px;
+            }
+            .controls-bar { 
+                flex-direction: column; 
+                align-items: center; 
+                gap: 1rem; 
+                padding: 1rem;
+                justify-content: center;
+            }
+            .controls-group { 
+                justify-content: center; 
+            }
+            .nav { 
+                gap: 0.5rem; 
+                padding: 0.75rem;
+            }
+            .nav-btn { 
+                padding: 0.5rem 0.75rem; 
+                font-size: 0.8rem; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>Les Pulpites Aigües et Chroniques</h1>
+            <p>Guide d'Étude - Réaction inflammatoire et étiopathogénie</p>
+            <span class="header-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                Dr. KARIMI Z
+            </span>
+        </div>
+    </header>
+    <nav class="nav-container" role="navigation" aria-label="Navigation principale">
+        <div class="nav">
+            <button class="nav-btn active" data-section="objectifs">Objectifs</button>
+            <button class="nav-btn" data-section="histologie">Histologie</button>
+            <button class="nav-btn" data-section="inflammation">Phénomène inflammatoire</button>
+            <button class="nav-btn" data-section="etiologie">Étiologie</button>
+            <button class="nav-btn" data-section="pathogenie">Pathogénie</button>
+            <button class="nav-btn" data-section="anatomopathologie">Anatomo-pathologie</button>
+            <button class="nav-btn" data-section="formes">Formes cliniques</button>
+            <button class="nav-btn" data-section="therapeutique">Thérapeutique</button>
+            <button class="nav-btn" data-section="conclusion">Conclusion</button>
+        </div>
+    </nav>
+    <div class="controls-bar">
+        <div class="controls-group">
+            <span class="controls-label">Thème:</span>
+            <button class="control-btn" id="theme-toggle" title="Basculer le mode sombre">🌙</button>
+        </div>
+        <div class="controls-group">
+            <span class="controls-label">Taille:</span>
+            <button class="control-btn text-size-btn" data-size="small" title="Petite taille">A-</button>
+            <button class="control-btn text-size-btn active" data-size="normal" title="Taille normale">A</button>
+            <button class="control-btn text-size-btn" data-size="large" title="Grande taille">A+</button>
+            <button class="control-btn text-size-btn" data-size="xlarge" title="Très grande taille">A++</button>
+        </div>
+    </div>
+    <main class="main">
+<section id="objectifs" class="section active" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h2>Objectifs du cours</h2>
+                </div>
+                <ul>
+                    <li>Comprendre la réaction inflammatoire du tissu pulpaire</li>
+                    <li>Connaître l'étio-pathogénie des pulpites</li>
+                    <li>Connaître les formes cliniques et les critères diagnostiques de ces pathologies</li>
+                </ul>
+             </div>
+             <div class="card">
+                 <h3>Plan du cours</h3>
+                <ol>
+                    <li>Introduction</li>
+                    <li>Rappels d'histologie pulpaire</li>
+                    <li>Phénomène inflammatoire</li>
+                    <li>Étiologies des pulpites</li>
+                    <li>Pathogénie</li>
+                    <li>Histopathologie</li>
+                    <li>Formes cliniques</li>
+                    <li>Indications thérapeutQUES</li>
+                    <li>Conclusion</li>
+                 </ol>
+             </div>
+         </section>
+        
+        <section id="histologie" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h2>Rappels d'histologie pulpaire</h2>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Structure histologique de la pulpe</h3>
+                <ul>
+                    <li><strong>La pulpe:</strong> entité complexe (tissu conjonctif, richement vascularisé et richement innervé) emprisonnée au sein d'une cavité strictement non extensible</li>
+                    <li><strong>Matrice extracellulaire:</strong> consistance hautement visqueuse composée de polymères de haut poids moléculaires associés aux fibres de collagène</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Cellules pulpaires</h3>
+                <ul>
+                    <li><strong>Fibroblastes pulpaires:</strong> responsables de la synthèse de la substance fondamentale</li>
+                    <li><strong>Odontoblastes:</strong> Cellules post-mitotiques, responsables de la fabrication de la dentine</li>
+                    <li><strong>Cellules de défense:</strong> Macrophages, lymphocytes, cellules dendritiques</li>
+                    <li><strong>Cellules mésenchymateuses:</strong> Cellules souches indifférenciées</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Vascularisation pulpaire</h3>
+                <ul>
+                    <li>La pulpe est richement vascularisée</li>
+                    <li>Vascularisation collatérale réduite: terminale</li>
+                    <li>Circulations en boucle du réseau capillaire sous-odontoblastique</li>
+                    <li>Anastomoses artério-veineuses et shunts capillaires</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Innervation pulpaire</h3>
+                <ul>
+                    <li>La pulpe est un organe très richement innervé</li>
+                    <li>Fibres nerveuses sensitives</li>
+                    <li>Fibres du système nerveux autonome</li>
+                </ul>
+            </div>
+        </section>
+        <section id="inflammation" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.2 2.2 0 0 1-3.12-3.12l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h2>Phénomène inflammatoire</h2>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Définition de l'inflammation</h3>
+                <p>Ensemble des phénomènes réactionnels déclenchés, dans un organisme vivant et vascularisé, par une agression.</p>
+                <ul>
+                    <li><strong>Spécifique</strong></li>
+                    <li><strong>Naturelle</strong></li>
+                    <li>Phénomènes d'immunité (cellulaire, humorale)</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Rôle de l'inflammation</h3>
+                <ul>
+                    <li>Réparer les lésions tissulaires</li>
+                    <li>Éliminer l'agent pathogène</li>
+                    <li>Maintenir et restaurer l'intégrité de l'organisme</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Étapes de la réaction inflammatoire</h3>
+                <ol>
+                    <li><strong>Réaction vasculo-exsudative</strong></li>
+                    <li><strong>Réaction cellulaire</strong></li>
+                    <li><strong>Détersion</strong></li>
+                    <li><strong>Réparation et cicatrisation</strong></li>
+                </ol>
+            </div>
+            
+            </div>
+            <div class="card">
+                <h3>Quatre signes cardinaux de l'inflammation</h3>
+                <ul>
+                    <li>Rougeur</li>
+                    <li>Chaleur</li>
+                    <li>Tuméfaction</li>
+                    <li>Douleur</li>
+                </ul>
+            </div>
+        </section>
+        <section id="etiologie" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                    </div>
+                    <h2>Étiologies</h2>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Causes physiques</h3>
+                <ul>
+                    <li><strong>Mécaniques:</strong> fracture, fraisage profond, rupture ou écrasement des vaisseaux sanguins à l'apex</li>
+                    <li><strong>Thermiques:</strong> chaleur par fraisage, obturation métalliques sans isolation</li>
+                    <li><strong>Électriques:</strong> électro-galvanisme, test électrique</li>
+                    <li><strong>Radiothérapie:</strong> irradiation des tumeurs malignes cervico-faciales provoque l'atteinte constante des odontoblastes</li>
+                    <li><strong>Barotraumatisme:</strong> variation brusque de pression atmosphérique (avion, plongée sous-marine)</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Causes chimiques</h3>
+                <ul>
+                    <li>Méthacrylate de Méthyle: monomère agressif pour la pulpe</li>
+                    <li>Produit de blanchiment</li>
+                    <li>Ciments de scellement oxyphosphate de Zinc: pH = 3 pendant plusieurs jours</li>
+                    <li>Causes générales (rares): intoxication produits chimiques (mercure, plomb, anesthésique)</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Causes infectieuses</h3>
+                <ul>
+                    <li><strong>Carie:</strong> première cause des maladies pulpaires</li>
+                    <li><strong>Maladies du parodonte:</strong> poche très profonde jusqu'à l'apex (pulpite rétrograde)</li>
+                    <li><strong>Indirectement:</strong> lésions non carieuses très profondes, traumatisme dentaire</li>
+                    <li><strong>Pulpite hématogène:</strong> inoculation septique de la pulpe par la voie sanguine (tuberculose, gripe)</li>
+                </ul>
+            </div>
+        </section>
+        <section id="pathogenie" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
+                    <h2>Pathogénie</h2>
+                </div>
+            </div>
+            <div class="card">
+                <h3>La réponse immédiate à une agression</h3>
+                <p>Identique quelque soit la nature de l'agent agresseur</p>
+                <div class="diagram">
+                    <div class="diagram-flow">
+                        <div class="diagram-box">Agression<br>Traumatiques<br>Chimiques<br>Bactériens<br>Thermiques</div>
+                        <span class="diagram-arrow">→</span>
+                        <div class="diagram-box highlight">Lésion du complexe<br>dentino-pulpaire</div>
+                        <span class="diagram-arrow">→</span>
+                        <div class="diagram-box">Lésion<br>vasculaire</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Médiateurs de l'inflammation</h3>
+                <ul>
+                    <li><strong>Prostaglandines, Leucotriènes:</strong> puissant agent chimiotactique, vasodilatation, augmentation perméabilité vasculaire</li>
+                    <li><strong>Bradykinine, Sérotonine:</strong> augmentation perméabilité vasculaire, vasodilatation</li>
+                    <li><strong>Substance P, CGRP (Neuropeptides):</strong> stimule les terminaisons nerveuses périphériques</li>
+                    <li><strong>Histamine:</strong> augmentation perméabilité vasculaire</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Phase neuro-vasculaire de l'inflammation pulpaire</h3>
+                <ul>
+                    <li>Augmentation de la perméabilité vasculaire</li>
+                    <li>Vasodilatation des veinules post-capillaires</li>
+                    <li>L'œdème tissulaire</li>
+                    <li><strong>Augmentation de la pression intra-pulpaire</strong></li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Conséquences de l'inflammation pulpaire aiguë</h3>
+                <ul>
+                    <li>Entrave sérieuse à la circulation pulpaire</li>
+                    <li>Compression odémateuse en vase clos de fibres sensitives: violentes douleurs, irradiations</li>
+                    <li>La fonction minéralisatrice sera modifiée ou stoppée</li>
+                    <li>Destruction de l'architecture vasculaire pulpaire: favorise la nécrose</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Spécificité de l'inflammation pulpaire</h3>
+                <ul>
+                    <li>La pulpe est confinée dans une cavité aux parois inextensibles</li>
+                    <li>Vascularisation collatérale réduite</li>
+                    <li>Possibilité du drainage réduite</li>
+                </ul>
+            </div>
+        </section>
+        <section id="anatomopathologie" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h2>Anatomo-pathologie</h2>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Inflammation pulpaire aiguë</h3>
+                <ul>
+                    <li>Refoulement des odontoblastes à l'intérieur des tubuli dentinaires</li>
+                    <li>Rupture de la palissade des odontoblastes</li>
+                    <li>Vasodilatation artérielle: artérioles et capillaires très dilatés</li>
+                    <li>Stases veineuses: veinules post-capillaires</li>
+                    <li>Œdème: exsudation séreuse</li>
+                    <li>Diapédèse des PNN</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Inflammation pulpaire purulente</h3>
+                <ul>
+                    <li>Les thromboses et l'ischémie due à l'œdème engendrent la nécrose principalement de liquéfaction (pus)</li>
+                    <li>La suppuration peut rester localisée ou s'étendre à toute la pulpe</li>
+                    <li>Un micro-abcès localisé à une corne pulpaire est isolé du reste du tissu pulpaire</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Inflammation pulpaire chronique fermée</h3>
+                <ul>
+                    <li>Atrophie de la couche odontoblastique dans son ensemble</li>
+                    <li>Présence d'épaisses couches de dentine (dentine tertiaire)</li>
+                    <li>Dégénérescence vacuolaire des odontoblastes</li>
+                    <li>Phénomènes dégénératifs: fibrose et calcifications</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Inflammation pulpaire chronique ouverte</h3>
+                <p>Le plafond de la chambre pulpaire est ouvert partiellement ou totalement</p>
+                <ul>
+                    <li><strong>Forme hyperplasique:</strong> bourgeonnement de tissu granulomateux (polype pulpaire)</li>
+                    <li><strong>Forme ulcéreuse:</strong> plages de nécrose et d'exsudat avec infiltration lympho-plasmocytaire</li>
+                </ul>
+            </div>
+        </section>
+        <section id="formes" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    </div>
+                    <h2>Formes cliniques</h2>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Hyperhémie</h3>
+                <ul>
+                    <li>Le seuil douloureux abaissé: état d'hyperesthésie</li>
+                    <li>Douleur provoquée et cesse avec l'arrêt du stimuli</li>
+                    <li>Perte de substances coronaire +</li>
+                    <li><strong>Inflammation aiguë modérée et réversible</strong></li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Pulpite aiguë</h3>
+                <ul>
+                    <li>Symptomatologie majeure avec douleur intense et spontanée</li>
+                    <li>Douleurs irradiées et intermittentes</li>
+                    <li>Pulpe vivante</li>
+                    <li>Perte de substances coronaire +/-</li>
+                    <li><strong>Inflammation aiguë majeure et irréversible</strong></li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Pulpite aiguë avec participation desmodentale</h3>
+                <ul>
+                    <li>Douleurs moins fortes que la pulpite aiguë</li>
+                    <li>Le patient arrive à localiser la dent au contact</li>
+                    <li>Douleur permanente augmentée par la pression et la chaleur</li>
+                    <li>Percussion hypersensible</li>
+                    <li><strong>Inflammation aiguë totale irréversible atteignant le desmodonte périapical</strong></li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Pulpite chronique</h3>
+                <ul>
+                    <li>Symptomatologie modérée</li>
+                    <li>Antécédents de douleur spontanée</li>
+                    <li>Pulpe vivante</li>
+                    <li>Perte de substances coronaire +/-</li>
+                    <li><strong>Inflammation chronique irréversible</strong></li>
+                </ul>
+            </div>
+            <div class="key-takeaways">
+                <h3>À retenir</h3>
+                <ul>
+                    <li>Il n'y a pas de corrélation constante entre les différentes formes histopathologiques de l'inflammation pulpaire et les symptômes cliniques</li>
+                </ul>
+            </div>
+        </section>
+        <section id="therapeutique" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.89 3-5.5s-1.5-2.5-3-5.5l-7 7c-.7.7-1.69 1-2.5 1s-1.8-.3-2.5-1l-7-7c-1.5-1.5-3-2.5-3-2.5s.5-2 1-3l1-3c.3-.3.7-.7 1.5-1.5s2.5 0 2.5 0"/></svg>
+                    </div>
+                    <h2>Indications thérapeutQUES</h2>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Classification de Baume</h3>
+                <div class="comparison-grid">
+                    <div class="comparison-card">
+                        <h4>Catégorie I</h4>
+                        <p>Pulpe vivante sans symptomatologie</p>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>Catégorie II</h4>
+                        <p>Pulpe vivante avec symptomatologie provoquée (pulpite réversible)</p>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>Catégorie III</h4>
+                        <p>Pulpe vivante avec symptomatologie spontanée (pulpite irréversible)</p>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>Catégorie IV</h4>
+                        <p>Pulpe nécrosée accompagnée ou non de complications périapicales</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h3>En fonction du type d'inflammation</h3>
+                <ul>
+                    <li><strong>Inflammation pulpaire réversible:</strong> Conservation de la vitalité pulpaire</li>
+                    <li><strong>Inflammation pulpaire irréversible:</strong> Pulpectomie</li>
+                    <li><strong>Hyperhémie pulpaire:</strong> Conservation de la vitalité pulpaire</li>
+                    <li><strong>Pulpite aigue:</strong> Pulpectomie</li>
+                    <li><strong>Pulpite chronique:</strong> Pulpectomie</li>
+                    <li><strong>Pulpite aigue avec participation desmodentale:</strong> Pulpectomie</li>
+                </ul>
+            </div>
+        </section>
+        <section id="conclusion" class="section" role="region">
+            <div class="conclusion-box">
+                <h2>Conclusion</h2>
+                <p>Les pulpites sont des états inflammatoires de la pulpe dentaire, souvent algiques, et représentent un des principaux motifs de consultation en urgence dentaire.</p>
+            </div>
+            <div class="key-takeaways">
+                <h3>Points clés</h3>
+                <ul>
+                    <li>Une connaissance claire et précise de la pathogénie et de l'anatomopathologie des pulpites permettent au praticien de faire un bon diagnostic</li>
+                    <li>Le praticien peut ainsi pratiquer les bons gestes thérapeutQUES</li>
+                </ul>
+            </div>
+            
+            </div>
+        </section>
+    
+            
+            </div>
+    
+            
+    
+            <div class="nav-guides">
+                <a href="index.html" class="nav-guide-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Retour
+                </a>
+                <div class="nav-guides-links">
+                    <span class="nav-guides-label">Autres guides:</span>
+                    <a href="necrose-pulpaire.html" class="nav-guide-link">Nécrose</a>
+                    <a href="parodontites-apicales.html" class="nav-guide-link">Parodontites</a>
+                    <a href="semiologie-diagnostic.html" class="nav-guide-link">Sémiologie</a>
+                    <a href="senelite-pulpaire.html" class="nav-guide-link">Sénilité</a>
+                </div>
+            </div>
+    </main>
+    <script>
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.section).classList.add('active');});
+        });
+        document.getElementById('theme-toggle').addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark-mode');
+        });
+        document.querySelectorAll('.text-size-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.text-size-btn').forEach(b => b.classList.remove('active'));
+                document.documentElement.classList.remove('text-size-small', 'text-size-large', 'text-size-xlarge');
+                document.documentElement.classList.add('text-size-' + btn.dataset.size);
+                btn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

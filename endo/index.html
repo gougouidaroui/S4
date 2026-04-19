@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathologies Endodontiques - Guides d'Étude</title>
+    <meta name="description" content="Guides d'étude interactifs pour les cours de Pathologies Endodontiques en Médecine Dentaire">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+:root {
+    --primary: #0891B2;
+    --primary-dark: #0e7490;
+    --primary-light: #06b6d4;
+    --primary-bg: #ecfeff;
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --border-light: #f1f5f9;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --radius: 16px;
+    --radius-sm: 10px;
+    --radius-lg: 24px;
+    --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    --header-gradient-start: #0f172a;
+    --header-gradient-middle: #1e293b;
+    --header-gradient-end: #334155;
+}
+
+html.dark-mode {
+    --primary: #06b6d4;
+    --primary-dark: #0891B2;
+    --primary-bg: #164e63;
+    --bg: #0f172a;
+    --surface: #1e293b;
+    --text: #f1f5f9;
+    --text-muted: #cbd5e1;
+    --border: #334155;
+    --border-light: #475569;
+    --header-gradient-start: #020617;
+    --header-gradient-middle: #0f172a;
+    --header-gradient-end: #1e293b;
+    --icon-paro-bg: #164e63;
+    --icon-paro-text: #06b6d4;
+    --icon-necrose-bg: #451a03;
+    --icon-necrose-text: #fbbf24;
+    --icon-semio-bg: #374151;
+    --icon-semio-text: #9ca3af;
+    --icon-senelite-bg: #064e3b;
+    --icon-senelite-text: #10b981;
+    --icon-pulpites-bg: #500724;
+    --icon-pulpites-text: #f472b6;
+}
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--header-gradient-start) 0%, var(--header-gradient-middle) 50%, var(--header-gradient-end) 100%);
+            color: white;
+            padding: 5rem 1.5rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .header-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            backdrop-filter: blur(8px);
+        }
+
+        .header-icon svg {
+            width: 40px;
+            height: 40px;
+            opacity: 0.9;
+        }
+
+        .header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            margin-bottom: 0.75rem;
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            opacity: 0.85;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1.25rem;
+            background: rgba(8, 145, 178, 0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-title h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .guide-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-light);
+            transition: all var(--transition);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guide-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+
+        .guide-card.paro::before { background: linear-gradient(90deg, #0891B2, #06B6D4); }
+        .guide-card.necrose::before { background: linear-gradient(90deg, #F59E0B, #FBBF24); }
+        .guide-card.semio::before { background: linear-gradient(90deg, #6B7280, #9CA3AF); }
+        .guide-card.senelite::before { background: linear-gradient(90deg, #059669, #10B981); }
+        .guide-card.pulpites::before { background: linear-gradient(90deg, #EC4899, #F472B6); }
+
+        .guide-card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .guide-card.paro .guide-card-icon { background: var(--icon-paro-bg, var(--primary-bg)); color: var(--icon-paro-text, var(--primary)); }
+        .guide-card.necrose .guide-card-icon { background: #FEF3C7; color: #F59E0B; }
+        .guide-card.semio .guide-card-icon { background: #F3F4F6; color: #6B7280; }
+        .guide-card.senelite .guide-card-icon { background: #D1FAE5; color: #059669; }
+        .guide-card.pulpites .guide-card-icon { background: #FCE7F3; color: #EC4899; }
+
+        .guide-card-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .guide-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .guide-card p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            flex-grow: 1;
+            line-height: 1.65;
+        }
+
+        .guide-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .guide-card-meta svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .guide-card-arrow {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 32px;
+            height: 32px;
+            background: var(--bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition);
+        }
+
+        .guide-card:hover .guide-card-arrow {
+            background: var(--primary);
+            color: white;
+        }
+
+        .guide-card-arrow svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .nav-guides {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem;
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+            border: 1px solid var(--border-light);
+        }
+
+        .nav-guide-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: var(--primary);
+            color: white;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all var(--transition);
+        }
+
+        .nav-guide-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .nav-guide-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .nav-guides-links {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-left: auto;
+        }
+
+        .nav-guides-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .nav-guide-link {
+            padding: 0.5rem 1rem;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all var(--transition);
+        }
+
+        .nav-guide-link:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-bg);
+        }
+
+        @media (max-width: 768px) {
+            .header { padding: 2rem 1rem; }
+            .header h1 { font-size: 1.5rem; }
+            .header p { font-size: 1rem; }
+            .main { padding: 1rem; }
+            .card { padding: 1.25rem; margin-bottom: 1rem; }
+            .card h2 { font-size: 1.25rem; }
+            .card h3 { font-size: 1.1rem; }
+             .comparison-grid { grid-template-columns: 1fr; }
+             .guides-grid { grid-template-columns: 1fr; }
+             .diagram-flow { flex-direction: column; gap: 1rem; }
+            .diagram-box { width: 100%; max-width: 300px; }
+            .nav-guides { 
+                flex-direction: column; 
+                align-items: center; 
+                text-align: center; 
+                gap: 1rem; 
+                padding: 1rem;
+            }
+            .nav-guides-links { 
+                justify-content: center; 
+                margin-left: 0; 
+                gap: 0.5rem;
+            }
+            .nav-guide-btn { 
+                justify-content: center; 
+                width: 100%; 
+                max-width: 300px;
+            }
+            .controls-bar { 
+                flex-direction: column; 
+                align-items: center; 
+                gap: 1rem; 
+                padding: 1rem;
+                justify-content: center;
+            }
+            .controls-group { 
+                justify-content: center; 
+            }
+            .nav { 
+                gap: 0.5rem; 
+                padding: 0.75rem;
+            }
+            .nav-btn { 
+                padding: 0.5rem 0.75rem; 
+                font-size: 0.8rem; 
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="header-icon">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+            </div>
+            <h1>Pathologies Endodontiques</h1>
+            <p>Guides d'étude interactifs pour la compréhension des pathologies pulpaires et périapicales</p>
+            <div class="header-badge">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+                S4 - Médecine Dentaire
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="section-title">
+            <h2>Cours disponibles</h2>
+            <p>Sélectionnez un cours pour commencer votre révision</p>
+        </div>
+
+        <div class="guides-grid">
+            <a href="parodontites-apicales.html" class="guide-card paro">
+                <div class="guide-card-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                </div>
+                <h3>Parodontites Apicales</h3>
+                <p>Classification, étiologie, pathogénie et complications des lésions périapicales</p>
+                <div class="guide-card-meta">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                    </svg>
+                    Cours + Pr. SAKOUT
+                </div>
+                <div class="guide-card-arrow">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
+            </a>
+
+            <a href="necrose-pulpaire.html" class="guide-card necrose">
+                <div class="guide-card-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                </div>
+                <h3>Nécrose Pulpaire</h3>
+                <p>Définition, étiologie, histo-pathologie et approche thérapeutique</p>
+                <div class="guide-card-meta">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                    </svg>
+                    Cours + SM
+                </div>
+                <div class="guide-card-arrow">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
+            </a>
+
+            <a href="semiologie-diagnostic.html" class="guide-card semio">
+                <div class="guide-card-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </div>
+                <h3>Sémiologie et Diagnostic</h3>
+                <p>Démarche diagnostique, moyens de diagnostic et signes cliniques des pathologies</p>
+                <div class="guide-card-meta">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                    </svg>
+                    Cours de 2ème année
+                </div>
+                <div class="guide-card-arrow">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
+            </a>
+
+            <a href="senelite-pulpaire.html" class="guide-card senelite">
+                <div class="guide-card-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <h3>Sénilité Pulpaire</h3>
+                <p>Atrophie et dégénérescences pulpaires liées au vieillissement</p>
+                <div class="guide-card-meta">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                    </svg>
+                    Cours + SM
+                </div>
+                <div class="guide-card-arrow">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
+            </a>
+
+            <a href="pulpites.html" class="guide-card pulpites">
+                <div class="guide-card-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                </div>
+                <h3>Pulpites Aigües et Chroniques</h3>
+                <p>Réaction inflammatoire pulpaire, étiopathogénie et formes cliniques</p>
+                <div class="guide-card-meta">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                    </svg>
+                    Cours + Dr. KARIMI Z
+                </div>
+                <div class="guide-card-arrow">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>Ressources d'étude en Médecine Dentaire - S4</p>
+        <p style="margin-top: 1rem;">
+            <a href="../" style="color: var(--primary); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 0.375rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                Retour aux modules S4
+            </a>
+        </p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parodontites Apicales - Guide d'Étude</title>
+    <meta name="description" content="Guide d'étude sur les parodontites apicales et leurs complications">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0891B2;
+            --primary-dark: #0e7490;
+            --primary-bg: #ecfeff;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-lg: 24px;
+            --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+            --font-scale: 1;
+        }
+        html.dark-mode {
+            --primary: #06b6d4;
+            --primary-dark: #0891B2;
+            --primary-bg: #164e63;
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --text: #f1f5f9;
+            --text-muted: #cbd5e1;
+            --border: #334155;
+            --border-light: #475569;
+        }
+        html.text-size-small { --font-scale: 0.9; }
+        html.text-size-large { --font-scale: 1.1; }
+        html.text-size-xlarge { --font-scale: 1.25; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; font-size: calc(16px * var(--font-scale)); }
+        
+        p { margin-bottom: 1rem; color: var(--text); }
+        .card ul {
+            margin-top: 1.25rem;
+            margin-bottom: 1.25rem;
+            padding-inline-start: 2rem;
+            list-style: none;
+        }
+
+        .card ul li {
+            margin-bottom: 0.875rem;
+            color: var(--text-muted);
+            line-height: 1.75;
+            position: relative;
+            padding-left: 0.75rem;
+        }
+
+        .card ul li::before {
+            content: '•';
+            position: absolute;
+            left: -0.75rem;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+
+        .card ol {
+            margin-top: 1.25rem;
+            margin-bottom: 1.25rem;
+            padding-inline-start: 0;
+            list-style: none;
+            counter-reset: item;
+        }
+
+        .card ol li {
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+            line-height: 1.75;
+            position: relative;
+            padding-left: 2.5rem;
+            counter-increment: item;
+        }
+
+        .card ol li::before {
+            content: counter(item);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: var(--primary-bg);
+            color: var(--primary);
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        strong { color: var(--text); font-weight: 600; }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white; padding: 3rem 1.5rem;
+            position: relative; overflow: hidden;
+        }
+        .header::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .header-content { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+        .header h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 0.5rem; }
+        .header p { font-size: 1.125rem; opacity: 0.9; font-weight: 400; }
+        .header-badge { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; padding: 0.5rem 1rem; background: rgba(255,255,255,0.15); border-radius: 100px; font-size: 0.875rem; font-weight: 500; backdrop-filter: blur(4px); }
+
+        .nav-container { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+        html.dark-mode .nav-container { background: rgba(30, 41, 59, 0.95); }
+        .nav { max-width: 1200px; margin: 0 auto; display: flex; gap: 0.25rem; padding: 0.5rem; overflow-x: auto; scrollbar-width: none; }
+        .nav::-webkit-scrollbar { display: none; }
+        .nav-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1rem; border: none; background: transparent; color: var(--text-muted); font-size: 0.875rem; font-weight: 500; cursor: pointer; border-radius: var(--radius-sm); white-space: nowrap; transition: all var(--transition); min-height: 44px; }
+         .nav-btn:hover { background: var(--border-light); color: var(--text); }
+         .nav-btn.active { background: var(--primary); color: white; }
+
+         .controls-bar { display: flex; align-items: center; gap: 1.5rem; padding: 0.75rem 1.5rem; background: var(--surface); border-bottom: 1px solid var(--border); justify-content: flex-end; max-width: 100%; overflow-x: auto; }
+         .controls-group { display: flex; align-items: center; gap: 0.5rem; }
+         .controls-label { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); }
+         .control-btn { display: flex; align-items: center; justify-content: center; padding: 0.5rem 0.75rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; color: var(--text); font-size: 0.8rem; transition: all var(--transition); min-width: 36px; min-height: 36px; }
+         .control-btn:hover { background: var(--border-light); color: var(--primary); }
+         .control-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+          
+         .key-takeaways { background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(6, 182, 212, 0.04) 100%); border-left: 4px solid var(--primary); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2rem; margin-top: 2rem; }
+         .key-takeaways h3 { color: var(--primary); font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+         .key-takeaways h3::before { content: '✓'; font-weight: 800; }
+         .key-takeaways ul { margin: 0; padding-left: 1.5rem; }
+         .key-takeaways li { margin-bottom: 0.5rem; color: var(--text); line-height: 1.6; font-size: 0.95rem; }
+         .key-takeaways li::marker { color: var(--primary); font-weight: bold; }
+
+         .main { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
+         .section { display: none; animation: fadeIn 0.3s ease; }
+         .section.active { display: block; }
+         @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+         .card {
+             background: var(--surface);
+             border-radius: var(--radius-lg);
+             padding: 2rem;
+             margin-bottom: 1.5rem;
+             margin-top: 1.5rem;
+             box-shadow: var(--shadow);
+             border: 1px solid var(--border-light);
+             transition: box-shadow var(--transition);
+         }
+         .card:hover { box-shadow: var(--shadow-md); }
+         .card-header { display: flex; align-items: center; gap: 1.25rem; margin-bottom: 1.5rem; }
+         .card-icon { width: 52px; height: 52px; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--primary-bg); color: var(--primary); }
+         .card-icon svg { width: 26px; height: 26px; }
+         .card h2 { font-size: 1.5rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid var(--border); }
+         .card h3 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1.25rem; color: var(--text); }
+         .card h4 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 1rem; color: var(--text); }
+         .card p { color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.75; }
+
+         .diagram { background: var(--primary-bg); border-radius: var(--radius); padding: 1.5rem; text-align: center; margin: 1rem 0; }
+         .diagram-flow { display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
+         .diagram-box { background: var(--surface); padding: 0.75rem 1rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); min-width: 100px; font-size: 0.85rem; }
+         .diagram-box small { display: block; font-size: 0.7rem; color: var(--text-muted); margin-top: 0.25rem; }
+         .diagram-box.highlight { background: var(--primary); color: white; }
+         .diagram-box.highlight small { color: rgba(255,255,255,0.8); }
+         .diagram-arrow { font-size: 1.25rem; color: var(--text-muted); }
+
+         .comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin: 1.25rem 0; }
+         .comparison-card { background: var(--bg); border-radius: var(--radius); padding: 1.5rem; border: 1px solid var(--border); transition: all var(--transition); }
+         .comparison-card:hover { border-color: var(--primary); box-shadow: 0 4px 12px rgba(8, 145, 178, 0.1); }
+         .comparison-card h4 { font-size: 1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; color: var(--text); }
+         .comparison-card h4 svg { color: var(--primary); }
+         .comparison-card ul { list-style: none; font-size: 0.9rem; color: var(--text-muted); }
+         .comparison-card li { padding: 0.5rem 0; padding-left: 1.25rem; position: relative; line-height: 1.5; }
+         .comparison-card li::before { content: '•'; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
+
+         .accordion { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0; background: var(--surface); }
+         .accordion-header { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; background: var(--bg); cursor: pointer; font-weight: 600; font-size: 1rem; color: var(--text); transition: all var(--transition); min-height: 60px; border-left: 4px solid transparent; }
+         .accordion-header:hover { background: var(--border-light); border-left-color: var(--primary); }
+         .accordion.open .accordion-header { background: var(--primary-bg); border-left-color: var(--primary); color: var(--primary); }
+          .accordion-content { display: none; padding: 1.5rem; }
+          .accordion-content p { margin-bottom: 1.25rem; color: var(--text-muted); line-height: 1.75; }
+          .accordion-content h4 { margin-top: 1.5rem; margin-bottom: 1rem; color: var(--text); font-size: 1.1rem; font-weight: 600; }
+          .accordion-content ul { margin: 1.25rem 0; padding-inline-start: 2rem; list-style: none; }
+          .accordion-content ul li { margin-bottom: 0.875rem; color: var(--text-muted); line-height: 1.75; position: relative; padding-left: 0.75rem; }
+          .accordion-content ul li::before { content: '•'; position: absolute; left: -0.75rem; color: var(--primary); font-weight: 600; font-size: 1.25rem; }
+          .accordion-content ol { margin: 1.25rem 0; padding-inline-start: 0; list-style: none; counter-reset: item; }
+          .accordion-content ol li { margin-bottom: 1rem; color: #475569; line-height: 1.75; position: relative; padding-left: 2.5rem; counter-increment: item; }
+          .accordion-content ol li::before { content: counter(item); position: absolute; left: 0; top: 0; background: var(--primary-bg); color: var(--primary); width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: 600; font-size: 0.875rem; }
+         .accordion.open .accordion-content { display: block; animation: slideDown 0.2s ease; }
+         @keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+         .accordion-arrow { transition: transform var(--transition); color: var(--text-muted); }
+         .accordion.open .accordion-arrow { transform: rotate(180deg); }
+
+         .table-container { overflow-x: auto; margin: 1rem 0; border-radius: var(--radius); border: 1px solid var(--border); }
+         table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+         th, td { padding: 0.875rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+         th { background: var(--bg); font-weight: 600; color: var(--text); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+         tbody tr:last-child td { border-bottom: none; }
+         tbody tr:hover { background: var(--bg); }
+
+         .conclusion-box { background: linear-gradient(135deg, var(--primary) 0%, #4F46E5 100%); color: white; padding: 2rem; border-radius: var(--radius-lg); text-align: center; margin: 1.5rem 0; }
+         .conclusion-box h2 { font-size: 1.5rem; margin-bottom: 0.75rem; color: white; }
+          .conclusion-box p { font-size: 1rem; opacity: 0.95; color: white; }
+
+          .nav-guides { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; padding: 1.5rem; background: var(--surface); border-radius: var(--radius-lg); box-shadow: var(--shadow); margin-top: 2rem; border: 1px solid var(--border-light); }
+          .nav-guide-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.25rem; background: var(--primary); color: white; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all var(--transition); }
+          .nav-guide-btn:hover { background: var(--primary-dark); }
+          .nav-guide-btn svg { width: 18px; height: 18px; }
+          .nav-guides-links { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-left: auto; }
+          .nav-guides-label { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+          .nav-guide-link { padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.85rem; color: var(--text-muted); text-decoration: none; transition: all var(--transition); }
+          .nav-guide-link:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-bg); }
+
+         
+             .header h1 { font-size: 1.5rem; }
+             .main { padding: 1rem; }
+             .card { padding: 1.25rem; }
+             .comparison-grid { grid-template-columns: 1fr; }
+             .diagram-flow { flex-direction: column; }}
+    
+        @media (max-width: 768px) {
+            .header { padding: 2rem 1rem; }
+            .header h1 { font-size: 1.5rem; }
+            .header p { font-size: 1rem; }
+            .main { padding: 1rem; }
+            .card { padding: 1.25rem; margin-bottom: 1rem; }
+            .card h2 { font-size: 1.25rem; }
+            .card h3 { font-size: 1.1rem; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .diagram-flow { flex-direction: column; gap: 1rem; }
+            .diagram-box { width: 100%; max-width: 300px; }
+            .nav-guides { 
+                flex-direction: column; 
+                align-items: center; 
+                text-align: center; 
+                gap: 1rem; 
+                padding: 1rem;
+            }
+            .nav-guides-links { 
+                justify-content: center; 
+                margin-left: 0; 
+                gap: 0.5rem;
+            }
+            .nav-guide-btn { 
+                justify-content: center; 
+                width: 100%; 
+                max-width: 300px;
+            }
+            .controls-bar { 
+                flex-direction: column; 
+                align-items: center; 
+                gap: 1rem; 
+                padding: 1rem;
+                justify-content: center;
+            }
+            .controls-group { 
+                justify-content: center; 
+            }
+            .nav { 
+                gap: 0.5rem; 
+                padding: 0.75rem;
+            }
+            .nav-btn { 
+                padding: 0.5rem 0.75rem; 
+                font-size: 0.8rem; 
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>Les Parodontites Apicales</h1>
+            <p>Guide d'Étude - Classification, étiologie et complications</p>
+            <span class="header-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                Pr. M. SAKOUT
+            </span>
+        </div>
+    </header>
+
+    <nav class="nav-container" role="navigation" aria-label="Navigation principale">
+        <div class="nav">
+            <button class="nav-btn active" data-section="objectifs">Objectifs</button>
+            <button class="nav-btn" data-section="introduction">Introduction</button>
+            <button class="nav-btn" data-section="definition">Définition</button>
+            <button class="nav-btn" data-section="classification">Classification</button>
+            <button class="nav-btn" data-section="etiologie">Étiologie</button>
+            <button class="nav-btn" data-section="pathogenie">Pathogénie</button>
+            <button class="nav-btn" data-section="diagnostic">Diagnostic</button>
+            <button class="nav-btn" data-section="therapeutique">Thérapeutique</button>
+            <button class="nav-btn" data-section="complications">Complications</button>
+            <button class="nav-btn" data-section="conclusion">Conclusion</button>
+        </div>
+    </nav>
+
+    <div class="controls-bar">
+        <div class="controls-group">
+            <span class="controls-label">Thème:</span>
+            <button class="control-btn" id="theme-toggle" title="Basculer le mode sombre">🌙</button>
+        </div>
+        <div class="controls-group">
+            <span class="controls-label">Taille:</span>
+            <button class="control-btn text-size-btn" data-size="small" title="Petite taille">A-</button>
+            <button class="control-btn text-size-btn active" data-size="normal" title="Taille normale">A</button>
+            <button class="control-btn text-size-btn" data-size="large" title="Grande taille">A+</button>
+            <button class="control-btn text-size-btn" data-size="xlarge" title="Très grande taille">A++</button>
+        </div>
+    </div>
+
+    <main class="main">
+        <section id="objectifs" class="section active" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h2>Objectifs du cours</h2>
+                </div>
+                <ul>
+                    <li>Définir les parodontites apicales</li>
+                    <li>Mettre le point sur leur classification</li>
+                    <li>Élucider leurs mécanismes étio-pathogéniques</li>
+                    <li>Mettre le point sur les critères diagnostiques des différentes formes cliniques des parodontites apicales</li>
+                    <li>Connaître les complications loco-régionales et générales des parodontites apicales</li>
+                </ul>
+            </div>
+
+            
+            </div>
+        </section>
+
+        
+
+        <section id="introduction" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    </div>
+                    <h2>Introduction</h2>
+                </div>
+                <p>Les parodontites apicales sont des conséquences de l'infection endodontique:</p>
+                <div class="diagram">
+                    <div class="diagram-flow">
+                        <div class="diagram-box">Nécrose pulpaire</div>
+                        <span class="diagram-arrow">→</span>
+                        <div class="diagram-box">Absence de traitement<br>ou traitement inadéquat</div>
+                        <span class="diagram-arrow">→</span>
+                        <div class="diagram-box highlight">Parodontites apicales</div>
+                    </div>
+                </div>
+
+                <h3>Complications</h3>
+                <div class="comparison-grid">
+                    <div class="comparison-card">
+                        <h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            Complications loco-régionales
+                        </h4>
+                        <ul>
+                            <li>Diffusion de l'infection dans les tissus voisins</li>
+                            <li>Cellulites cervico-faciales</li>
+                            <li>Ostéites</li>
+                            <li>Sinusites maxillaires</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                            Complications générales
+                        </h4>
+                        <ul>
+                            <li>Infection focale</li>
+                            <li>Greffe à distance</li>
+                            <li>Septicémie</li>
+                            <li>Infection d'un organe cible</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            </div>
+        </section>
+
+        <section id="definition" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h2>Définition</h2>
+                </div>
+                <p>Les parodontites apicales sont définies comme étant des <strong>lésions inflammatoires du parodonte profond périradiculaire</strong>, principalement de la région périapicale, <strong>consécutives à l'infection bactérienne de l'endodonte</strong>.</p>
+            </div>
+
+            <div class="key-takeaways">
+                <h3>À retenir</h3>
+                <ul>
+                    <li>Inflammation du parodonte profond périapical</li>
+                    <li>D'origine infectieuse (bactéries endodontiques)</li>
+                    <li>Conséquence de la nécrose pulpaire non traitée</li>
+                </ul>
+            </div>
+            
+            </div>
+        </section>
+
+        <section id="classification" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    </div>
+                    <h2>Classification</h2>
+                </div>
+                <p><strong>Classification étio-pathogénique (LASFARGUES 2001)</strong></p>
+                <p>Classification en deux lignées:</p>
+                <div class="diagram">
+                    <div class="diagram-flow">
+                        <div class="diagram-box highlight">Ligne aiguë</div>
+                        <span class="diagram-arrow">→</span>
+                        <div class="diagram-box">Parodontites apicales aiguës</div>
+                    </div>
+                    <div class="diagram-flow" style="margin-top: 1rem;">
+                        <div class="diagram-box highlight">Ligne chronique</div>
+                        <span class="diagram-arrow">→</span>
+                        <div class="diagram-box">Parodontites apicales chroniques</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Parodontites apicales aiguës</h3>
+                <p>Réactions inflammatoires aiguës des tissus périapicaux. Différents stades évolutifs:</p>
+                <ol>
+                    <li><strong>Parodontite apicale aiguë primaire débutante</strong><br><small>Passage initial de l'inflammation pulpaire dans les tissus périapicaux</small></li>
+                    <li><strong>Parodontite apicale aiguë primaire avancée</strong><br><small>Inflammation aiguë exsudative du périapex (Desmodontite aiguë)</small></li>
+                    <li><strong>Parodontite apicale aiguë abcédée</strong><br><small>Suppuration localisée au niveau du périapex</small></li>
+                    <li><strong>Parodontite apicale aiguë liée au trauma occlusal</strong><br><small>Inflammation aiguë transitoire d'origine non bactérienne</small></li>
+                </ol>
+            </div>
+
+            <div class="card">
+                <h3>Parodontites apicales chroniques</h3>
+                <p>Inflammation chronique des tissus périapicaux évoluant sur une longue durée:</p>
+                <ol>
+                    <li><strong>Forme simple</strong><br><small>Inflammation chronique avec lyse osseuse diffuse</small></li>
+                    <li><strong>Granulome</strong><br><small>Réaction spécifique par formation d'un tissu de granulation</small></li>
+                    <li><strong>Épithélio-granulome</strong><br><small>Granulome épithélialisé</small></li>
+                    <li><strong>Kyste périapical</strong><br><small>Inflammation kystique avec épithélium distinct (kyste vrai ou kyste en poche)</small></li>
+                    <li><strong>Ostéite condensante</strong><br><small>Hyperactivité du tissu osseux suite à la pulpite chronique</small></li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="etiologie" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                    </div>
+                    <h2>Étiologie</h2>
+                </div>
+                <p>Étiologie essentiellement locale:</p>
+                <ul>
+                    <li><strong>Causes infectieuses:</strong> pulpite totale, nécrose septique, refoulement septique</li>
+                    <li><strong>Causes physiques:</strong> dépassement instrumental, trauma</li>
+                    <li><strong>Causes chimiques:</strong> toxicity des solutions d'irrigation, antiseptiques</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Causes infectieuses</h3>
+                <p>L'infection endodontique tend à diffuser et à occasionner une inflammation et même une infection des tissues périradiculaires:</p>
+                <ul>
+                    <li>Pulpite totale</li>
+                    <li><strong>Nécrose septique:</strong> toxines bactériennes (cause principale)</li>
+                    <li>Refoulement septique lors des traitements endodontiques (cause iatrogène)</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Causes physiques</h3>
+                <p>Exclusivement d'ordre mécanique - irritation mécanique des tissues périapicaux:</p>
+                <ul>
+                    <li>Dépassement instrumental lors de la mise en forme canalaire</li>
+                    <li>Dépassement instrumental lors d'un faux canal</li>
+                    <li>Dépassement de matériau d'obturation canalaire</li>
+                </ul>
+                <p><em>Sont tous iatrogènes</em></p>
+            </div>
+
+            <div class="card">
+                <h3>Causes chimiques</h3>
+                <p>Essentiellement médicamenteuses - irritation chimique des tissues périapicaux:</p>
+                <ul>
+                    <li>Toxicité d'une solution d'irrigation</li>
+                    <li>Utilisation d'antiseptiques volatils à forte dose</li>
+                    <li>Dépassement de matériau d'obturation canalaire</li>
+                </ul>
+            </div>
+            
+            </div>
+        </section>
+
+        <section id="pathogenie" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.2 2.2 0 0 1-3.12-3.12l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h2>Pathogénie</h2>
+                </div>
+                <p>Les parodontites apicales résultent d'une <strong>réaction inflammatoire locale de défense</strong> qui tend à maintenir l'infection à l'intérieur du système endodontique et à empêcher sa diffusion dans l'organisme.</p>
+            </div>
+
+            <div class="card">
+                <h3>Voies de communication endo-parodontales</h3>
+                <ul>
+                    <li>Canal principal</li>
+                    <li>Canal lateral</li>
+                    <li>Canal secondaire</li>
+                    <li>Canal accessory</li>
+                    <li>Tubuli dentinaires (en l'absence du cément)</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Facteurs d'agression</h3>
+                <p><strong>Flore bactérienne endodontique</strong></p>
+                <ul>
+                    <li>Infection canalaire très polymorphe: 88 souches bactériennes recensées</li>
+                    <li>Maximum 8 souches par canal infecté (5 à 6 espèces en moyenne)</li>
+                    <li>10² à 10⁸ bactéries par canal infecté</li>
+                </ul>
+                <div class="diagram" style="margin-top: 1rem;">
+                    <div class="diagram-flow">
+                        <div class="diagram-box">Dent non cariée, nécrosée, avec PA<br><small>Anaérobies stricts: >90%</small></div>
+                        <span class="diagram-arrow">≠</span>
+                        <div class="diagram-box">Dent cariée, nécrosée, avec PA<br><small>Anaérobies stricts: <70%</small></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Sous-produits bactériens</h3>
+                <ul>
+                    <li>Les enzymes protéolytiques</li>
+                    <li>Les exotoxines</li>
+                    <li>Les endotoxines</li>
+                </ul>
+                <p><strong>Conséquences:</strong></p>
+                <ul>
+                    <li>Lyse des membranes des leucocytes</li>
+                    <li>Favorisent la pénétration tissulaire des micro-organismes</li>
+                    <li>Activation de médiateurs (TNF-α, interleukines) avec effets: résorption osseuse et formation de granulomes</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Facteurs de défense de l'hôte</h3>
+                <h4>Cellules de défense</h4>
+                <ul>
+                    <li><strong>Polymorphonucléaires neutrophiles (PMN):</strong> 1ère ligne de défense, activité phagocytaire</li>
+                    <li><strong>Macrophages:</strong> production de cytokines, protéases et facteurs de croissance</li>
+                    <li><strong>Cellules épithéliales de Malassez:</strong> bouchon apical</li>
+                    <li><strong>Ostéoclastes:</strong> résorption osseuse, cémentaire et dentinaire</li>
+                    <li><strong>Lymphocytes T:</strong> production de cytokines</li>
+                    <li><strong>Plasmocytes:</strong> produisent les anticorps (Ig)</li>
+                </ul>
+
+                <h4>Médiateurs moléculaires</h4>
+                <ul>
+                    <li><strong>Dérivés de l'acide arachidonique:</strong> leucotriènes (LTB4), prostaglandines (PGE2)</li>
+                    <li><strong>Amines vaso-actives:</strong> bradykinine, sérotonine, histamine</li>
+                    <li><strong>Neuropeptides:</strong> substance P, CGRP, NPY, VIP</li>
+                    <li><strong>Cytokines:</strong> IL 1,6,10,11, TNF</li>
+                    <li><strong>Métalloprotéinases:</strong> dégradation des matrices extracellulaires</li>
+                </ul>
+            </div>
+            
+            </div>
+            
+            </div>
+        </section>
+
+        <section id="diagnostic" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    </div>
+                    <h2>Diagnostic clinique</h2>
+                </div>
+                <h3>Moyens de diagnostic</h3>
+                <ul>
+                    <li>Anamnèse: état général, motif de consultation</li>
+                    <li>Percussion</li>
+                    <li>Palpation</li>
+                    <li>Sondage parodontal</li>
+                    <li>Examen radiographique</li>
+                    <li>Inspection visuelle</li>
+                    <li>Tests de sensibilité pulpaires</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Parodontites apicales aiguës</h3>
+                <ul>
+                    <li>Douleur d'origine périapicale: urgence endodontique</li>
+                    <li>Réponse négative aux tests de sensibilité pulpaire (sauf PAAIaire débutante)</li>
+                    <li>Modifications radiographiques: du normal jusqu'aux images radio-claires périapicales</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Parodontites apicales chroniques</h3>
+                <ul>
+                    <li><strong>Lésions le plus souvent asymptomatiques</strong></li>
+                    <li>Découverte le plus souvent fortuite:
+                        <ul>
+                            <li>examen clinique de routine</li>
+                            <li>bilan de recherche de foyers infectieux</li>
+                        </ul>
+                    </li>
+                    <li>Tests de sensibilité pulpaires: négatifs</li>
+                    <li><strong>Examen radiographique:</strong> déterminant, confirme le diagnostic</li>
+                </ul>
+            </div>
+            
+            </div>
+        </section>
+
+        <section id="therapeutique" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.89 3-5.5s-1.5-2.5-3-5.5l-7 7c-.7.7-1.69 1-2.5 1s-1.8-.3-2.5-1l-7-7c-1.5-1.5-3-2.5-3-2.5s.5-2 1-3l1-3c.3-.3.7-.7 1.5-1.5s2.5 0 2.5 0 2.5 0 2.5 0 2.5 0 2.5 0 2.5 0 2.5 0"/></svg>
+                    </div>
+                    <h2>Principes thérapeutQUES</h2>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Traitement étiologique</h3>
+                <p><strong>Parodontites apicales aiguës:</strong></p>
+                <ul>
+                    <li>Gérer d'abord l'urgence</li>
+                    <li>Ensuite thérapeutQUE endodontique correcte (sauf PAA aseptiques)</li>
+                </ul>
+                <p><strong>Parodontites apicales chroniques:</strong></p>
+                <ul>
+                    <li>Thérapeutique endodontique correcte</li>
+                    <li>Suivi clinique et radiographique: cicatrisation de la lésion ou absence de guérison</li>
+                    <li>Si absence de guérison: chirurgie endodontique</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Conditions de cicatrisation périapicale</h3>
+                <ul>
+                    <li><strong>Contrôle de l'infection:</strong> assainissement du système endodontique
+                        <ul>
+                            <li>Mise en forme canalaire adequate</li>
+                            <li>Solutions d'irrigation</li>
+                            <li>Médication intracanalaire</li>
+                        </ul>
+                    </li>
+                    <li><strong>Obturation canalaire tridimensionnelle hermétique</strong></li>
+                    <li><strong>Restauration coronaire étanche et fonctionnelle</strong></li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Cinétique de cicatrisation</h3>
+                <div class="comparison-grid">
+                    <div class="comparison-card">
+                        <h4>Succès</h4>
+                        <ul>
+                            <li>90% des cas: signes de cicatrisation à 1 an</li>
+                            <li>50%: complètement cicatrisées à 1 an</li>
+                            <li>À 2 ans: majorité des lésions cicatrisée</li>
+                            <li>Certaines entre 3 et 5 ans</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>Échec</h4>
+                        <ul>
+                            <li>10-20% des cas: absence de cicatrisation</li>
+                            <li>Infection résiduelle intracanalaire</li>
+                            <li>Infection extra radiculaire</li>
+                            <li>Vrai kyste</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="complications" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <h2>Complications</h2>
+                </div>
+                <p><strong>Foyers infectieux dentaires</strong> (foyers chroniques)</p>
+            </div>
+
+            <div class="card">
+                <h3>Complications loco-régionales</h3>
+                <ul>
+                    <li>Cellulites cervico-faciales</li>
+                    <li>Ostéites</li>
+                    <li>Sinusites maxillaires</li>
+                    <li>Thrombophlébites</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Complications générales</h3>
+                <ul>
+                    <li>Septicémie</li>
+                    <li>Infection d'un organe cible</li>
+                </ul>
+                <div class="diagram">
+                    <div class="diagram-flow">
+                        <div class="diagram-box">Absence de traitement<br>ou traitement inadéquat</div>
+                        <span class="diagram-arrow">→</span>
+                        <div class="diagram-box highlight">Complications</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion" class="section" role="region">
+            <div class="conclusion-box">
+                <h2>Conclusion</h2>
+                <p>Les parodontites apicales sont des conséquences de la nécrose pulpaire ou des traitements canalaires défectueux.</p>
+            </div>
+
+            <div class="card">
+                <h3>Points clés</h3>
+                <ul>
+                    <li><strong>Parodontites apicales aiguës:</strong> symptomatiques</li>
+                    <li><strong>Parodontites apicales chroniques:</strong> asymptomatiques</li>
+                    <li>Complications loco-régionales et générales: PAC+++</li>
+                </ul>
+            </div>
+
+            <div class="key-takeaways">
+                <h3>Intérêt clinique</h3>
+                <ul>
+                    <li>Dépistage précoce</li>
+                    <li>Attitude thérapeutQUE correcte</li>
+                </ul>
+            </div>
+
+            
+            </div>
+        </section>
+    
+            
+            </div>
+    
+            
+    
+            <div class="nav-guides">
+                <a href="index.html" class="nav-guide-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Retour
+                </a>
+                <div class="nav-guides-links">
+                    <span class="nav-guides-label">Autres guides:</span>
+                    <a href="necrose-pulpaire.html" class="nav-guide-link">Nécrose</a>
+                    <a href="pulpites.html" class="nav-guide-link">Pulpites</a>
+                    <a href="semiologie-diagnostic.html" class="nav-guide-link">Sémiologie</a>
+                    <a href="senelite-pulpaire.html" class="nav-guide-link">Sénilité</a>
+                </div>
+            </div>
+    </main>
+
+    <script>
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.section).classList.add('active');
+            });
+        });
+
+        document.getElementById('theme-toggle').addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark-mode');
+        });
+
+        document.querySelectorAll('.text-size-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.text-size-btn').forEach(b => b.classList.remove('active'));
+                document.documentElement.classList.remove('text-size-small', 'text-size-large', 'text-size-xlarge');
+                document.documentElement.classList.add('text-size-' + btn.dataset.size);
+                btn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

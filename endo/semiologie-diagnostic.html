@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sémiologie et Diagnostic - Guide d'Étude</title>
+    <meta name="description" content="Guide d'étude sur la sémiologie et le diagnostic en odontologie conservatrice">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #6B7280;
+            --primary-dark: #4B5563;
+            --primary-bg: #F3F4F6;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-lg: 24px;
+            --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+            --font-scale: 1;
+        }
+        html.dark-mode {
+            --primary: #9CA3AF;
+            --primary-dark: #6B7280;
+            --primary-bg: #374151;
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --text: #f1f5f9;
+            --text-muted: #cbd5e1;
+            --border: #334155;
+            --border-light: #475569;
+        }
+        html.text-size-small { --font-scale: 0.9; }
+        html.text-size-large { --font-scale: 1.1; }
+        html.text-size-xlarge { --font-scale: 1.25; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; font-size: calc(16px * var(--font-scale)); }
+        p { margin-bottom: 1rem; color: var(--text); }
+        .card ul { margin-top: 1.25rem; margin-bottom: 1.25rem; padding-inline-start: 2rem; list-style: none; }
+        .card ul li { margin-bottom: 0.875rem; color: var(--text-muted); line-height: 1.75; position: relative; padding-left: 0.75rem; }
+        .card ul li::before { content: '•'; position: absolute; left: -0.75rem; color: var(--primary); font-weight: 600; font-size: 1.25rem; }
+        .card ol { margin-top: 1.25rem; margin-bottom: 1.25rem; padding-inline-start: 0; list-style: none; counter-reset: item; }
+        .card ol li { margin-bottom: 1rem; color: var(--text-muted); line-height: 1.75; position: relative; padding-left: 2.5rem; counter-increment: item; }
+        .card ol li::before { content: counter(item); position: absolute; left: 0; top: 0; background: var(--primary-bg); color: var(--primary); width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: 600; font-size: 0.875rem; }
+        strong { color: var(--text); font-weight: 600; }
+        .header { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: white; padding: 3rem 1.5rem; position: relative; overflow: hidden; }
+        .header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; }
+        .header-content { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+        .header h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 0.5rem; }
+        .header p { font-size: 1.125rem; opacity: 0.9; font-weight: 400; }
+        .header-badge { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; padding: 0.5rem 1rem; background: rgba(255,255,255,0.15); border-radius: 100px; font-size: 0.875rem; font-weight: 500; backdrop-filter: blur(4px); }
+        .nav-container { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+        html.dark-mode .nav-container { background: rgba(30, 41, 59, 0.95); }
+        .nav { max-width: 1200px; margin: 0 auto; display: flex; gap: 0.25rem; padding: 0.5rem; overflow-x: auto; scrollbar-width: none; }
+        .nav::-webkit-scrollbar { display: none; }
+        .nav-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1rem; border: none; background: transparent; color: var(--text-muted); font-size: 0.875rem; font-weight: 500; cursor: pointer; border-radius: var(--radius-sm); white-space: nowrap; transition: all var(--transition); min-height: 44px; }
+        .nav-btn:hover { background: var(--border-light); color: var(--text); }
+        .nav-btn.active { background: var(--primary); color: white; }
+        .controls-bar { display: flex; align-items: center; gap: 1.5rem; padding: 0.75rem 1.5rem; background: var(--surface); border-bottom: 1px solid var(--border); justify-content: flex-end; max-width: 100%; overflow-x: auto; }
+        .controls-group { display: flex; align-items: center; gap: 0.5rem; }
+        .controls-label { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); }
+        .control-btn { display: flex; align-items: center; justify-content: center; padding: 0.5rem 0.75rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; color: var(--text); font-size: 0.8rem; transition: all var(--transition); min-width: 36px; min-height: 36px; }
+        .control-btn:hover { background: var(--border-light); color: var(--primary); }
+        .control-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .key-takeaways { background: linear-gradient(135deg, rgba(107, 114, 128, 0.08) 0%, rgba(107, 114, 128, 0.04) 100%); border-left: 4px solid var(--primary); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2rem; margin-top: 2rem; }
+        .key-takeaways h3 { color: var(--primary); font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .key-takeaways h3::before { content: '✓'; font-weight: 800; }
+        .key-takeaways ul { margin: 0; padding-left: 1.5rem; }
+        .key-takeaways li { margin-bottom: 0.5rem; color: var(--text); line-height: 1.6; font-size: 0.95rem; }
+        .key-takeaways li::marker { color: var(--primary); font-weight: bold; }
+        .main { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
+        .section { display: none; animation: fadeIn 0.3s ease; }
+        .section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        .card { background: var(--surface); border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 1.5rem; margin-top: 1.5rem; box-shadow: var(--shadow); border: 1px solid var(--border-light); transition: box-shadow var(--transition); }
+        .card:hover { box-shadow: var(--shadow-md); }
+        .card-header { display: flex; align-items: center; gap: 1.25rem; margin-bottom: 1.5rem; }
+        .card-icon { width: 52px; height: 52px; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--primary-bg); color: var(--primary); }
+        .card-icon svg { width: 26px; height: 26px; }
+        .card h2 { font-size: 1.5rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid var(--border); }
+        .card h3 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1.25rem; color: var(--text); }
+        .card h4 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 1rem; color: var(--text); }
+        .card p { color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.75; }
+        .diagram { background: var(--primary-bg); border-radius: var(--radius); padding: 1.5rem; text-align: center; margin: 1rem 0; }
+        .diagram-flow { display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
+        .diagram-box { background: var(--surface); padding: 0.75rem 1rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); min-width: 100px; font-size: 0.85rem; }
+        .diagram-box small { display: block; font-size: 0.7rem; color: var(--text-muted); margin-top: 0.25rem; }
+        .diagram-box.highlight { background: var(--primary); color: white; }
+        .diagram-box.highlight small { color: rgba(255,255,255,0.8); }
+        .diagram-arrow { font-size: 1.25rem; color: var(--text-muted); }
+        .comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin: 1.25rem 0; }
+        .comparison-card { background: var(--bg); border-radius: var(--radius); padding: 1.5rem; border: 1px solid var(--border); transition: all var(--transition); }
+        .comparison-card:hover { border-color: var(--primary); box-shadow: 0 4px 12px rgba(107, 114, 128, 0.1); }
+        .comparison-card h4 { font-size: 1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; color: var(--text); }
+        .comparison-card h4 svg { color: var(--primary); }
+        .comparison-card ul { list-style: none; font-size: 0.9rem; color: var(--text-muted); }
+        .comparison-card li { padding: 0.5rem 0; padding-left: 1.25rem; position: relative; line-height: 1.5; }
+        .comparison-card li::before { content: '•'; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
+        .conclusion-box { background: linear-gradient(135deg, var(--primary) 0%, #374151 100%); color: white; padding: 2rem; border-radius: var(--radius-lg); text-align: center; margin: 1.5rem 0; }
+        .conclusion-box h2 { font-size: 1.5rem; margin-bottom: 0.75rem; color: white; }
+         .conclusion-box p { font-size: 1rem; opacity: 0.95; color: white; }
+
+         .nav-guides { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; padding: 1.5rem; background: var(--surface); border-radius: var(--radius-lg); box-shadow: var(--shadow); margin-top: 2rem; border: 1px solid var(--border-light); }
+         .nav-guide-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.25rem; background: var(--primary); color: white; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all var(--transition); }
+         .nav-guide-btn:hover { background: var(--primary-dark); }
+         .nav-guide-btn svg { width: 18px; height: 18px; }
+         .nav-guides-links { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-left: auto; }
+         .nav-guides-label { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+         .nav-guide-link { padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.85rem; color: var(--text-muted); text-decoration: none; transition: all var(--transition); }
+         .nav-guide-link:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-bg); }
+         .table-container { overflow-x: auto; margin: 1.5rem 0; border-radius: var(--radius); box-shadow: var(--shadow); }
+         table { width: 100%; border-collapse: collapse; background: var(--surface); font-size: calc(0.85rem * var(--font-scale)); }
+         th { background: var(--primary-bg); color: var(--text); font-weight: 600; text-align: left; padding: 1rem 0.875rem; white-space: nowrap; border-bottom: 2px solid var(--border); }
+         td { padding: 0.875rem; border-bottom: 1px solid var(--border-light); color: var(--text-muted); vertical-align: top; }
+         tr:last-child td { border-bottom: none; }
+         tbody tr:hover { background: var(--bg); }
+         tbody tr:nth-child(even) { background: var(--bg); }
+         tbody tr:nth-child(even):hover { background: var(--border-light); }
+         td strong { color: var(--text); }
+          .header h1 { font-size: 1.5rem; } .main { padding: 1rem; } .card { padding: 1.25rem; } .comparison-grid { grid-template-columns: 1fr; } .diagram-flow { flex-direction: column; } table { font-size: 0.75rem; } th, td { padding: 0.625rem 0.5rem; } }
+    
+        @media (max-width: 768px) {
+            .header { padding: 2rem 1rem; }
+            .header h1 { font-size: 1.5rem; }
+            .header p { font-size: 1rem; }
+            .main { padding: 1rem; }
+            .card { padding: 1.25rem; margin-bottom: 1rem; }
+            .card h2 { font-size: 1.25rem; }
+            .card h3 { font-size: 1.1rem; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .diagram-flow { flex-direction: column; gap: 1rem; }
+            .diagram-box { width: 100%; max-width: 300px; }
+            .nav-guides { 
+                flex-direction: column; 
+                align-items: center; 
+                text-align: center; 
+                gap: 1rem; 
+                padding: 1rem;
+            }
+            .nav-guides-links { 
+                justify-content: center; 
+                margin-left: 0; 
+                gap: 0.5rem;
+            }
+            .nav-guide-btn { 
+                justify-content: center; 
+                width: 100%; 
+                max-width: 300px;
+            }
+            .controls-bar { 
+                flex-direction: column; 
+                align-items: center; 
+                gap: 1rem; 
+                padding: 1rem;
+                justify-content: center;
+            }
+            .controls-group { 
+                justify-content: center; 
+            }
+            .nav { 
+                gap: 0.5rem; 
+                padding: 0.75rem;
+            }
+            .nav-btn { 
+                padding: 0.5rem 0.75rem; 
+                font-size: 0.8rem; 
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>Sémiologie et Diagnostic</h1>
+            <p>Guide d'Étude - en Odontologie Conservatrice</p>
+            <span class="header-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                PBD12 - Semestre 4
+            </span>
+        </div>
+    </header>
+    <nav class="nav-container" role="navigation" aria-label="Navigation principale">
+        <div class="nav">
+            <button class="nav-btn active" data-section="objectifs">Objectifs</button>
+            <button class="nav-btn" data-section="definitions">Définitions</button>
+            <button class="nav-btn" data-section="demarche">Démarche</button>
+            <button class="nav-btn" data-section="moyens">Moyens</button>
+            <button class="nav-btn" data-section="moyens">Moyens</button>
+            <button class="nav-btn" data-section="amélaire">Maladie amélaire</button>
+            <button class="nav-btn" data-section="dentinaire">Maladie dentinaire</button>
+            <button class="nav-btn" data-section="pulpaires">Maladies pulpaires</button>
+            <button class="nav-btn" data-section="paro">Parodontites apicales</button>
+            <button class="nav-btn" data-section="combinées">Lésions combinées</button>
+            <button class="nav-btn" data-section="cellulite">Cellulite</button>
+            <button class="nav-btn" data-section="autres">Autres diagnostics</button>
+            <button class="nav-btn" data-section="tableau">Tableau</button>
+            <button class="nav-btn" data-section="conclusion">Conclusion</button>
+        </div>
+    </nav>
+    <div class="controls-bar">
+        <div class="controls-group">
+            <span class="controls-label">Thème:</span>
+            <button class="control-btn" id="theme-toggle" title="Basculer le mode sombre">🌙</button>
+        </div>
+        <div class="controls-group">
+            <span class="controls-label">Taille:</span>
+            <button class="control-btn text-size-btn" data-size="small" title="Petite taille">A-</button>
+            <button class="control-btn text-size-btn active" data-size="normal" title="Taille normale">A</button>
+            <button class="control-btn text-size-btn" data-size="large" title="Grande taille">A+</button>
+            <button class="control-btn text-size-btn" data-size="xlarge" title="Très grande taille">A++</button>
+        </div>
+    </div>
+    <main class="main">
+        <section id="objectifs" class="section active" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h2>Objectifs du cours</h2>
+                </div>
+                <ul>
+                    <li>Maîtriser la démarche diagnostique</li>
+                    <li>Connaître les différents moyens de diagnostic</li>
+                    <li>Maîtriser les signes cliniques des différentes maladies en odontologie conservatrice</li>
+                    <li>Savoir poser le diagnostic positif, le diagnostic différentiel ainsi que le pronostic des maladies en odontologie conservatrice</li>
+                </ul>
+            </div>
+            
+            </div>
+            
+            </div>
+        </section>
+        <section id="definitions" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h2>Définitions</h2>
+                </div>
+                <ul>
+                    <li><strong>Pathologie:</strong> science qui a pour objet d'étudier les maladies</li>
+                    <li><strong>Maladie:</strong> ensemble de symptômes et signes issus de l'examen clinique et des examens complémentaires</li>
+                    <li><strong>Sémiologie:</strong> étude des signes et symptômes considérés isolément</li>
+                    <li><strong>Syndrome:</strong> ensemble fixe de symptômes et signes objectifs susceptibles de se retrouver dans des maladies distinctes avec des étiologies différentes</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Diagnostic</h3>
+                <p>C'est une démarche intellectuelle qui s'appuie sur la connaissance de la sémiologie et de la pathologie et qui permet d'établir le nom de la maladie dont souffre le patient.</p>
+                <p><strong>Critères:</strong> Ensemble le plus petit possible de signes et de symptômes pour une maladie considérée.</p>
+                <p><strong>Signe pathognomonique:</strong> Représente un critère diagnostique parfait</p>
+            </div>
+            
+            </div>
+        </section>
+        <section id="demarche" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
+                    <h2>La démarche diagnostique</h2>
+                </div>
+                <ol>
+                    <li><strong>Motif de consultation:</strong> Pourquoi le patient vient consulter</li>
+                    <li><strong>Anamnèse médicale:</strong> Entretien avec le patient</li>
+                    <li><strong>Hypothèse diagnostic:</strong> Probabilité d'une maladie</li>
+                    <li><strong>Observation clinique:</strong> Application des tests objectifs</li>
+                    <li><strong>Formulation des critères:</strong> Questions à poser: Signification, Localisation, Intensité, Durée, Stimuli, Spontanéïté, Soulagement, Antécédants, Signes généraux</li>
+                </ol>
+            </div>
+            
+            </div>
+        </section>
+        <section id="moyens" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                    </div>
+                    <h2>Les moyens de diagnostic</h2>
+                </div>
+                <h3>Tests objectifs</h3>
+                <ul>
+                    <li>Inspection</li>
+                    <li>Palpation</li>
+                    <li>Test au froid (-28°C)</li>
+                    <li>Test au chaud</li>
+                    <li>Test électrique</li>
+                    <li>Transillumination</li>
+                    <li>Percussion</li>
+                    <li>Sondage parodontal</li>
+                    <li>Test de cavité</li>
+                    <li>Test du mordu</li>
+                    <li>Radiographie</li>
+                    <li>RX cône de gutta en place</li>
+                    <li>Aides optiques</li>
+                </ul>
+            </div>
+            
+            </div>
+        </section>
+        <section id="amélaire" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                    </div>
+                    <h2>Le diagnostic clinique de la maladie amélaire</h2>
+                </div>
+                <h3>Evaluation de la symptomatologie</h3>
+                <ul>
+                    <li>Absence de douleur</li>
+                    <li>Le patient rapporte parfois une modification de la couleur de l'émail</li>
+                </ul>
+                <h3>Evaluation des signes objectifs</h3>
+                <ul>
+                    <li><strong>Inspection:</strong> opacité blanche ou coloration brune de l'émail, émail rugueux, présence de microcavitations</li>
+                    <li><strong>Tests de sensibilité pulpaire:</strong> + pulpe vivante</li>
+                    <li><strong>Révélateur de carie:</strong> +</li>
+                    <li><strong>Transillumination:</strong> +</li>
+                    <li><strong>Diagnodent:</strong> +</li>
+                    <li><strong>Séparateur orthodontique:</strong> +</li>
+                    <li><strong>Signes radiologiques:</strong> +</li>
+                </ul>
+                <h3>Traitement</h3>
+                <ul>
+                    <li>Traitement de reminéralisation</li>
+                    <li>Restauration</li>
+                </ul>
+            </div>
+            
+            </div>
+        </section>
+        <section id="dentinaire" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                    </div>
+                    <h2>Le diagnostic clinique de la maladie dentinaire</h2>
+                </div>
+                <h3>Evaluation de la symptomatologie</h3>
+                <ul>
+                    <li>Le patient arrive à localiser la dent malade</li>
+                    <li>Douleur brève provoquée par le froid, le chaud, le sucre et l ácido</li>
+                    <li>La douleur cesse avec l'arrêt du stimulus</li>
+                </ul>
+                <h3>Evaluation des signes objectifs</h3>
+                <ul>
+                    <li><strong>Inspection:</strong> cavité carieuse</li>
+                    <li><strong>Tests de sensibilité pulpaire:</strong> Test au froid +, Test au chaud +, Test électrique + (pulpe vivante)</li>
+                    <li><strong>Test de transillumination:</strong> + en cas de cavitation proximale ou de fêlure</li>
+                    <li><strong>Percussion:</strong> -</li>
+                    <li><strong>Palpation:</strong> -</li>
+                    <li><strong>Signes radiologiques:</strong> zone de radioclarté nettement visible</li>
+                </ul>
+                <h3>Traitement</h3>
+                <ul>
+                    <li>Préparation d'une cavité relativement conservatrice en vue d'une obturation adhésive</li>
+                    <li>Lorsque la carie est profonde, un traitement de coiffage indirect à l hydroxyde de calcium est réalisé</li>
+                </ul>
+            </div>
+            
+            </div>
+        </section>
+        <section id="pulpaires" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                    </div>
+                    <h2>Le diagnostic des maladies pulpaires</h2>
+                </div>
+                <ol>
+                    <li>La pulpite aiguë</li>
+                    <li>La pulpite aiguë avec parodontite AAD</li>
+                    <li>La pulpite chronique</li>
+                    <li>La nécrose pulpaire</li>
+                </ol>
+            </div>
+            <div class="card">
+                <h3>La pulpite aiguë</h3>
+                <h4>Evaluation des signes subjectifs</h4>
+                <ul>
+                    <li>Douleurs intenses, pulsatiles, intermittentes</li>
+                    <li>Initialement provoquée, la douleur devient spontanée</li>
+                    <li>Douleur irradiée, le patient ne reconnaît pas la dent en cause</li>
+                    <li>Les douleurs violentes se prolongent même après l'arrêt du stimulus</li>
+                    <li>Ne cèdent pas aux antalgiques et aux anti-inflammatoires</li>
+                    <li>L'activité physique et la position allongée peuvent exacerber les douleurs</li>
+                </ul>
+                <h4>Signes objectifs</h4>
+                <ul>
+                    <li>3 critères clés: pulpe vivante</li>
+                    <li>Percussion: -</li>
+                    <li>Sondage parodontal: vérifier s'il y a présence d'une poche parodontale</li>
+                    <li>Examen radiographique: image radiologique du ligament périradiculaire normale</li>
+                </ul>
+                <p><strong>Traitement d'urgence:</strong> Biopulpectomie</p>
+            </div>
+            <div class="card">
+                <h3>La pulpite aiguë avec parodontite apicale aiguë débutante</h3>
+                <h4>Evaluation de la symptomatologie</h4>
+                <ul>
+                    <li>Douleur moins forte que celle de la pulpite aiguë</li>
+                    <li>Le patient arrive à localiser la dent surtout au contact</li>
+                    <li>La douleur est spontanée, devient de plus en plus permanente</li>
+                    <li>Augmenté par la pression et la chaleur</li>
+                </ul>
+                <h4>Signes objectifs</h4>
+                <ul>
+                    <li>Tests de sensibilité: Froid + calme la douleur, Chaud +++, Electrique +</li>
+                    <li>Percussion: ++</li>
+                    <li>Palpation: + sensible parfois</li>
+                    <li>Examen radiographique: pas toujours une image d'élargissement desmodontal</li>
+                </ul>
+                <p><strong>Traitement d'urgence:</strong> Biopulpectomie</p>
+            </div>
+            <div class="card">
+                <h3>La pulpite chronique</h3>
+                <ul>
+                    <li>Silencieus clinique ou symptomatologie d'un syndrome dentinaire</li>
+                    <li>Inspection: teinte grisâtre de la dent, polype pulpaire, ulcération pulpaire</li>
+                    <li>Tests de sensibilité pulpaire: Retard dans les réponses</li>
+                    <li>Test de cavité ou de fraisage: + souvent nécessaire</li>
+                    <li>Percussion: -</li>
+                    <li>Signes radiographiques: communication de la cavité carieuse avec la cavité pulpaire, dégénérescence calcique</li>
+                </ul>
+                <p><strong>Traitement:</strong> Biopulpectomie</p>
+            </div>
+            <div class="card">
+                <h3>La nécrose pulpaire</h3>
+                <h4>Evaluation de la symptomatologie</h4>
+                <ul>
+                    <li>Dent asymptomatique</li>
+                </ul>
+                <h4>Evaluation des signes objectifs</h4>
+                <ul>
+                    <li>L'inspection: la dent paraît opaque, voire grisâtre</li>
+                    <li>Les tests de sensibilité pulpaire: - (Pulpe mortifiée)</li>
+                    <li>La percussion: normale</li>
+                    <li>La palpation: -</li>
+                    <li>Le test de fraisage: -</li>
+                    <li>Examen radiographique: pas de signes radiologiques de lésion péri-apicale</li>
+                </ul>
+                <p><strong>Traitement:</strong> Quel que soit la cause de la nécrose, la désinfection du système endodontique par parage canalaire s'impose.</p>
+            </div>
+            
+            </div>
+        </section>
+        <section id="paro" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h2>Le diagnostic clinique des parodontites apicales</h2>
+                </div>
+                <h3>Parodontites apicales aiguës</h3>
+                <ol>
+                    <li>Parodontite apicale aiguë avancée</li>
+                    <li>Parodontite apicale aiguë primaire abcédée</li>
+                    <li>Parodontite apicale aiguë secondaire abcédée</li>
+                </ol>
+                <h3>Parodontites apicales chroniques</h3>
+                <ol>
+                    <li>Parodontite apicale chronique</li>
+                    <li>Parodontite apicale avec fistule</li>
+                </ol>
+            </div>
+            <div class="card">
+                <h3>Parodontite apicale aiguë primaire avancée</h3>
+                <h4>Symptomatologie</h4>
+                <ul>
+                    <li>Douleur localisée, sourde, intense, spontanée, continue</li>
+                    <li>Exacerbée à la mastication ou au simple contact</li>
+                    <li>Présence de crises douloureuses dans le passé</li>
+                    <li>Absence de signes généraux</li>
+                </ul>
+                <h4>Signes objectifs</h4>
+                <ul>
+                    <li>Tests de sensibilité pulpaire: Froid -, Chaud + (Pulpe nécrosée)</li>
+                    <li>La percussion: +++</li>
+                    <li>La palpation: ++</li>
+                    <li>Radiographie: épaississement ligamentaire ou image radioclaire péri-radiculaire</li>
+                </ul>
+                <p><strong>Traitement d'urgence:</strong> Elimination du tissu pulpaire nécrotique + nettoyage et mise en forme + Ca(OH)2</p>
+            </div>
+            <div class="card">
+                <h3>Parodontite apicale aiguë primaire abcédée (Abcès alvéolaire aigu)</h3>
+                <h4>Symptomatologie</h4>
+                <ul>
+                    <li>Douleur spontanée, intense, lancinante, continue</li>
+                    <li>Patient reconnaît la dent causale qui est légèrement mobile</li>
+                    <li>Douleur au moindre contact, pression et chaleur</li>
+                    <li>Sensation de dent longue</li>
+                    <li>Douleur rebelle aux antalgiques</li>
+                    <li>Signes généraux: fièvre, tuméfaction, dysphagie, hypersialie, adénopathies</li>
+                </ul>
+                <h4>Signes objectifs</h4>
+                <ul>
+                    <li>Tests de sensibilité: Pulpe nécrosée</li>
+                    <li>La percussion: +++</li>
+                    <li>La mobilité: ++</li>
+                    <li>La palpation: ++</li>
+                    <li>Une tuméfaction sous-périosté ou sous-muqueuse est possible</li>
+                </ul>
+                <p><strong>Traitement d'urgence:</strong> Drainage</p>
+            </div>
+            <div class="card">
+                <h3>Parodontite apicale chronique granulomateuse ou kystique</h3>
+                <h4>Symptomatologie</h4>
+                <ul>
+                    <li>Très atténuée, la dent peut être totalement asymptomatique</li>
+                </ul>
+                <h4>Signes objectifs</h4>
+                <ul>
+                    <li>Tests de sensibilité pulpaire: - (Pulpe nécrosée)</li>
+                    <li>Percussion: ± absente ou ambiguë</li>
+                    <li>Examen radiographique: Image radioclaire périapicale (signe pathognomonique)</li>
+                </ul>
+                <p><strong>Traitement:</strong> Nettoyage et mise en forme canalaire</p>
+            </div>
+            
+            </div>
+        </section>
+        <section id="combinées" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    </div>
+                    <h2>Diagnostic des lésions combinées endo-parodontales</h2>
+                </div>
+                <h4>Symptomatologie</h4>
+                <ul>
+                    <li>Signes en faveur de la parodontite périapicale</li>
+                    <li>Signes en faveur de l'abcès parodontal</li>
+                    <li>Douleurs pulsatiles, sensation de dent longue, localisées ou irradiantes</li>
+                </ul>
+                <h4>Signes objectifs</h4>
+                <ul>
+                    <li>Inspection: tuméfaction gingivale avec ou sans fistule, carie, restauration défectueuse</li>
+                    <li>Tests de sensibilité pulpaire: - (Nécrose pulpaire)</li>
+                    <li>La percussion: +++</li>
+                    <li>Le sondage parodontal: enfouissement brusque et punctiforme (sondage circonférentiel en V)</li>
+                    <li>L'examen radiographique: met en évidence deux zones radioclaires coniques</li>
+                </ul>
+                <p><strong>Traitement:</strong> 1- Désinfection du système canalaire, 2- Débridement parodontal</p>
+            </div>
+            
+            </div>
+        </section>
+        <section id="cellulite" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <h2>Diagnostic clinique des cellulites circonscrites aiguës</h2>
+                </div>
+                <h4>Symptomatologie</h4>
+                <ul>
+                    <li>Douleurs aiguës, violentes, diffuses, spontanées, continues</li>
+                    <li>Exacerbées par la pression, la chaleur, le contact de la dent antagoniste et le décubitus</li>
+                    <li>Sensation de dent longue</li>
+                    <li>Douleurs rebelles aux antalgiques</li>
+                    <li>Antécédents de crises douloureuses</li>
+                    <li>Signes généraux: tuméfaction de joue, dysphagie, adénopathies céphalées, asthénie</li>
+                </ul>
+                <h4>Signes objectifs</h4>
+                <ul>
+                    <li>Inspection: tuméfaction mal limitée de la joue</li>
+                    <li>Tests de sensibilité: Pulpe nécrosée</li>
+                    <li>Percussion: +++ très douloureuse</li>
+                    <li>Palpation: + montre si la tuméfaction est rénitente ou fluctuante</li>
+                    <li>Mobilité: + la dent est légèrement mobile</li>
+                    <li>Examen radiographique: image radioclaire, élargissement desmodontal, raréfaction osseuse</li>
+                </ul>
+            </div>
+            
+            </div>
+        </section>
+        <section id="autres" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                    </div>
+                    <h2>Autres diagnostics</h2>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Diagnostic clinique du syndrome du septum</h3>
+                <h4>Symptomatologie</h4>
+                <ul>
+                    <li>Douleurs très fortes à la mastication</li>
+                    <li>Sensation d'un mauvais goût</li>
+                </ul>
+                <h4>Signes objectifs</h4>
+                <ul>
+                    <li>Inspection: absence de point de contact entre les dents concernées, gencive tuméfiée et rougeâtre</li>
+                    <li>Les tests de sensibilité pulpaire: +</li>
+                    <li>Palpation: + Le signe pathognomonique est la pression digitale de la papille interdentaire</li>
+                    <li>Examen radiographique: lyse osseuse horizontale</li>
+                </ul>
+                <p><strong>Traitement:</strong> Eliminer restauration, curetage parodontal au niveau du septum interdentaire</p>
+            </div>
+            <div class="card">
+                <h3>Diagnostic clinique de la fêlure dentaire ou de la fracture verticale</h3>
+                <h4>Symptomatologie</h4>
+                <ul>
+                    <li>Douleurs aiguës, brèves, spontanées, localisées dans un secteur déterminé</li>
+                    <li>Douleurs provoquées au moment de l'occlusion et de l'ouverture de la cavité buccale</li>
+                    <li>Douleurs provoquées par la mastication</li>
+                </ul>
+                <h4>Signes objectifs</h4>
+                <ul>
+                    <li>Douleurs à la percussion</li>
+                    <li>Douleurs au test de morsure</li>
+                    <li>Révéléateur: +</li>
+                    <li>Transillumination: +</li>
+                    <li>Absence d'image radiographique (le trait de fracture est parallèle à celui du film)</li>
+                </ul>
+                <p><strong>Traitement:</strong> Pulpectomie et restauration prothétique si la dent est à conserver, sinon extraction</p>
+            </div>
+            
+            </div>
+        </section>
+        <section id="tableau" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                    </div>
+                    <h2>Tableau récapitulatif des diagnostics</h2>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Pathologie</th>
+                                <th>Douleure</th>
+                                <th>Tests sensibilité</th>
+                                <th>Percussion</th>
+                                <th>Radiographie</th>
+                                <th>Traitement</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Maladie amélaire</strong></td>
+                                <td>Aucune</td>
+                                <td>+ (pulpe vivante)</td>
+                                <td>-</td>
+                                <td>+/- carie</td>
+                                <td>Restauration/reminéralisation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Maladie dentinaire</strong></td>
+                                <td>Provoquée,localisée</td>
+                                <td>+ (pulpe vivante)</td>
+                                <td>-</td>
+                                <td>+ radioclarté</td>
+                                <td>Restauration adhésive</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hyperhémie pulpaire</strong></td>
+                                <td>Provoquée/brève</td>
+                                <td>+ (seuil abaissé)</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>Conservation vitalité</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pulpite aiguë</strong></td>
+                                <td>Spontanée,irradiante</td>
+                                <td>+ (pulpe vivante)</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>Biopulpectomie</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pulpite + PA</strong></td>
+                                <td>Spontanée,localisée</td>
+                                <td>+ (pulpe vivante)</td>
+                                <td>+</td>
+                                <td>+/- élargissement</td>
+                                <td>Biopulpectomie</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pulpite chronique</strong></td>
+                                <td>Modérée/aucune</td>
+                                <td>+ (retard)</td>
+                                <td>-</td>
+                                <td>+/- comunication</td>
+                                <td>Biopulpectomie</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Nécrose pulpaire</strong></td>
+                                <td>Aucune</td>
+                                <td>- (nécrosée)</td>
+                                <td>-</td>
+                                <td>- (normal)</td>
+                                <td>Parage canalaire</td>
+                            </tr>
+                            <tr>
+                                <td><strong>PAA aiguë</strong></td>
+                                <td>Localisée, intense</td>
+                                <td>- (nécrosée)</td>
+                                <td>+++</td>
+                                <td>+ radioclarté</td>
+                                <td>Elimination nécrose + Ca(OH)2</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Abcès apical</strong></td>
+                                <td>Spontanée,importante</td>
+                                <td>- (nécrosée)</td>
+                                <td>+++</td>
+                                <td>+/- radioclarté</td>
+                                <td>Drainage</td>
+                            </tr>
+                            <tr>
+                                <td><strong>PAC granulomateuse</strong></td>
+                                <td>Aucune/asymptomatique</td>
+                                <td>- (nécrosée)</td>
+                                <td>+/-</td>
+                                <td>+++ radioclarté</td>
+                                <td>Nettoyage canalaire</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Lésion combinée</strong></td>
+                                <td>Pulsatile,dent longue</td>
+                                <td>- (nécrosée)</td>
+                                <td>+++</td>
+                                <td>2 zones radioclaires</td>
+                                <td>Débridement + désinfection</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cellulite</strong></td>
+                                <td>Violente,diffuse</td>
+                                <td>- (nécrosée)</td>
+                                <td>+++</td>
+                                <td>+/- radioclarté</td>
+                                <td>Drainage + AB</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Syndrome septum</strong></td>
+                                <td>Mastication intense</td>
+                                <td>+</td>
+                                <td>-</td>
+                                <td>+ lyse horizontale</td>
+                                <td>Curetage parodontal</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fêlure</strong></td>
+                                <td>Brève, sectorielle</td>
+                                <td>+</td>
+                                <td>+ morsure</td>
+                                <td>- (parallèle)</td>
+                                <td>Pulpectomie/extraction</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="key-takeaways">
+                <h3>Légende</h3>
+                <ul>
+                    <li><strong>+</strong> : positif/présent</li>
+                    <li><strong>-</strong> : négatif/absent</li>
+                    <li><strong>+++</strong> : très positif/très douloureux</li>
+                    <li><strong>+/-</strong> : variable</li>
+                </ul>
+            </div>
+        </section>
+        <section id="conclusion" class="section" role="region">
+            <div class="conclusion-box">
+                <h2>Conclusion</h2>
+                <p>La pratique méthodique de l'examen clinique et la recherche attentive des divers symptômes permettent de poser le diagnostic.</p>
+            </div>
+            <div class="key-takeaways">
+                <h3>Points clés</h3>
+                <ul>
+                    <li>Déterminer un diagnostic en odontologie est une démarche médicale où l'écoute et l'interrogatoire du patient revêtent une grande importance</li>
+                    <li>Il faut chercher entre les critères de plusieurs maladies pour établir le diagnostic positif et faire le diagnostic différentiel</li>
+                    <li>Le quotidien du praticien est basé sur une interprétation fine et rapide de signes et symptômes courants, caractéristiques et bien définis</li>
+                </ul>
+            </div>
+            
+            </div>
+        </section>
+    
+            
+            </div>
+    
+            
+    
+            <div class="nav-guides">
+                <a href="index.html" class="nav-guide-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Retour
+                </a>
+                <div class="nav-guides-links">
+                    <span class="nav-guides-label">Autres guides:</span>
+                    <a href="necrose-pulpaire.html" class="nav-guide-link">Nécrose</a>
+                    <a href="parodontites-apicales.html" class="nav-guide-link">Parodontites</a>
+                    <a href="pulpites.html" class="nav-guide-link">Pulpites</a>
+                    <a href="senelite-pulpaire.html" class="nav-guide-link">Sénilité</a>
+                </div>
+            </div>
+    </main>
+    <script>
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.section).classList.add('active');});
+        });
+        document.getElementById('theme-toggle').addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark-mode');
+        });
+        document.querySelectorAll('.text-size-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.text-size-btn').forEach(b => b.classList.remove('active'));
+                document.documentElement.classList.remove('text-size-small', 'text-size-large', 'text-size-xlarge');
+                document.documentElement.classList.add('text-size-' + btn.dataset.size);
+                btn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
