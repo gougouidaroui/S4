@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Carie de la Dent Temporaire - Pédodontie</title>
+    <meta name="description" content="Guide sur la carie de la dent temporaire: définition, épidémiologie, étiopathogénie et formes cliniques">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #f59e0b;
+            --primary-dark: #d97706;
+            --primary-bg: #fef3c7;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-lg: 24px;
+            --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+            --font-scale: 1;
+        }
+        html.dark-mode {
+            --primary: #fbbf24;
+            --primary-dark: #f59e0b;
+            --primary-bg: #451a03;
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --text: #f1f5f9;
+            --text-muted: #cbd5e1;
+            --border: #334155;
+            --border-light: #475569;
+        }
+        html.text-size-small { --font-scale: 0.9; }
+        html.text-size-large { --font-scale: 1.1; }
+        html.text-size-xlarge { --font-scale: 1.25; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; font-size: calc(16px * var(--font-scale)); }
+        
+        p { margin-bottom: 1rem; color: var(--text); }
+        ul { margin-bottom: 1rem; list-style: none; }
+        ul li { margin-bottom: 0.5rem; color: var(--text-muted); }
+        strong { color: var(--text); font-weight: 600; }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white; padding: 3rem 1.5rem;
+            position: relative; overflow: hidden;
+        }
+        .header::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .header-content { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+        .header h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 0.5rem; }
+        .header p { font-size: 1.125rem; opacity: 0.9; font-weight: 400; }
+        .header-badge { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; padding: 0.5rem 1rem; background: rgba(255,255,255,0.15); border-radius: 100px; font-size: 0.875rem; font-weight: 500; backdrop-filter: blur(4px); }
+
+        .nav-container { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+        .nav { max-width: 1200px; margin: 0 auto; display: flex; gap: 0.25rem; padding: 0.5rem; overflow-x: auto; scrollbar-width: none; }
+        .nav::-webkit-scrollbar { display: none; }
+        .nav-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1rem; border: none; background: transparent; color: var(--text-muted); font-size: 0.875rem; font-weight: 500; cursor: pointer; border-radius: var(--radius-sm); white-space: nowrap; transition: all var(--transition); min-height: 44px; }
+        .nav-btn:hover { background: var(--border-light); color: var(--text); }
+        .nav-btn.active { background: var(--primary); color: white; }
+
+        .controls-bar { display: flex; align-items: center; gap: 1.5rem; padding: 0.75rem 1.5rem; background: var(--surface); border-bottom: 1px solid var(--border); justify-content: flex-end; max-width: 100%; overflow-x: auto; }
+        .controls-group { display: flex; align-items: center; gap: 0.5rem; }
+        .controls-label { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); }
+        .control-btn { display: flex; align-items: center; justify-content: center; padding: 0.5rem 0.75rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; color: var(--text); font-size: 0.8rem; transition: all var(--transition); min-width: 36px; min-height: 36px; }
+        .control-btn:hover { background: var(--border-light); color: var(--primary); }
+        .control-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+        .key-takeaways { background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(6, 182, 212, 0.04) 100%); border-left: 4px solid var(--primary); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2rem; margin-top: 2rem; }
+        .key-takeaways h3 { color: var(--primary); font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .key-takeaways h3::before { content: '✓'; font-weight: 800; }
+        .key-takeaways ul { margin: 0; padding-left: 1.5rem; }
+        .key-takeaways li { margin-bottom: 0.5rem; color: var(--text); line-height: 1.6; font-size: 0.95rem; }
+        .key-takeaways li::marker { color: var(--primary); font-weight: bold; }
+
+        .main { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
+        .section { display: none; animation: fadeIn 0.3s ease; }
+        .section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+        .card { background: var(--surface); border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 1.5rem; box-shadow: var(--shadow); border: 1px solid var(--border-light); }
+        .card:hover { box-shadow: var(--shadow-md); }
+        .card-header { display: flex; align-items: center; gap: 1.25rem; margin-bottom: 1.5rem; }
+        .card-icon { width: 52px; height: 52px; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--primary-bg); color: var(--primary); }
+        .card-icon svg { width: 26px; height: 26px; }
+        .card h2 { font-size: 1.5rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--border); }
+        .card h3 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--text); padding-left: 0.75rem; border-left: 3px solid var(--primary); }
+        .card h4 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; color: var(--text); display: flex; align-items: center; gap: 0.5rem; }
+        .card h4::before { content: ''; width: 6px; height: 6px; background: var(--primary); border-radius: 50%; }
+        .card ul { margin-top: 1.25rem; margin-bottom: 1.25rem; padding-inline-start: 2rem; list-style: none; }
+        .card ul li { margin-bottom: 0.875rem; color: var(--text-muted); line-height: 1.75; position: relative; padding-left: 0.75rem; }
+        .card ul li::before { content: '•'; position: absolute; left: -0.75rem; color: var(--primary); font-weight: 600; font-size: 1.25rem; }
+        .card p { color: var(--text-muted); margin-bottom: 1rem; line-height: 1.75; }
+
+        .accordion { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0; background: var(--surface); }
+        .accordion-header { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; background: #f8fafc; cursor: pointer; font-weight: 600; font-size: 1rem; color: #1e293b; transition: all var(--transition); min-height: 60px; border-left: 4px solid transparent; }
+        .accordion-header:hover { background: #f1f5f9; border-left-color: var(--primary); }
+        .accordion.open .accordion-header { background: #ecfeff; border-left-color: var(--primary); color: var(--primary); }
+        .accordion-content { display: none; padding: 1.25rem; }
+        .accordion.open .accordion-content { display: block; animation: slideDown 0.2s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+        .accordion-arrow { transition: transform var(--transition); color: var(--text-muted); }
+        .accordion.open .accordion-arrow { transform: rotate(180deg); }
+
+        .table-container { overflow-x: auto; margin: 1rem 0; border-radius: var(--radius); border: 1px solid var(--border); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+        th, td { padding: 0.875rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+        th { background: var(--bg); font-weight: 600; color: var(--text); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        tbody tr:last-child td { border-bottom: none; }
+        tbody tr:hover { background: var(--bg); }
+
+        .conclusion-box { background: linear-gradient(135deg, var(--primary) 0%, #4F46E5 100%); color: white; padding: 2rem; border-radius: var(--radius-lg); text-align: center; margin: 1.5rem 0; }
+        .conclusion-box h2 { font-size: 1.5rem; margin-bottom: 0.75rem; color: white; }
+        .conclusion-box p { font-size: 1rem; opacity: 0.95; color: white; }
+
+        .nav-guides { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; padding: 1.5rem; background: var(--surface); border-radius: var(--radius-lg); box-shadow: var(--shadow); margin-top: 2rem; border: 1px solid var(--border-light); }
+        .nav-guide-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.25rem; background: var(--primary); color: white; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.9rem; text-decoration: none; }
+        .nav-guide-btn:hover { background: var(--primary-dark); }
+        .nav-guide-btn svg { width: 18px; height: 18px; }
+        .nav-guides-links { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-left: auto; }
+        .nav-guides-label { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+         .nav-guide-link { padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.85rem; color: var(--text-muted); text-decoration: none; transition: all var(--transition); }
+         .nav-guide-link:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-bg); }
+
+         /* Diagrams and Visual Elements */
+         .diagram { margin: 1.5rem 0; }
+         .diagram-flow { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; justify-content: center; margin: 2rem 0; }
+         .diagram-box { background: var(--surface); border: 2px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; text-align: center; font-weight: 500; font-size: 0.95rem; min-width: 120px; transition: all var(--transition); box-shadow: var(--shadow-sm); }
+         .diagram-box:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+         .diagram-box.highlight { background: var(--primary-bg); border-color: var(--primary); color: var(--primary); font-weight: 600; box-shadow: var(--shadow); }
+         .diagram-arrow { color: var(--primary); font-weight: 700; font-size: 1.25rem; }
+         
+         /* Keyes Scheme Stages */
+         .keyes-stages { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+         .stage-card { background: var(--surface); border: 2px solid var(--border-light); border-radius: var(--radius); padding: 1.5rem; text-align: center; transition: all var(--transition); position: relative; overflow: hidden; }
+         .stage-card::before { content: attr(data-stage); position: absolute; top: -8px; right: -8px; width: 60px; height: 60px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.25rem; }
+         .stage-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); border-color: var(--primary); }
+         .stage-card h4 { margin-top: 0.5rem; color: var(--primary); font-size: 1.1rem; }
+         .stage-card p { font-size: 0.9rem; color: var(--text-muted); margin: 0.75rem 0; }
+         
+         /* Transmission Routes */
+         .transmission-routes { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+         .route-card { background: var(--primary-bg); border: 2px solid var(--primary); border-radius: var(--radius); padding: 1.5rem; text-align: center; transition: all var(--transition); }
+         .route-card:hover { transform: scale(1.05); box-shadow: var(--shadow-lg); }
+         .route-card .icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+         .route-card h4 { color: var(--primary); margin: 1rem 0 0.5rem; }
+         .route-card p { font-size: 0.9rem; color: var(--text-muted); }
+         
+         /* Risk Factors Grid */
+         .risk-factors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin: 2rem 0; }
+         .risk-factor { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.25rem; text-align: center; transition: all var(--transition); }
+         .risk-factor:hover { border-color: var(--primary); background: var(--primary-bg); }
+         .risk-factor .icon { font-size: 2rem; margin-bottom: 0.75rem; }
+         .risk-factor h5 { font-size: 0.95rem; color: var(--text); margin: 0.75rem 0; font-weight: 600; }
+         .risk-factor p { font-size: 0.85rem; color: var(--text-muted); }
+         
+         /* Comparison Cards */
+         .comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+         .comparison-card { background: var(--surface); border: 2px solid var(--border-light); border-radius: var(--radius); padding: 1.75rem; transition: all var(--transition); }
+         .comparison-card.active { border-color: var(--primary); box-shadow: var(--shadow-lg); }
+         .comparison-card h3 { color: var(--text); font-size: 1.1rem; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--border); }
+         .comparison-card .feature { display: flex; align-items: center; gap: 0.75rem; margin: 0.75rem 0; font-size: 0.95rem; }
+         .comparison-card .feature-icon { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-weight: bold; }
+         
+         /* Tooth Site Diagrams */
+         .tooth-diagram { display: flex; justify-content: center; margin: 2rem 0; flex-wrap: wrap; gap: 2rem; }
+         .tooth-visual { width: 100px; height: 140px; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border: 2px solid var(--primary); border-radius: 15px 15px 8px 8px; display: flex; align-items: center; justify-content: center; position: relative; box-shadow: var(--shadow); }
+         .tooth-visual .site { position: absolute; width: 20px; height: 20px; border-radius: 50%; background: rgba(8, 145, 178, 0.3); border: 2px solid var(--primary); }
+         .tooth-label { text-align: center; font-size: 0.85rem; font-weight: 600; color: var(--text); margin-top: 0.75rem; }
+         
+         /* Timeline/Progression */
+         .timeline { position: relative; padding: 1.5rem 0; margin: 2rem 0; }
+         .timeline::before { content: ''; position: absolute; left: 30px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+         .timeline-item { margin-left: 80px; margin-bottom: 1.75rem; position: relative; }
+         .timeline-item::before { content: ''; position: absolute; left: -56px; top: 5px; width: 16px; height: 16px; background: var(--primary); border: 3px solid var(--surface); border-radius: 50%; box-shadow: 0 0 0 2px var(--border); }
+         .timeline-item h4 { color: var(--primary); font-weight: 600; margin-bottom: 0.5rem; }
+         .timeline-item p { color: var(--text-muted); font-size: 0.95rem; }
+         
+         /* Dark mode adjustments */
+         html.dark-mode .diagram-box { background: var(--surface); border-color: var(--border); }
+         html.dark-mode .stage-card { background: var(--surface); border-color: var(--border); }
+         html.dark-mode .route-card { background: var(--primary-bg); border-color: var(--primary); }
+         html.dark-mode .risk-factor { background: var(--surface); border-color: var(--border); }
+         html.dark-mode .comparison-card { background: var(--surface); border-color: var(--border); }
+         html.dark-mode .tooth-visual { background: linear-gradient(135deg, #164e63 0%, #0e7490 100%); border-color: var(--primary); }
+         html.dark-mode .accordion-header { background: var(--surface); color: var(--text); }
+         html.dark-mode .accordion-header:hover { background: var(--bg); border-left-color: var(--primary); }
+         html.dark-mode .accordion.open .accordion-header { background: var(--primary-bg); border-left-color: var(--primary); color: var(--primary); }
+
+         @media (max-width: 768px) {
+            .header { padding: 2rem 1rem; }
+            .header h1 { font-size: 1.5rem; }
+            .main { padding: 1rem; }
+            .card { padding: 1.25rem; }
+            .card-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .card-icon { width: 44px; height: 44px; }
+            .card h2 { font-size: 1.25rem; }
+            .card h3 { font-size: 1.1rem; margin-top: 1.5rem; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .nav-btn { padding: 0.75rem 0.875rem; font-size: 0.8rem; }
+            .controls-bar { flex-direction: column; gap: 0.75rem; padding: 0.75rem; }
+            .controls-group { width: 100%; justify-content: space-between; }
+            .controls-label { font-size: 0.75rem; }
+            .accordion-header { padding: 1rem; font-size: 0.9rem; min-height: 50px; }
+            .table-container { border-radius: 8px; margin: 0.75rem -0.25rem; }
+            .table-container { position: relative; padding-bottom: 1.5rem; }
+            .nav-guides { flex-direction: column; gap: 1rem; }
+            .nav-guides-links { margin-left: 0; flex-wrap: wrap; justify-content: center; }
+            .diagram-container { height: 200px; }
+            .diagram-teeth { transform: scale(0.7); }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>La Carie de la Dent Temporaire</h1>
+            <p>Définition, épidémiologie, étiopathogénie et formes cliniques</p>
+            <span class="header-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                Dr. BENKARROUM F.Z.
+            </span>
+        </div>
+    </header>
+
+    <nav class="nav-container" role="navigation" aria-label="Navigation principale">
+        <div class="nav">
+            <button class="nav-btn active" data-section="introduction">Introduction</button>
+            <button class="nav-btn" data-section="definition">Définition</button>
+            <button class="nav-btn" data-section="etiopathogenie">Étiopathogénie</button>
+            <button class="nav-btn" data-section="formes">Formes cliniques</button>
+            <button class="nav-btn" data-section="complications">Complications</button>
+            <button class="nav-btn" data-section="conclusion">Conclusion</button>
+        </div>
+    </nav>
+
+    <div class="controls-bar">
+        <div class="controls-group">
+            <span class="controls-label">Thème:</span>
+            <button class="control-btn" id="theme-toggle" title="Basculer le mode sombre">🌙</button>
+        </div>
+        <div class="controls-group">
+            <span class="controls-label">Taille:</span>
+            <button class="control-btn text-size-btn" data-size="small" title="Petite taille">A-</button>
+            <button class="control-btn text-size-btn active" data-size="normal" title="Taille normale">A</button>
+            <button class="control-btn text-size-btn" data-size="large" title="Grande taille">A+</button>
+            <button class="control-btn text-size-btn" data-size="xlarge" title="Très grande taille">A++</button>
+        </div>
+    </div>
+
+    <main class="main">
+        <section id="introduction" class="section active" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                    </div>
+                    <h2>Introduction</h2>
+                </div>
+                <p>La maladie carieuse est <strong>la maladie chronique la plus répandue dans le monde</strong>. Selon l'OMS, elle représente le <strong>troisième fléau de morbidité mondiale</strong> et constitue un véritable problème de santé publique.</p>
+                
+                <h3>Chez l'enfant en denture temporaire</h3>
+                <p>Les enfants présentent une <strong>grande susceptibilité</strong> aux caries, caractérisée par:</p>
+                <ul>
+                    <li>Formes cliniques particulières et spécifiques</li>
+                    <li>Installation précoce et évolution rapide et sévère</li>
+                    <li>Grande susceptibilité des structures dentaires</li>
+                    <li>Écosystème oral immature</li>
+                    <li>Alimentation souvent cariogène</li>
+                    <li>Hygiène insuffisante</li>
+                    <li>Conditions spécifiques liées à l'enfance</li>
+                </ul>
+                
+                <div class="key-takeaways">
+                    <h3>À retenir</h3>
+                    <ul>
+                        <li>Maladie chronique omniprésente chez l'enfant</li>
+                        <li>Prévalence et incidence élevées en denture temporaire</li>
+                        <li>Maladie accessible à la prévention</li>
+                        <li>Évolution plus rapide et sévère chez l'enfant</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="definition" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h2>Définition de la Maladie Carieuse</h2>
+                </div>
+                
+                <h3>Évolution des définitions</h3>
+                <div class="accordion">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                        <span>Définition ancienne (abandonnée)</span>
+                        <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <p><strong>Maladie infectieuse transmissible</strong> - Cette définition a été abandonnée car:</p>
+                        <ul>
+                            <li>Les caries ne se transmettent pas directement</li>
+                            <li>Ce qui se transmet, c'est le <strong>réservoir bactérien</strong>, particulièrement chez la petite enfance</li>
+                            <li>Les <strong>bactéries cariogènes sont saprophytes</strong> dont la prolifération est assurée par la consommation de sucres</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion open">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="true">
+                        <span>Définition actuelle (OMS)</span>
+                        <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <p><strong>Maladie chronique non transmissible</strong> selon l'OMS (Global Oral Health Status Report 2022)</p>
+                        <p>La maladie carieuse est la <strong>conséquence d'un changement écologique dans l'équilibre du microbiote oral</strong> (physiologiquement bénéfique) lié à des modifications de comportements de l'hôte.</p>
+                        
+                        <h4>Exemple de facteurs de risque communs</h4>
+                        <p>Un mode de vie sain selon les directives diététiques peut à la fois prévenir:</p>
+                        <ul>
+                            <li>La maladie carieuse</li>
+                            <li>Le diabète</li>
+                            <li>L'obésité</li>
+                        </ul>
+                        <p>Cette définition légitime les <strong>programmes et politiques de prévention et d'éducation</strong> ciblés sur les facteurs de risque communs à plusieurs maladies chroniques.</p>
+                    </div>
+                </div>
+
+                <h3>Mécanisme: Une catastrophe écologique</h3>
+                <div class="diagram">
+                    <div class="diagram-flow">
+                        <div class="diagram-box">Sucres fermentescibles<br>+ Bactéries cariogènes</div>
+                        <span class="diagram-arrow">→</span>
+                        <div class="diagram-box">pH bas continu</div>
+                        <span class="diagram-arrow">→</span>
+                        <div class="diagram-box">Déminéralisation<br>+ Sélection bactérienne</div>
+                        <span class="diagram-arrow">→</span>
+                        <div class="diagram-box highlight">Déséquilibre<br>du biofilm</div>
+                    </div>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>La carie dentaire illustre une CATASTROPHE ÉCOLOGIQUE provoquée par le sucre.</strong></p>
+                <p>⇒ Maladie dynamique multifactorielle non transmissible.</p>
+
+                <div class="key-takeaways">
+                    <h3>À retenir</h3>
+                    <ul>
+                        <li>Anciennement: maladie infectieuse transmissible (abandonné)</li>
+                        <li>Actuellement: maladie chronique non transmissible (OMS)</li>
+                        <li>Mécanisme: changement écologique du microbiote oral</li>
+                        <li>Facteurs de risque communs à d'autres maladies chroniques</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="etiopathogenie" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+                    </div>
+                    <h2>Étiopathogénie</h2>
+                </div>
+
+                <h3>Schéma de Keyes (1962)</h3>
+                <p>En 1962, Keyes a identifié les <strong>3 facteurs étiologiques principaux de la carie</strong>:</p>
+                <div class="diagram">
+                    <div class="diagram-flow">
+                        <div class="diagram-box">Bactéries<br>pathogènes</div>
+                        <span class="diagram-arrow">+</span>
+                        <div class="diagram-box">Substrat<br>(sucres)</div>
+                        <span class="diagram-arrow">+</span>
+                        <div class="diagram-box">Hôte<br>(structures)</div>
+                        <span class="diagram-arrow">→</span>
+                        <div class="diagram-box highlight">CARIE</div>
+                    </div>
+                </div>
+                
+                <h4>Les 4 étapes de formation de la carie selon Keyes</h4>
+                <div class="keyes-stages">
+                    <div class="stage-card" data-stage="1">
+                        <h4>Étape 1: Colonisation</h4>
+                        <p>Adhésion des bactéries cariogènes à la surface dentaire</p>
+                    </div>
+                    <div class="stage-card" data-stage="2">
+                        <h4>Étape 2: Acidification</h4>
+                        <p>Production d'acides par fermentation des sucres</p>
+                    </div>
+                    <div class="stage-card" data-stage="3">
+                        <h4>Étape 3: Déminéralisation</h4>
+                        <p>L'acide dissout les structures minérales dentaires</p>
+                    </div>
+                    <div class="stage-card" data-stage="4">
+                        <h4>Étape 4: Cavitation</h4>
+                        <p>Formation d'une cavité avec destruction tissulaire</p>
+                    </div>
+                </div>
+
+                <h4>Facteurs clés de la maladie carieuse</h4>
+                <p>Un aperçu des trois piliers fondamentaux:</p>
+                <div class="risk-factors-grid">
+                    <div class="risk-factor">
+                        <div class="icon">🦠</div>
+                        <h5>Bactéries</h5>
+                        <p>Streptocoques mutans (SM) et autres organismes cariogènes</p>
+                    </div>
+                    <div class="risk-factor">
+                        <div class="icon">🍬</div>
+                        <h5>Sucres/Substrat</h5>
+                        <p>Glucides fermentescibles, fréquence d'ingestion</p>
+                    </div>
+                    <div class="risk-factor">
+                        <div class="icon">🦷</div>
+                        <h5>Hôte/Dent</h5>
+                        <p>Structures dentaires et facteurs salivaires</p>
+                    </div>
+                    <div class="risk-factor">
+                        <div class="icon">⏰</div>
+                        <h5>Temps</h5>
+                        <p>Durée et fréquence d'exposition aux facteurs</p>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                        <span>Modification de Newbrun (1978) - Ajout du Temps</span>
+                        <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <p>En 1978, Newbrun a modifié le schéma de Keyes pour ajouter le facteur <strong>TEMPS</strong>, afin de tenir compte de:</p>
+                        <ul>
+                            <li>La répétitivité des attaques acides</li>
+                            <li>La durée de l'exposition aux facteurs de risque</li>
+                        </ul>
+                        <p><strong>⇒ La fréquence d'exposition est plus importante que la quantité!</strong></p>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                        <span>Modèle Fisher-Owens (2007) - Approche Biopsychosociale</span>
+                        <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <p>En 2007, Fisher-Owens a établi un concept à <strong>3 niveaux</strong>:</p>
+                        
+                        <h4>Niveau de l'enfant</h4>
+                        <ul>
+                            <li>Génétique et biologie</li>
+                            <li>Comportements alimentaires et d'hygiène</li>
+                            <li>Pratique d'activité physique</li>
+                            <li>Situation démographique</li>
+                        </ul>
+
+                        <h4>Niveau familial</h4>
+                        <ul>
+                            <li>Niveau socio-économique</li>
+                            <li>Composition familiale (monoparentale, fratrie, etc.)</li>
+                            <li>Pratiques de santé</li>
+                        </ul>
+
+                        <h4>Niveau communautaire</h4>
+                        <ul>
+                            <li>Environnement social et culturel</li>
+                            <li>Accès aux soins bucco-dentaires</li>
+                            <li>Culture du pays et habitudes alimentaires</li>
+                            <li>Caractéristiques du système de santé</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Facteurs liés à l'alimentation / Substrat</h3>
+                
+                <h4>Les Sucres</h4>
+                <p><strong>Le saccharose est la principale cause de la maladie carieuse.</strong></p>
+                <p>Les glucides fermentescibles + bactéries cariogènes de la plaque bactérienne = acides organiques → chute du pH salivaire.</p>
+
+                <div class="accordion">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                        <span>Quantité vs Fréquence d'exposition</span>
+                        <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>Quantité du sucre ingéré</h4>
+                        <p>⇒ N'est pas le facteur le plus important. Une <strong>faible quantité suffit</strong> à produire un pH acide cariogène.</p>
+
+                        <h4>Fréquence d'exposition <span style="color: var(--primary); font-weight: bold;">+++</span></h4>
+                        <p>Plus les ingestions sont répétées, plus:</p>
+                        <ul>
+                            <li>La production d'acide est fréquente et prolongée</li>
+                            <li>Le pouvoir tampon de la salive est débordé</li>
+                            <li>L'équilibre déminéralisation/reminéralisation est rompu</li>
+                        </ul>
+
+                        <h4>Consistance des aliments sucrés</h4>
+                        <p>Plus un sucre sera <strong>retenu longtemps en bouche</strong> (clairance longue), plus la durée de production d'acides augmentera.</p>
+                    </div>
+                </div>
+
+                <h4>Le Lait: Potentiel cariogène complexe</h4>
+                <p>Le potentiel cariogène du lait dépend des modalités d'administration, de la fréquence et de la durée de consommation.</p>
+                <ul>
+                    <li><strong>Effet protecteur:</strong> Le lait contient du calcium, des phosphates et de la caséine qui limitent la déminéralisation car la baisse du pH buccal est faible</li>
+                    <li><strong>Effet cariogène:</strong> Si la consommation est régulière et fréquente, particulièrement pendant la nuit ⇒ facteur de risque de CPE</li>
+                </ul>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Type de lait</th>
+                                <th>Teneur en lactose</th>
+                                <th>Risque carieux</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Lait maternel</td>
+                                <td>7,2 % (glucose + galactose)</td>
+                                <td>Modéré si fréquent</td>
+                            </tr>
+                            <tr>
+                                <td>Lait artificiel</td>
+                                <td>7 %</td>
+                                <td>Modéré si fréquent</td>
+                            </tr>
+                            <tr>
+                                <td>Lait de vache</td>
+                                <td>4,5 %</td>
+                                <td>Plus faible</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                        <span>Recommandations d'alimentation</span>
+                        <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><strong>1ers mois de vie:</strong> Allaitement exclusif à la demande</li>
+                            <li><strong>4 à 6 mois:</strong> Diversification → allaitement jusqu'à 2 ans sous réserve de nettoyer les dents et réduire la fréquence et la consommation d'aliments sucrés (4 repas/jour)</li>
+                            <li><strong>Après 6 mois:</strong> L'alimentation nocturne est à proscrire</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4>Habitudes alimentaires d'apaisement (à risque)</h4>
+                <ul>
+                    <li>Tétine recouverte de produit sucré ou trempée dans du miel</li>
+                    <li>Biberon avec liquide riche en hydrates de carbone (jus de fruits, sirop, eau sucrée) pendant l'endormissement</li>
+                    <li>La succion cesse et stagnation autour des dents</li>
+                    <li><strong>Effet intense pendant le sommeil:</strong> clairance diminuée et salivation réduite</li>
+                </ul>
+
+                <h4>Habitudes alimentaires de la petite enfance</h4>
+                <ul>
+                    <li>Bonbon, gâteaux et friandises à volonté</li>
+                    <li>Jus et soda (acidité + sucres)</li>
+                    <li>Succion du pain (amidon hautement cariogène)</li>
+                    <li>Prise fréquente de sirops pédiatriques sucrés</li>
+                </ul>
+
+                <h3>Les Streptocoques mutans (SM)</h3>
+                <p>Parmi les microorganismes cariogènes, <strong>Streptococcus mutans représente plus de 30 % de la flore cultivable de la plaque buccale</strong> chez les enfants atteints de carie précoce, contre moins de 0,1 % chez les enfants avec peu ou pas de caries.</p>
+
+                <h4>Facteurs de virulence des SM</h4>
+                <ul>
+                    <li>Bactérie fermentaire</li>
+                    <li>Synthétise à partir du saccharose des polysaccharides extracellulaires insolubles</li>
+                    <li>Acidurique: capacité de s'adapter à un milieu extrêmement acide</li>
+                    <li>Les surfaces dentaires occlusales représentent un habitat privilégié</li>
+                </ul>
+
+                <div class="accordion">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                        <span>Fenêtre d'infectiosité des SM (19-30 mois)</span>
+                        <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <p><strong>Entre 19 et 30 mois:</strong> Période la plus favorable pour la colonisation bactérienne chez le jeune enfant</p>
+                        <p>Cette fenêtre correspond à l'<strong>éruption des dents cuspidées</strong> dont les anfractuosités pourraient servir de première niche écologique.</p>
+                    </div>
+                </div>
+
+                <h4>Mode d'acquisition des SM</h4>
+                <p><strong>Les principaux modes de transmission des Streptocoques mutans:</strong></p>
+                <div class="transmission-routes">
+                    <div class="route-card">
+                        <div class="icon">👩‍👧‍👦</div>
+                        <h4>Verticale<br>(Mère-enfant)</h4>
+                        <p>Mode principal. Contact salivaire direct ou indirect.</p>
+                    </div>
+                    <div class="route-card">
+                        <div class="icon">👨‍👧</div>
+                        <h4>Paternelle<br>(Père-enfant)</h4>
+                        <p>Mode possible mais moins important.</p>
+                    </div>
+                    <div class="route-card">
+                        <div class="icon">👶👶</div>
+                        <h4>Horizontale<br>(Fratrie, crèche)</h4>
+                        <p>Entre enfants: jouets, brosses à dents partagés.</p>
+                    </div>
+                </div>
+                <div class="accordion open">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="true">
+                        <span>Transmission verticale (mère-enfant)</span>
+                        <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <p><strong>La mère est le principal réservoir</strong> qui contribue à la transmission de SM aux enfants.</p>
+                        <p><strong>Corrélations identifiées:</strong></p>
+                        <ul>
+                            <li>Plus le taux salivaire de S. mutans de la mère est élevé, plus leur acquisition par le bébé est précoce</li>
+                            <li>Plus l'enfant présente un risque carieux (RCI) élevé</li>
+                            <li>Corrélation entre concentrations salivaires en SM mère/enfant</li>
+                            <li>Profils similaires des bactériocines de S. mutans</li>
+                        </ul>
+
+                        <h4>Modes de transmission</h4>
+                        <p><strong>Transmission directe:</strong></p>
+                        <ul>
+                            <li>Contact salivaire</li>
+                            <li>Embrasser son enfant sur la bouche</li>
+                        </ul>
+
+                        <p><strong>Transmission indirecte:</strong></p>
+                        <ul>
+                            <li>Goûter à la nourriture du bébé avec la même cuillère</li>
+                            <li>Tester la température de la tétine</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                        <span>Autres modes de transmission</span>
+                        <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <p><strong>Transmission père-enfant:</strong> Possible mais moins importante</p>
+                        <p><strong>Transmission horizontale (fratrie, crèches):</strong> Possible via</p>
+                        <ul>
+                            <li>Génotypes identiques de SM entre les enfants</li>
+                            <li>Échange des brosses à dents</li>
+                            <li>Partage de jouets</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4>Biofilm dentaire / Plaque bactérienne</h4>
+                <ul>
+                    <li><strong>Indicateur fort</strong> de l'activité bactérienne cariogène lorsqu'elle est visible sans révélateur</li>
+                    <li><strong>Fortement liée</strong> aux lésions carieuses actuelles</li>
+                    <li>Saignement de la papille interdentaire → présence de plus de plaque → risque de caries proximales</li>
+                    <li>Présence de plaque chez nourrisson → prédicteur développement CPE</li>
+                    <li>Élimination inefficace de la plaque → niveaux ↑ de bactéries cariogènes</li>
+                    <li><strong>SM et Lactobacilles (>10⁵ UFC/ml de salive) à 1 an</strong> → ↑↑ Risque carieux à 6 ans</li>
+                </ul>
+
+                <p><strong>S. mutans utilise des enzymes (glucosyltransférases GTFB, GTFC, GTFD)</strong> pour transformer le saccharose en polymères collants (glucanes) qui favorisent son ancrage et la structure de la plaque.</p>
+
+                <h3>Facteurs liés à l'hôte</h3>
+                
+                <h4>Facteurs liés à la dent temporaire</h4>
+                <ul>
+                    <li><strong>Surfaces anfractueuses:</strong> Au niveau des molaires temporaires, juste après éruption, puis usure avec le temps</li>
+                    <li><strong>Défauts de structure de l'émail:</strong> Prismes irréguliers et défauts de coalescence</li>
+                    <li><strong>Épaisseur et minéralisation réduites:</strong> Résistance moindre et destruction plus rapide</li>
+                    <li><strong>Défauts de développement (hypoplasie):</strong> Rétention du biofilm et susceptibilité++ à la déminéralisation</li>
+                </ul>
+
+                <h4>Facteurs salivaires</h4>
+                <p><strong>La salive est le principal système de défense de l'hôte contre la carie.</strong></p>
+                <ul>
+                    <li><strong>Débit salivaire:</strong> Assure le nettoyage mécanique. Corrélation positive entre présence de caries et faible débit</li>
+                    <li><strong>Pouvoir tampon:</strong> Bicarbonate, phosphates et protéines</li>
+                    <li><strong>Protection chimique:</strong> Enzymes, immunoglobulines</li>
+                </ul>
+
+                <p><strong>Chez l'enfant:</strong> La concentration salivaire en facteurs de défense (lysozymes et immunoglobulines A) est <strong>moins importante que chez l'adulte</strong>.</p>
+
+                <p><strong>Réduction du flux salivaire pendant le sommeil:</strong> Par prise de médicaments (Atropine, Antidépresseurs, Antihypertenseurs, Antihistaminiques, Opioïdes, Diurétiques, Benzodiazépines) ou par facteurs médicaux/génétiques</p>
+
+                <h3>Autres facteurs de risque pathologiques et facteurs prédicteurs</h3>
+                <p><strong>Distinction:</strong> Un facteur de risque est statistiquement lié à l'apparition/développement de la maladie, tandis qu'un facteur prédicteur est corrélé à la maladie sans être directement pathologique.</p>
+
+                <div class="accordion">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                        <span>Facteurs cliniques et biologiques</span>
+                        <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>Expérience carieuse de l'enfant</h4>
+                        <ul>
+                            <li>Présence de restaurations pour raison de carie depuis < 2-3 ans</li>
+                            <li>Lésions carieuses cavitaires ou non, actives ou arrêtées</li>
+                        </ul>
+
+                        <h4>Expérience carieuse dans la famille</h4>
+                        <ul>
+                            <li>Lésions carieuses actives + consommation ↑↑ saccharose</li>
+                            <li>Perte des dents de la mère → risque de CPE</li>
+                        </ul>
+
+                        <h4>État de santé et problèmes médicaux</h4>
+                        <ul>
+                            <li>Enfants nés par voie basse → charge bactérienne en SM</li>
+                            <li>Faible poids à la naissance → facteur de risque défauts émail DT</li>
+                            <li>Infections infantiles avant éruption dentaire</li>
+                            <li>Allergies, handicaps</li>
+                            <li>Prise de médicaments (1ère année)</li>
+                            <li>Spécialités contenant du sucre → hyposialie</li>
+                            <li>Surpoids, obésité → IMC et risque carieux en denture jeune adulte</li>
+                        </ul>
+
+                        <h4>Tabagisme</h4>
+                        <ul>
+                            <li>Exposition prénatale → incidence sur développement dents</li>
+                            <li>Après naissance → transmission mère-enfant bactéries cariogènes</li>
+                        </ul>
+
+                        <h4>Facteurs génétiques</h4>
+                        <p><strong>Contribution génétique au risque carieux: 49-63%</strong></p>
+                        <p>Le risque carieux est un phénotype génétiquement complexe influencé par nombreux locus pour formation émail, anatomie/qualité dents, réponse immunitaire, salive.</p>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                        <span>Facteurs environnementaux et comportementaux</span>
+                        <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>Environnementaux</h4>
+                        <ul>
+                            <li>Absence d'exposition au fluor topique et systémique</li>
+                        </ul>
+
+                        <h4>Comportementaux, psychosociaux et socio-démographiques</h4>
+                        <ul>
+                            <li><strong>Âge:</strong> Risque lié à l'âge, augmente avec le temps</li>
+                            <li><strong>Littératie en santé:</strong> Souvent associée à faible niveau socio-économique</li>
+                            <li><strong>Facteurs socioéconomiques:</strong> Statut immigrant/réfugié, origine ethnique, logement zones défavorisées, niveau scolaire, profession, revenus</li>
+                            <li><strong>Accès aux soins:</strong> Restreint corrélé à RC, particulièrement CPE</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Facteurs Protecteurs</h3>
+                <div class="accordion open">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="true">
+                        <span>Facteurs biologiques, fluor et alimentaires</span>
+                        <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>Facteurs biologiques</h4>
+                        <ul>
+                            <li><strong>Salive en Abondance:</strong> Débit > 1 ml/min</li>
+                        </ul>
+
+                        <h4>Exposition au fluor</h4>
+                        <ul>
+                            <li>Eau fluorée artificiellement 0,7 ppm → diminution RC → prévention CPE</li>
+                            <li>Dentifrices fluorés 1000 ppm biquotidiens</li>
+                            <li>Vernis fluoré ≥ 22.600 ppm tous 3-6 mois</li>
+                            <li>Brossage réalisé/contrôlé par mère motivée → diminution risque CPE</li>
+                        </ul>
+
+                        <h4>Facteurs alimentaires</h4>
+                        <p><strong>OMS 2015 - Recommandations:</strong></p>
+                        <ul>
+                            <li>Réduction consommation sucres libres < 10% apport énergétique total quotidien</li>
+                            <li>Voire < 5% (≈25g ou 5 cuillères à café)</li>
+                            <li>Prévient: maladie carieuse, surpoids et diabète</li>
+                        </ul>
+
+                        <h4>Aliments carioprotecteurs</h4>
+                        <ul>
+                            <li>Aliments riches en Calcium (produits laitiers, fromage en fin de repas)</li>
+                            <li>Par la mère pendant grossesse puis enfant avant 1-2 ans</li>
+                            <li>Diminue risque CPE et favorise reminéralisation lésions initiales</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="key-takeaways">
+                    <h3>À retenir</h3>
+                    <ul>
+                        <li>Schéma de Keyes: Bactéries + Substrat + Hôte + Temps = Carie</li>
+                        <li>Fréquence d'exposition aux sucres plus importante que quantité</li>
+                        <li>Streptocoques mutans transmis principalement par la mère</li>
+                        <li>Salive = défense principale contre caries (débit, pH, facteurs protecteurs)</li>
+                        <li>Prévention: fluor, alimentation saine, hygiène, accès aux soins</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="formes" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4h18v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4z"/><path d="M9 11l3 3 5-5"/></svg>
+                    </div>
+                    <h2>Formes Cliniques selon l'Évolution Carieuse</h2>
+                </div>
+
+                <p>La classification des caries en denture temporaire se base sur plusieurs critères:</p>
+                <ul>
+                    <li>Localisation de la carie</li>
+                    <li>Étendue de la perte de substance</li>
+                    <li>Consistance</li>
+                    <li>Coloration</li>
+                    <li>Sensibilité</li>
+                    <li>Présence ou non de dentine réactionnelle</li>
+                </ul>
+
+                <h3>Sites préférentiels de la carie en DT</h3>
+                <p>Les sites de prédilection de la carie sont:</p>
+                <ul>
+                    <li>Puits et fissures au niveau occlusal</li>
+                    <li>Faces proximales</li>
+                    <li>Tiers cervical des surfaces lisses</li>
+                </ul>
+
+                <p><strong>Dents les plus fréquemment atteintes:</strong></p>
+                <ul>
+                    <li>Molaires maxillaires et mandibulaires +++</li>
+                    <li>Incisives maxillaires ++</li>
+                    <li>Incisives mandibulaires (moins touchées - protégées par langue et salive)</li>
+                </ul>
+
+                <h4>Localisation typique des caries en dents temporaires:</h4>
+                <div class="tooth-diagram">
+                    <div>
+                        <div class="tooth-visual" style="position: relative;">
+                            <div class="site" style="top: 20%; left: 30%; width: 25px; height: 25px;"></div>
+                            <div class="site" style="top: 20%; right: 30%; width: 25px; height: 25px;"></div>
+                        </div>
+                        <div class="tooth-label">Surfaces occlusales<br>(Puits & fissures)</div>
+                    </div>
+                    <div>
+                        <div class="tooth-visual" style="position: relative;">
+                            <div class="site" style="top: 50%; left: 8%; width: 20px; height: 30px;"></div>
+                            <div class="site" style="top: 50%; right: 8%; width: 20px; height: 30px;"></div>
+                        </div>
+                        <div class="tooth-label">Faces proximales<br>(Caries jumelles)</div>
+                    </div>
+                    <div>
+                        <div class="tooth-visual" style="position: relative;">
+                            <div class="site" style="bottom: 15%; left: 20%; right: 20%; height: 20px;"></div>
+                        </div>
+                        <div class="tooth-label">Tiers cervical<br>(Faces lisses)</div>
+                    </div>
+                </div>
+
+                <div class="accordion open">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="true">
+                        <span>Avant 5 ans</span>
+                        <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>Atteinte plus fréquente au niveau:</h4>
+                        <ul>
+                            <li><strong>Surfaces occlusales des molaires:</strong> Anatomie tourmentée (puits et fissures profonds), absence de contacts proximaux (diastèmes)</li>
+                            <li><strong>Molaires mandibulaires > molaires maxillaires</strong></li>
+                            <li><strong>2èmes molaires maxillaires et mandibulaires:</strong> Plus grande susceptibilité</li>
+                            <li><strong>Surfaces vestibulaires des incisives supérieures:</strong> Position basse du frein labial, habitudes alimentaires</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                        <span>Après 5 ans</span>
+                        <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>Atteinte plus fréquente au niveau:</h4>
+                        <ul>
+                            <li><strong>Surfaces proximales:</strong> Contacts inter-dentaires après éruption dents de 6 ans</li>
+                            <li><strong>Anatomie occlusale s'amenuise</strong> avec usure physiologique</li>
+                            <li><strong>Fréquence des caries proximales des molaires</strong> plus importante si présence carie face occlusale</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Formes cliniques selon l'évolution</h3>
+
+                <div class="accordion open">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="true">
+                        <span>Carie Évolutive</span>
+                        <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>Localisation</h4>
+                        <ul>
+                            <li>Fréquemment au niveau des faces proximales</li>
+                            <li>Faces cervicales des incisives et canines</li>
+                            <li><strong>Forme typique:</strong> Faces proximales entre molaires temporaires</li>
+                            <li><strong>Plus souvent:</strong> Face distale 1ère molaire + face mésiale 2ème molaire = <strong>Caries jumelles des molaires</strong></li>
+                        </ul>
+
+                        <h4>Caractéristiques Cliniques</h4>
+                        <ul>
+                            <li><strong>Consistance molle</strong> = signe d'activité</li>
+                            <li><strong>Couleur:</strong> Jaune clair/marron</li>
+                            <li><strong>Sensibilité:</strong> Souvent asymptomatique</li>
+                        </ul>
+
+                        <h4>Évolution</h4>
+                        <ul>
+                            <li><strong>Peu étendue en surface</strong> → progression rapide en profondeur vers complexe pulpaire</li>
+                            <li><strong>Pas de sclérodentine</strong></li>
+                            <li><strong>Pas de dentine réactionnelle</strong></li>
+                            <li>Atteinte pulpaire (nécrose)</li>
+                            <li>Effondrement crêtes marginales → tassements alimentaires et compression papille → douleur parodontale</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                        <span>Carie Arrêtée</span>
+                        <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>Localisation</h4>
+                        <ul>
+                            <li>Faces occlusales des molaires</li>
+                            <li>Faces vestibulaires des incisives et canines</li>
+                            <li>Faces proximales (si extraction dents voisines)</li>
+                        </ul>
+
+                        <h4>Caractéristiques Cliniques</h4>
+                        <ul>
+                            <li><strong>Consistance dure:</strong> Phase d'arrêt d'activité</li>
+                            <li><strong>Coloration:</strong> Brun clair au noir (reminéralisation surface)</li>
+                            <li><strong>Surface:</strong> Lisse, dure, brillante et insensible</li>
+                            <li><strong>Sensibilité:</strong> Absence au froid, chaud et à la sonde</li>
+                        </ul>
+
+                        <h4>Évolution</h4>
+                        <ul>
+                            <li><strong>Lente et uniforme</strong></li>
+                            <li><strong>Plus étendue en surface qu'en profondeur</strong></li>
+                            <li><strong>Reminéralisation superficielle</strong> (sclérose dentinaire)</li>
+                            <li><strong>Dentine réactionnelle</strong> en profondeur</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                        <span>Carie Précoce de l'Enfant (CPE)</span>
+                        <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <p>La <strong>carie de la petite enfance (CPE)</strong> représente une <strong>forme spécifique et virulente</strong> des caries des dents temporaires chez les nourrissons et enfants d'âge préscolaire.</p>
+                        <p style="margin-top: 1rem;"><em>Consultez le guide dédié CPE pour plus de détails.</em></p>
+                    </div>
+                </div>
+
+                <h3>Tableau Comparatif: Carie Évolutive vs Carie Arrêtée</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Critère</th>
+                                <th>Carie Évolutive</th>
+                                <th>Carie Arrêtée</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Localisation</strong></td>
+                                <td>Faces proximales, sillons anfractueux</td>
+                                <td>Faces occlusales (molaires), faces proximales et vestibulaires (incisives/canines)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Étendue</strong></td>
+                                <td>Peu importante en émail, propagation en profondeur vers cavitation et nécrose pulpaire</td>
+                                <td>Propagation en surface, grande destruction couronnes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Dentine réactionnelle</strong></td>
+                                <td>Absente</td>
+                                <td>Présente</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Coloration</strong></td>
+                                <td>Émail blanc crayeux, jaunâtre</td>
+                                <td>Brun, noir</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Texture tissus minéralisés</strong></td>
+                                <td>Dentine molle</td>
+                                <td>Dur</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Biofilm</strong></td>
+                                <td>Présent</td>
+                                <td>Absent</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sensibilité</strong></td>
+                                <td>Douloureuse</td>
+                                <td>Indolore</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="key-takeaways">
+                    <h3>À retenir</h3>
+                    <ul>
+                        <li>Sites préférentiels: puits-fissures, faces proximales, tiers cervical</li>
+                        <li>Dents les plus atteintes: molaires > incisives max > incisives min</li>
+                        <li>Avant 5 ans: surfaces occlusales; Après 5 ans: surfaces proximales</li>
+                        <li>Carie évolutive: molle, jaune, asymptomatique, progression rapide</li>
+                        <li>Carie arrêtée: dure, noire, indolore, progression lente</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="complications" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3.05h16.94a2 2 0 0 0 1.71-3.05L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <h2>Complications</h2>
+                </div>
+
+                <h3>Complications Locales et Locorégionales</h3>
+
+                <h4>Au niveau de la dent temporaire</h4>
+                <ul>
+                    <li><strong>Inflammation pulpaire réversible:</strong> Phase initiale</li>
+                    <li><strong>Inflammation pulpaire irréversible:</strong> Avancée</li>
+                    <li><strong>Nécrose pulpaire:</strong> Avec ou sans pathologie parodontale</li>
+                    <li><strong>Syndrome du septum:</strong> Complication spécifique des caries des faces proximales des molaires (face distale 1ère molaire + face mésiale 2ème molaire)</li>
+                </ul>
+
+                <h4>Au niveau des dents successionnelles</h4>
+                <ul>
+                    <li><strong>Péricoranarites</strong></li>
+                    <li><strong>Hypoplasies:</strong> Dent de Turner</li>
+                    <li><strong>Dyschromies</strong> voire arrêt du développement</li>
+                    <li><strong>Kyste folliculaire:</strong> Refoulement et déplacement du germe de dent permanente</li>
+                </ul>
+
+                <h3>Conséquences locales directes (non soignées)</h3>
+                <ul>
+                    <li><strong>Infections et extractions</strong> fréquentes</li>
+                    <li><strong>Préjudice esthétique</strong></li>
+                    <li><strong>Problèmes orthodontiques</strong> (espaces, malpositions)</li>
+                    <li><strong>Problèmes de phonation</strong></li>
+                    <li><strong>Répercussions psychologiques</strong></li>
+                    <li><strong>Anomalies de développement</strong> de l'enfant</li>
+                </ul>
+
+                <h3>Complications Générales</h3>
+
+                <div class="accordion open">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="true">
+                        <span>Manifestations systémiques</span>
+                        <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>Symptomatologie aiguë</h4>
+                        <ul>
+                            <li>Tuméfaction faciale (cellulite)</li>
+                            <li>Douleur et fièvre → insomnies</li>
+                            <li>Adénopathies et œdème important</li>
+                        </ul>
+
+                        <h4>Manifestations systémiques</h4>
+                        <ul>
+                            <li><strong>Asthénie</strong></li>
+                            <li><strong>Retard de croissance staturo-pondérale:</strong>
+                                <ul>
+                                    <li>Alimentation perturbée</li>
+                                    <li>Poids et taille inférieurs à la moyenne</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <h4>Infections focales à redouter chez enfants à risque</h4>
+                        <ul>
+                            <li>Déséquilibre d'un diabète existant</li>
+                            <li>Problèmes rénaux</li>
+                            <li>Risque d'endocardite infectieuse chez patients cardiaques</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="key-takeaways">
+                    <h3>À retenir</h3>
+                    <ul>
+                        <li>Complications locales: inflammation pulpaire, nécrose, syndrome du septum</li>
+                        <li>Impact sur dent permanente: hypoplasie, dyschromie, déplacement</li>
+                        <li>Conséquences directes: esthétique, orthodontique, phonation, psychologique</li>
+                        <li>Complications systémiques: fièvre, tuméfaction, retard croissance, infections focales</li>
+                        <li>Prise en charge précoce essentielle pour prévenir complications</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <h2>Conclusion</h2>
+                </div>
+
+                <div class="conclusion-box">
+                    <h3>La Carie est une Dysbiose Polymicrobienne Non Transmissible</h3>
+                </div>
+
+                <h3>Points clés</h3>
+                <ul>
+                    <li><strong>Approche intégrée:</strong> Le classique schéma de Keyes doit être replacé dans une <strong>approche biopsychosociale</strong> qui tienne compte de l'environnement de l'individu</li>
+                    <li><strong>Impact multifactoriel:</strong> Les conséquences individuelles et familiales sont importantes</li>
+                    <li><strong>Prise en charge précoce:</strong> Nécessite une prise en charge dès le plus jeune âge</li>
+                    <li><strong>Prévention:</strong> Maladie accessible à la prévention via éducation, fluor, alimentation saine</li>
+                </ul>
+
+                <p style="margin-top: 2rem; font-style: italic; text-align: center; color: var(--primary); font-weight: 600;">La prévention de la carie chez l'enfant passe par une approche globale impliquant l'enfant, la famille et la communauté.</p>
+            </div>
+        </section>
+    </main>
+
+    <div class="nav-guides">
+        <a href="index.html" class="nav-guide-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Retour
+        </a>
+        <div class="nav-guides-links">
+            <span class="nav-guides-label">Autres guides:</span>
+            <a href="particularites-temporaires.html" class="nav-guide-link">Particularités DT</a>
+            <a href="particularites-dpi.html" class="nav-guide-link">Particularités DPI</a>
+            <a href="carie-dpi.html" class="nav-guide-link">Carie DPI</a>
+            <a href="cpe.html" class="nav-guide-link">CPE</a>
+            <a href="rc-enfant.html" class="nav-guide-link">RC Enfant</a>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.section).classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const accordion = header.parentElement;
+                accordion.classList.toggle('open');
+            });
+        });
+
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        
+        if (savedTheme === 'dark') {
+            htmlElement.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark-mode');
+            const isDark = htmlElement.classList.contains('dark-mode');
+            themeToggle.textContent = isDark ? '☀️' : '🌙';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+
+        const textSizeButtons = document.querySelectorAll('.text-size-btn');
+        const savedTextSize = localStorage.getItem('textSize') || 'normal';
+        
+        textSizeButtons.forEach(btn => {
+            if (btn.dataset.size === savedTextSize) {
+                btn.classList.add('active');
+            }
+        });
+        
+        if (savedTextSize !== 'normal') {
+            htmlElement.classList.add('text-size-' + savedTextSize);
+        }
+        
+        textSizeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const size = btn.dataset.size;
+                textSizeButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                htmlElement.classList.remove('text-size-small', 'text-size-large', 'text-size-xlarge');
+                if (size !== 'normal') {
+                    htmlElement.classList.add('text-size-' + size);
+                }
+                localStorage.setItem('textSize', size);
+            });
+        });
+    </script>
+</body>
+</html>

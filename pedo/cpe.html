@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Carie Précoce de l'Enfant - Pédodontie</title>
+    <meta name="description" content="Guide sur la carie précoce de l'enfant: définition, diagnostic, évaluation du risque carieux et plans de traitement">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #e11d48;
+            --primary-dark: #be123c;
+            --primary-bg: #fff1f2;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-lg: 24px;
+            --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+            --font-scale: 1;
+        }
+        html.dark-mode {
+            --primary: #fb7185;
+            --primary-dark: #e11d48;
+            --primary-bg: #881337;
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --text: #f1f5f9;
+            --text-muted: #cbd5e1;
+            --border: #334155;
+            --border-light: #475569;
+        }
+        html.text-size-small { --font-scale: 0.9; }
+        html.text-size-large { --font-scale: 1.1; }
+        html.text-size-xlarge { --font-scale: 1.25; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; font-size: calc(16px * var(--font-scale)); }
+        
+        p { margin-bottom: 1rem; color: var(--text); }
+        ul { margin-bottom: 1rem; list-style: none; }
+        ul li { margin-bottom: 0.5rem; color: var(--text-muted); }
+        strong { color: var(--text); font-weight: 600; }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white; padding: 3rem 1.5rem;
+            position: relative; overflow: hidden;
+        }
+        .header::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .header-content { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+        .header h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 0.5rem; }
+        .header p { font-size: 1.125rem; opacity: 0.9; font-weight: 400; }
+        .header-badge { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; padding: 0.5rem 1rem; background: rgba(255,255,255,0.15); border-radius: 100px; font-size: 0.875rem; font-weight: 500; backdrop-filter: blur(4px); }
+
+        .nav-container { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+        .nav { max-width: 1200px; margin: 0 auto; display: flex; gap: 0.25rem; padding: 0.5rem; overflow-x: auto; scrollbar-width: none; }
+        .nav::-webkit-scrollbar { display: none; }
+        .nav-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1rem; border: none; background: transparent; color: var(--text-muted); font-size: 0.875rem; font-weight: 500; cursor: pointer; border-radius: var(--radius-sm); white-space: nowrap; transition: all var(--transition); min-height: 44px; }
+        .nav-btn:hover { background: var(--border-light); color: var(--text); }
+        .nav-btn.active { background: var(--primary); color: white; }
+
+        .controls-bar { display: flex; align-items: center; gap: 1.5rem; padding: 0.75rem 1.5rem; background: var(--surface); border-bottom: 1px solid var(--border); justify-content: flex-end; max-width: 100%; overflow-x: auto; }
+        .controls-group { display: flex; align-items: center; gap: 0.5rem; }
+        .controls-label { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); }
+        .control-btn { display: flex; align-items: center; justify-content: center; padding: 0.5rem 0.75rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; color: var(--text); font-size: 0.8rem; transition: all var(--transition); min-width: 36px; min-height: 36px; }
+        .control-btn:hover { background: var(--border-light); color: var(--primary); }
+        .control-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+        .key-takeaways { background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(6, 182, 212, 0.04) 100%); border-left: 4px solid var(--primary); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 2rem; margin-top: 2rem; }
+        .key-takeaways h3 { color: var(--primary); font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .key-takeaways h3::before { content: '✓'; font-weight: 800; }
+        .key-takeaways ul { margin: 0; padding-left: 1.5rem; }
+        .key-takeaways li { margin-bottom: 0.5rem; color: var(--text); line-height: 1.6; font-size: 0.95rem; }
+        .key-takeaways li::marker { color: var(--primary); font-weight: bold; }
+
+        .main { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
+        .section { display: none; animation: fadeIn 0.3s ease; }
+        .section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+        .card { background: var(--surface); border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 1.5rem; box-shadow: var(--shadow); border: 1px solid var(--border-light); }
+        .card:hover { box-shadow: var(--shadow-md); }
+        .card-header { display: flex; align-items: center; gap: 1.25rem; margin-bottom: 1.5rem; }
+        .card-icon { width: 52px; height: 52px; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--primary-bg); color: var(--primary); }
+        .card-icon svg { width: 26px; height: 26px; }
+        .card h2 { font-size: 1.5rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--border); }
+        .card h3 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--text); padding-left: 0.75rem; border-left: 3px solid var(--primary); }
+        .card h4 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; color: var(--text); display: flex; align-items: center; gap: 0.5rem; }
+        .card h4::before { content: ''; width: 6px; height: 6px; background: var(--primary); border-radius: 50%; }
+        .card ul { margin-top: 1.25rem; margin-bottom: 1.25rem; padding-inline-start: 2rem; list-style: none; }
+        .card ul li { margin-bottom: 0.875rem; color: var(--text-muted); line-height: 1.75; position: relative; padding-left: 0.75rem; }
+        .card ul li::before { content: '•'; position: absolute; left: -0.75rem; color: var(--primary); font-weight: 600; font-size: 1.25rem; }
+        .card ol { margin-top: 1.25rem; margin-bottom: 1.25rem; padding-inline-start: 0; list-style: none; counter-reset: item; }
+        .card ol li { margin-bottom: 1rem; color: var(--text-muted); line-height: 1.75; position: relative; padding-left: 2.5rem; counter-increment: item; }
+        .card ol li::before { content: counter(item); position: absolute; left: 0; top: 0; background: var(--primary-bg); color: var(--primary); width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: 600; font-size: 0.875rem; }
+        .card p { color: var(--text-muted); margin-bottom: 1rem; line-height: 1.75; }
+
+        .accordion { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 1rem 0; background: var(--surface); }
+        .accordion-header { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; background: #f8fafc; cursor: pointer; font-weight: 600; font-size: 1rem; color: #1e293b; transition: all var(--transition); min-height: 60px; border-left: 4px solid transparent; }
+        .accordion-header:hover { background: #f1f5f9; border-left-color: var(--primary); }
+        .accordion.open .accordion-header { background: #ecfeff; border-left-color: var(--primary); color: var(--primary); }
+        .accordion-content { display: none; padding: 1.25rem; }
+        .accordion.open .accordion-content { display: block; animation: slideDown 0.2s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+        .accordion-arrow { transition: transform var(--transition); color: var(--text-muted); }
+        .accordion.open .accordion-arrow { transform: rotate(180deg); }
+
+        .comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin: 1.25rem 0; }
+        .comparison-card { background: #f8fafc; border-radius: var(--radius); padding: 1.5rem; border: 1px solid #e2e8f0; }
+        .comparison-card h4 { font-size: 1rem; margin-bottom: 1rem; font-weight: 600; color: #1e293b; }
+
+        .conclusion-box { background: linear-gradient(135deg, var(--primary) 0%, #4F46E5 100%); color: white; padding: 2rem; border-radius: var(--radius-lg); text-align: center; margin: 1.5rem 0; }
+        .conclusion-box h2 { font-size: 1.5rem; margin-bottom: 0.75rem; color: white; }
+        .conclusion-box p { font-size: 1rem; opacity: 0.95; color: white; }
+
+        .nav-guides { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; padding: 1.5rem; background: var(--surface); border-radius: var(--radius-lg); box-shadow: var(--shadow); margin-top: 2rem; border: 1px solid var(--border-light); }
+        .nav-guide-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.25rem; background: var(--primary); color: white; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.9rem; text-decoration: none; }
+        .nav-guide-btn:hover { background: var(--primary-dark); }
+        .nav-guide-btn svg { width: 18px; height: 18px; }
+        .nav-guides-links { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-left: auto; }
+        .nav-guides-label { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+        .nav-guide-link { padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.85rem; color: var(--text-muted); text-decoration: none; transition: all var(--transition); }
+        .nav-guide-link:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-bg); }
+
+        @media (max-width: 768px) {
+            .header { padding: 2rem 1rem; }
+            .header h1 { font-size: 1.5rem; }
+            .main { padding: 1rem; }
+            .card { padding: 1.25rem; }
+            .card-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .card-icon { width: 44px; height: 44px; }
+            .card h2 { font-size: 1.25rem; }
+            .card h3 { font-size: 1.1rem; margin-top: 1.5rem; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .nav-btn { padding: 0.75rem 0.875rem; font-size: 0.8rem; }
+            .controls-bar { flex-direction: column; gap: 0.75rem; padding: 0.75rem; }
+            .controls-group { width: 100%; justify-content: space-between; }
+            .controls-label { font-size: 0.75rem; }
+            .accordion-header { padding: 1rem; font-size: 0.9rem; min-height: 50px; }
+            .table-container { border-radius: 8px; margin: 0.75rem -0.25rem; }
+            .table-container { position: relative; padding-bottom: 1.5rem; }
+            .nav-guides { flex-direction: column; gap: 1rem; }
+            .nav-guides-links { margin-left: 0; flex-wrap: wrap; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>La Carie Précoce de l'Enfant</h1>
+            <p>CPE: Définition, diagnostic, évaluation du risque carieux et plans de traitement</p>
+            <span class="header-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                Dr. BENKARROUM F.Z.
+            </span>
+        </div>
+    </header>
+
+    <nav class="nav-container" role="navigation" aria-label="Navigation principale">
+        <div class="nav">
+            <button class="nav-btn active" data-section="introduction">Introduction</button>
+            <button class="nav-btn" data-section="erc">ERC</button>
+            <button class="nav-btn" data-section="diagnostic">Diagnostic</button>
+            <button class="nav-btn" data-section="traitement">Traitement</button>
+            <button class="nav-btn" data-section="consequences">Conséquences</button>
+            <button class="nav-btn" data-section="conclusion">Conclusion</button>
+        </div>
+    </nav>
+
+    <div class="controls-bar">
+        <div class="controls-group">
+            <span class="controls-label">Thème:</span>
+            <button class="control-btn" id="theme-toggle" title="Basculer le mode sombre">🌙</button>
+        </div>
+        <div class="controls-group">
+            <span class="controls-label">Taille:</span>
+            <button class="control-btn text-size-btn" data-size="small" title="Petite taille">A-</button>
+            <button class="control-btn text-size-btn active" data-size="normal" title="Taille normale">A</button>
+            <button class="control-btn text-size-btn" data-size="large" title="Grande taille">A+</button>
+            <button class="control-btn text-size-btn" data-size="xlarge" title="Très grande taille">A++</button>
+        </div>
+    </div>
+
+    <main class="main">
+        <section id="introduction" class="section active" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                    </div>
+                    <h2>Introduction</h2>
+                </div>
+
+                <h3>Définition</h3>
+                <p>La carie précoce de l'enfant (CPE) ou <strong>Early Childhood Caries (ECC)</strong>:</p>
+                <p>"Présence d'au moins une face cariée (lésion avec ou sans cavitation), absente (pour cause de carie) ou obturée sur une dent temporaire d'un enfant de 0 à 71 mois"</p>
+
+                <h3>Synonames</h3>
+                <ul>
+                    <li>Carie rampante de l'enfant</li>
+                    <li>Polycarie infantile</li>
+                    <li>Carie complexe de l'enfant</li>
+                    <li>Syndrome de biberon</li>
+                </ul>
+
+                <h3>Formes sévères (CPE-S)</h3>
+                <ul>
+                    <li>< 3 ans: signes sur faces lisses, Caof ≥ 4</li>
+                    <li>3 ans: Caof ≥ 5</li>
+                    <li>4-5 ans: Caof ≥ 6</li>
+                    <li>OU une ou plusieurs incisives maxillaires affectées</li>
+                </ul>
+            </div>
+
+            <div class="key-takeaways">
+                <h3>Épidémiologie</h3>
+                <ul>
+                    <li>Prévalence: 12 à 98% à 4 ans selon les pays</li>
+                    <li>Augmente avec l'âge: 17% à 1an → 63% à 5ans</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="erc" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                    </div>
+                    <h2>Évaluation du Risque Carieux (ERC)</h2>
+                </div>
+                <p>1ère étape essentielle du cycle 4D pour une prise en charge efficace et personnalisée.</p>
+
+                <h3>Objectifs de l'ERC</h3>
+                <ol>
+                    <li>Évaluer la probabilité de développement de lésions carieuses</li>
+                    <li>Comprendre pourquoi le patient présente la maladie</li>
+                    <li>Connaître le niveau et les facteurs impliqués</li>
+                    <li>Faciliter la prise de décision clinique</li>
+                    <li>Élaborer un plan de traitement personnalisé</li>
+                </ol>
+
+                <h3>Étiologie plurifactorielle</h3>
+                <ul>
+                    <li><strong>Biologiques</strong>: acquisition précoce des SM (19-33 mois), transmission</li>
+                    <li><strong>Comportementaux</strong>: alimentation sucrée, brossage absent</li>
+                    <li><strong>Sociaux</strong>: niveau d'études, revenus</li>
+                    <li><strong>Environnementaux</strong>: exposition au tabac, accès aux soins</li>
+                    <li><strong>Cliniques</strong>: hypoplasie amélaire, hyposalivation</li>
+                </ul>
+
+                <div class="accordion open">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="true">
+                        <span>Facteurs de risque NOTÉS EN ROUGE = toujours haut risque carieux</span>
+                        <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>Expérience carieuse active</li>
+                            <li>Tabagisme prénatal</li>
+                            <li>Faible débit salivaire</li>
+                            <li>Émail hypoplasique</li>
+                            <li>Biberons sucrés nocturnaux</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="diagnostic" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                    </div>
+                    <h2>Diagnostic de la CPE</h2>
+                </div>
+
+<h3>Examen clinique</h3>
+                <ul>
+                    <li><strong>Examen visuel</strong>: dents nettoyées par brossage/aéropolissage</li>
+                    <li><strong>Changements de teinte</strong>: associés aux lésions non cavitaires</li>
+                    <li><strong>Sondage</strong>: CONTRE-INDIqué sur puits et sillons (perte iatrogène d'émail déminéralisé)</li>
+                    <li><strong>ICDAS II</strong>: score 0 à 6</li>
+                </ul>
+
+                <h3>Diagnostic en 3 étapes (ICCMS)</h3>
+                <ol>
+                    <li><strong>Détecter</strong> la lésion face par face dentaire</li>
+                    <li><strong>Évaluer sa sévérité</strong> selon critères cliniques et radiographiques</li>
+                    <li><strong>Évaluer son activité</strong></li>
+                </ol>
+
+                <h3>Classification ICDAS II</h3>
+                <div class="accordion">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                        <span>Scores ICDAS (0-6)</span>
+                        <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><strong>Score 0</strong>: Dent saine</li>
+                            <li><strong>Score 1-2</strong>: Lésion initiale (démyélinisation uniquement dans l'émail)</li>
+                            <li><strong>Score 3-4</strong>: Lésion modérée (atteinte de la jonction émail-dentine)</li>
+                            <li><strong>Score 5-6</strong>: Lésion sévère (cavitation)</li>
+                        </ul>
+                        <p>Intéressant en denture temporaire grâce aux diastèmes inter-proximaux permettant de visualiser les lésions.</p>
+                    </div>
+                </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><strong>Score 0</strong>: Dent saine</li>
+                            <li><strong>Score 1-2</strong>: Lésion initiale (démyélinisation uniquement dans l'émail)</li>
+                            <li><strong>Score 3-4</strong>: Lésion modérée (atteinte de la jonction émail-dentine)</li>
+                            <li><strong>Score 5-6</strong>: Lésion sévère (cavitation)</li>
+                        </ul>
+                        <p>Intéressant en denture temporaire grâce aux diastèmes inter-proximaux permettant de visualiser les lésions.</p>
+                    </div>
+                </div>
+
+                <h3>Procédure en 3 temps</h3>
+                <ol>
+                    <li>Détecter la lésion</li>
+                    <li>Évaluer sa sévérité (initiale, modérée, sévère)</li>
+                    <li>Évaluer son activité (active, inactive)</li>
+                </ol>
+
+                <h3>Examens complémentaires</h3>
+                <ul>
+                    <li><strong>Radiographie rétro-coronaire (bite-wing)</strong>: dépistage lésions proximales</li>
+                    <li>Radiographies rétro-alvéolaires: lésions avancées</li>
+                    <li>Tests pulpaires: vitalité/sensibilité</li>
+                    <li>Tests salivaires: pH, bactériens</li>
+                </ul>
+
+                <h3>Activité des lésions (Nyvad)</h3>
+                <div class="comparison-grid">
+                    <div class="comparison-card">
+                        <h4>Lésions actives</h4>
+                        <ul>
+                            <li>Émail opaque Blanchâtre/jaunâtre</li>
+                            <li>Rugueux au sondage</li>
+                            <li>Dentine molle (cuir)</li>
+                            <li>Plaque présente</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>Lésions inactives</h4>
+                        <ul>
+                            <li>Émail brunâtre/noir, brillant</li>
+                            <li>Lisse au sondage</li>
+                            <li>Dentine dure</li>
+                            <li>Sans plaque</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="traitement" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg>
+                    </div>
+                    <h2>Plan de Traitement Personnalisé</h2>
+                </div>
+
+                <h3>À l'échelle du patient</h3>
+                
+                <div class="accordion open">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="true">
+                        <span>Soins à domicile</span>
+                        <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>Brossage</h4>
+                        <ul>
+                            <li>2x/jour</li>
+                            <li>Dentifrice 1000 ppm minimum</li>
+                            <li>Par les parents puis supervision > 8 ans</li>
+                            <li>Taux de fluor: 0-2ans: trace, 2-6ans: petit pois</li>
+                        </ul>
+                        <h4>Habitudes alimentaires</h4>
+                        <ul>
+                            <li>4 repas/jour</li>
+                            <li>Limiter grignotages</li>
+                            <li>Eau pure en dehors des repas</li>
+                            <li>Pas de biberon cariogène au coucher</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                        <span>Actes professionnels</span>
+                        <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>Motivation higiene orale et alimentaire</li>
+                            <li>Pose de vernis fluorés</li>
+                            <li>Scellement des faces à risque</li>
+                            <li>Fréquence: RC élevé = 3-6 mois, RC faible = 6-12 mois</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>À l'échelle de la dent</h3>
+                
+                <div class="accordion">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                        <span>Traitements non invasifs</span>
+                        <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><strong>Topiques fluorés</strong>: vernis ≥ 22600 ppm</li>
+                            <li><strong>Fluorure de diamine d'argent (FDA)</strong>: inactivation des lésions</li>
+                            <li><strong>Scellements thérapeutiques</strong>: ICDAS 1-3</li>
+                            <li><strong>Technique de Hall</strong>: CPPm sur DT cariée sans implication pulpaire</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
+                        <span>Traitements invasifs conservateurs</span>
+                        <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><strong>ART</strong>: Atraumatic Restorative Treatment</li>
+                            <li><strong>Restaurations</strong>: VER, composites, Couronnes pédodontiques</li>
+                            <li><strong>Traitements endodontiques</strong>: pulpotomie, pulpectomie</li>
+                            <li><strong>Extraction</strong>: si résorption avancée</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-takeaways">
+                <h3>Gradient thérapeutique</h3>
+                <ol>
+                    <li><strong>Préventif</strong>: éducation, fluor, scellements</li>
+                    <li><strong>Non invasif</strong>: vernis, FDA, sealants</li>
+                    <li><strong>Invasif conservateur</strong>: ART, restaurations</li>
+                    <li><strong>Chirurgical</strong>: extraction</li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="consequences" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                    </div>
+                    <h2>Conséquences de la CPE</h2>
+                </div>
+
+                <h3>À court terme</h3>
+                <ul>
+                    <li>Douleur</li>
+                    <li>Infection (abcès, cellule)</li>
+                    <li>Diminution de l'appétit</li>
+                    <li>Sommeil perturbé</li>
+                    <li>Consultations d'urgence, hospitalisations</li>
+                    <li>Absences scolaires</li>
+                    <li>Extractions sous anesthésie générale</li>
+                    <li>Malocclusions par perte prématurée</li>
+                </ul>
+
+                <h3>À long terme</h3>
+                <ul>
+                    <li>Mauvaise santé orale persistante</li>
+                    <li>Risque élevé de nouvelles caries</li>
+                    <li>Impact sur la santé générale</li>
+                    <li>Conséquences sur le langage, nutrition, qualité de vie</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="conclusion" class="section" role="region">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h2>Conclusion</h2>
+                </div>
+                <p>Les signes cliniques prodromiques de la CPE devraient être connus de tous les professionnels (pédiatre, généraliste, dentiste, personnel de crèche...) afin d'éviter à l'enfant une pathologie lourde de conséquences.</p>
+                <p>La CPE est une forme sévère de polycaries. Sa prise en charge ne doit pas être limitée aux soins de caries, mais elle doit respecter un <strong>gradient thérapeutique</strong>, ciblant l'étiologie en premier lieu.</p>
+            </div>
+
+            <div class="conclusion-box">
+                <h2>Message clé</h2>
+                <p>Approche préventive + Approche curative = Prise en charge globale de la CPE</p>
+            </div>
+
+            </section>
+    </main>
+
+    <div class="nav-guides">
+        <a href="index.html" class="nav-guide-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Retour
+        </a>
+        <div class="nav-guides-links">
+            <span class="nav-guides-label">Autres guides:</span>
+            <a href="particularites-temporaires.html" class="nav-guide-link">Particularités DT</a>
+            <a href="particularites-dpi.html" class="nav-guide-link">Particularités DPI</a>
+            <a href="carie-temporaire.html" class="nav-guide-link">Carie DT</a>
+            <a href="carie-dpi.html" class="nav-guide-link">Carie DPI</a>
+            <a href="rc-enfant.html" class="nav-guide-link">RC Enfant</a>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.section).classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const accordion = header.parentElement;
+                accordion.classList.toggle('open');
+            });
+        });
+
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        
+        if (savedTheme === 'dark') {
+            htmlElement.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark-mode');
+            const isDark = htmlElement.classList.contains('dark-mode');
+            themeToggle.textContent = isDark ? '☀️' : '🌙';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+
+        const textSizeButtons = document.querySelectorAll('.text-size-btn');
+        const savedTextSize = localStorage.getItem('textSize') || 'normal';
+        
+        textSizeButtons.forEach(btn => {
+            if (btn.dataset.size === savedTextSize) {
+                btn.classList.add('active');
+            }
+        });
+        
+        if (savedTextSize !== 'normal') {
+            htmlElement.classList.add('text-size-' + savedTextSize);
+        }
+        
+        textSizeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const size = btn.dataset.size;
+                textSizeButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                htmlElement.classList.remove('text-size-small', 'text-size-large', 'text-size-xlarge');
+                if (size !== 'normal') {
+                    htmlElement.classList.add('text-size-' + size);
+                }
+                localStorage.setItem('textSize', size);
+            });
+        });
+    </script>
+</body>
+</html>
