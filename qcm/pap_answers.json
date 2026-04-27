@@ -1,0 +1,367 @@
+{
+  "exam_title": "Euvre de prothese adjointe partielle resina",
+  "total_questions": 40,
+  "answers": [
+    {
+      "id": 1,
+      "answer": [
+        "b"
+      ],
+      "confidence": 95,
+      "justification": "Prothese provisoire = realisee en attendant les traitements pre-prothetiques (cours_pap.json)"
+    },
+    {
+      "id": 2,
+      "answer": [
+        "c",
+        "d"
+      ],
+      "confidence": 95,
+      "justification": "Adresse fait partie de l'etat civil (cours_pap.json: etat_civil.informations)"
+    },
+    {
+      "id": 3,
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "confidence": 85,
+      "justification": "Toutes les propositions (a,b,c) sont necessaires dans le plan de traitement"
+    },
+    {
+      "id": 4,
+      "answer": [
+        "c"
+      ],
+      "confidence": 95,
+      "justification": "Maxillaire: dents 16,15,23,25 absentes = Classe III modification 1 (edentements encastres + anterieur) [VERIFIED]"
+    },
+    {
+      "id": 5,
+      "answer": [
+        "c"
+      ],
+      "confidence": 95,
+      "justification": "Mandibulaire: 38-35 et 48-45 absentes = terminal bilateral postérieur = Classe I"
+    },
+    {
+      "id": 6,
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "confidence": 70,
+      "justification": "Empreinte primaire needed for BOTH but answer incomplete - patient has bilateral edentations [VERIFY]"
+    },
+    {
+      "id": 7,
+      "answer": [
+        "a",
+        "c"
+      ],
+      "confidence": 95,
+      "justification": "L'alginate est utilise pour empreinte primaire (cours_pap.json)"
+    },
+    {
+      "id": 8,
+      "answer": [
+        "a",
+        "c"
+      ],
+      "confidence": 60,
+      "justification": "Le PEI ne doit pas etre essaye en bouche - BUT VERIFY: stock tray typically tried in mouth initially [NEEDS VERIFICATION]"
+    },
+    {
+      "id": 9,
+      "answer": [
+        "a"
+      ],
+      "confidence": 95,
+      "justification": "Protocole: Rincee, verifiee, disinfectee et coulee"
+    },
+    {
+      "id": 10,
+      "answer": [
+        "c"
+      ],
+      "confidence": 95,
+      "justification": "Bourrelet a une largeur de 3-5mm au niveau anterieur"
+    },
+    {
+      "id": 11,
+      "answer": [
+        "a",
+        "c"
+      ],
+      "confidence": 95,
+      "justification": "Le remarginage concerne les bords du PEI"
+    },
+    {
+      "id": 12,
+      "answer": [
+        "b",
+        "d"
+      ],
+      "confidence": 90,
+      "justification": "Enregistrement de l'arcade AVANT remarginage"
+    },
+    {
+      "id": 13,
+      "answer": [
+        "b",
+        "c"
+      ],
+      "confidence": 95,
+      "justification": "Les bords doivent etre verifies en bouche avant remarginage"
+    },
+    {
+      "id": 14,
+      "answer": [
+        "a",
+        "b"
+      ],
+      "confidence": 95,
+      "justification": "Enregistrement de l'occlusion en bouche obligatoire"
+    },
+    {
+      "id": 15,
+      "answer": [
+        "a",
+        "d"
+      ],
+      "confidence": 95,
+      "justification": "Bon support parodontal = lateralite avec guidage canin"
+    },
+    {
+      "id": 16,
+      "answer": [
+        "b"
+      ],
+      "confidence": 95,
+      "justification": "Classe I canine = rapport 1 dent sur 1 dent"
+    },
+    {
+      "id": 17,
+      "answer": [
+        "a",
+        "d"
+      ],
+      "confidence": 95,
+      "justification": "Les crochets doivent etre bien adaptes a la gencive marginale"
+    },
+    {
+      "id": 18,
+      "answer": [
+        "a",
+        "b",
+        "d"
+      ],
+      "confidence": 90,
+      "justification": "Instabilite due a inadaptation des crochets"
+    },
+    {
+      "id": 19,
+      "answer": [
+        "b",
+        "c"
+      ],
+      "confidence": 90,
+      "justification": "Douleur au secteur postérieur = compression"
+    },
+    {
+      "id": 20,
+      "answer": [
+        "a",
+        "b",
+        "c"
+      ],
+      "confidence": 90,
+      "justification": "Prothese immediate remplace dents anterieures ET posterieures - need try-in of BOTH anterior & posterior"
+    },
+    {
+      "id": 21,
+      "answer": [
+        "a",
+        "c",
+        "d"
+      ],
+      "confidence": 90,
+      "justification": "Forme en U favorable, forme en V defavorable"
+    },
+    {
+      "id": 22,
+      "answer": [
+        "a",
+        "c"
+      ],
+      "confidence": 95,
+      "justification": "Cawood et Howell : 6 classes"
+    },
+    {
+      "id": 23,
+      "answer": [
+        "a",
+        "c"
+      ],
+      "confidence": 95,
+      "justification": "Voile horizontal en continuite avec palais = tres favorable"
+    },
+    {
+      "id": 24,
+      "answer": [
+        "a",
+        "d"
+      ],
+      "confidence": 95,
+      "justification": "Epines mentonnieres superieures : insertion des muscles genio-glosses (structures_supports_pap.json)"
+    },
+    {
+      "id": 25,
+      "answer": [
+        "a",
+        "c"
+      ],
+      "confidence": 95,
+      "justification": "Ligaments pterygo-mandibulaires : sollicites lors ouverture buccale"
+    },
+    {
+      "id": 26,
+      "answer": [
+        "a",
+        "b",
+        "d"
+      ],
+      "confidence": 95,
+      "justification": "Raphé médian plat = indice positif [VERIFIED in structures_supports_pap.json]"
+    },
+    {
+      "id": 27,
+      "answer": [
+        "a",
+        "c"
+      ],
+      "confidence": 95,
+      "justification": "Structures dento-parodontales : proprioception"
+    },
+    {
+      "id": 28,
+      "answer": [
+        "a",
+        "b",
+        "c"
+      ],
+      "confidence": 95,
+      "justification": "Dualite tissulaire : forces d'enfoncement et decollement"
+    },
+    {
+      "id": 29,
+      "answer": [
+        "a",
+        "c"
+      ],
+      "confidence": 95,
+      "justification": "Egressions reduisent l'espace prothetique"
+    },
+    {
+      "id": 30,
+      "answer": [
+        "a",
+        "b"
+      ],
+      "confidence": 95,
+      "justification": "Resorption centripete au maxillaire, centrifuge a la mandibule"
+    },
+    {
+      "id": 31,
+      "answer": [
+        "c"
+      ],
+      "confidence": 95,
+      "justification": "Triade de Housset : sustentation, stabilisation, retention (equilibre_pap.json)"
+    },
+    {
+      "id": 32,
+      "answer": [
+        "a"
+      ],
+      "confidence": 95,
+      "justification": "Sustentation = reaction s'opposant aux forces axiales d'enfoncement"
+    },
+    {
+      "id": 33,
+      "answer": [
+        "b"
+      ],
+      "confidence": 95,
+      "justification": "Stabilisation = reaction s'opposant aux mouvements de translation/rotation"
+    },
+    {
+      "id": 34,
+      "answer": [
+        "c"
+      ],
+      "confidence": 95,
+      "justification": "Retention = reaction s'opposant aux forces axiales d'eloignement"
+    },
+    {
+      "id": 35,
+      "answer": [
+        "a",
+        "c"
+      ],
+      "confidence": 95,
+      "justification": "Appui dento-parodontal si exteroception predominante"
+    },
+    {
+      "id": 36,
+      "answer": [
+        "a",
+        "b"
+      ],
+      "confidence": 95,
+      "justification": "Crete large assure sustentation fibro-muqueuse"
+    },
+    {
+      "id": 37,
+      "answer": [
+        "a",
+        "c"
+      ],
+      "confidence": 95,
+      "justification": "Extension maximale de la prothese = facteur de sustentation"
+    },
+    {
+      "id": 38,
+      "answer": [
+        "a",
+        "b",
+        "c"
+      ],
+      "confidence": 95,
+      "justification": "Contre-depouilles (tuberosites, trigones) = facteur de retention"
+    },
+    {
+      "id": 39,
+      "answer": [
+        "c",
+        "d"
+      ],
+      "confidence": 95,
+      "justification": "Pression atmospherique (effet ventouse) = facteur physique"
+    },
+    {
+      "id": 40,
+      "answer": [
+        "a",
+        "b",
+        "d"
+      ],
+      "confidence": 95,
+      "justification": "Crochets faconnes/coules = facteur de retention"
+    }
+  ]
+}

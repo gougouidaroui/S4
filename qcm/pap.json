@@ -1,0 +1,414 @@
+{
+  "exam_metadata": {
+    "title": "Epreuve de prothèse adjointe partielle résine",
+    "professors": ["Pr BENFDIL", "Pr REGRAGUI A."],
+    "level": "2ème année",
+    "session": "1ère session, mai 2024",
+    "total_questions": 40
+  },
+  "questions": [
+    {
+      "id": 1,
+      "context": "Un patient s'est présenté au cabinet dentaire pour une réhabilitation prothétique. Il a perdu la 16, 15, 23, 25, 38, 37, 36, 35, 34, 44, 45, 46, 47 et 48. Il présente des caries et des traitements endodontiques sur les dents du groupe incisivo-canin maxillaire et d'autres soins au niveau mandibulaire. En attendant la finalisation des traitements pré-prothétiques, vous décider de réaliser une prothèse amovible partielle résine.",
+      "question_text": "Cette prothèse est une prothèse :",
+      "options": {
+        "a": "d'usage",
+        "b": "provisoire",
+        "c": "transitoire",
+        "d": "immédiate"
+      }
+    },
+    {
+      "id": 2,
+      "question_text": "Lors de l'examen clinique de ce patient, vous devez noter dans l'état civil :",
+      "options": {
+        "a": "Le motif de consultation",
+        "b": "Les maladies du patient",
+        "c": "L'âge",
+        "d": "L'adresse du patient"
+      }
+    },
+    {
+      "id": 3,
+      "question_text": "Lors de l'établissement du plan de traitement, vous devez :",
+      "options": {
+        "a": "Poser le diagnostic ostéo-muqueux",
+        "b": "Poser le diagnostic dentaire",
+        "c": "Spécifier les soins d'urgence à faire",
+        "d": "Spécifier les prothèses à réaliser"
+      }
+    },
+    {
+      "id": 4,
+      "question_text": "Quel est le nom de l'édentement maxillaire de ce patient selon la classification de Kennedy-Applegate :",
+      "options": {
+        "a": "Classe III modification 1",
+        "b": "Classe VI modification 1",
+        "c": "Classe III modification 2",
+        "d": "Classe VI modification 2"
+      }
+    },
+    {
+      "id": 5,
+      "question_text": "Quel est le nom de l'édentement mandibulaire selon la classification de Kennedy-Applegate :",
+      "options": {
+        "a": "Classe II",
+        "b": "Classe II modification 1",
+        "c": "Classe I",
+        "d": "Classe I modification 1"
+      }
+    },
+    {
+      "id": 6,
+      "question_text": "Quelles sont les étapes dont vous avez besoin pour l'élaboration de cette prothèse ?",
+      "options": {
+        "a": "Empreinte primaire maxillaire",
+        "b": "Empreinte primaire mandibulaire",
+        "c": "Empreinte secondaire maxillaire",
+        "d": "Empreinte secondaire mandibulaire"
+      }
+    },
+    {
+      "id": 7,
+      "question_text": "L'empreinte primaire chez ce patient peut être réalisée avec :",
+      "options": {
+        "a": "Un porte empreinte de commerce métallique",
+        "b": "Un porte empreinte individuel",
+        "c": "L'alginate",
+        "d": "Un silicone fluide"
+      }
+    },
+    {
+      "id": 8,
+      "question_text": "Pour la réalisation de l'empreinte primaire, le porte empreinte :",
+      "options": {
+        "a": "Doit être essayé en bouche",
+        "b": "Ne doit pas être essayé en bouche",
+        "c": "Doit être espacé au niveau des dents",
+        "d": "Doit être en contact intime avec les dents"
+      }
+    },
+    {
+      "id": 9,
+      "question_text": "Après désinsertion de l'empreinte primaire, elle doit être (choisir la meilleure réponse) :",
+      "options": {
+        "a": "Rincée, vérifiée, désinfectée et coulée",
+        "b": "Désinfectée, rincée et coulée",
+        "c": "Rincée, désinfectée et coulée",
+        "d": "Vérifiée, Rincée, désinfectée et coulée"
+      }
+    },
+    {
+      "id": 10,
+      "question_text": "Le bourrelet du porte empreinte individuel :",
+      "options": {
+        "a": "Doit recouvrir les trigones",
+        "b": "Doit recouvrir les tubérosités",
+        "c": "A une largeur de 3 à 5 mm au niveau antérieur",
+        "d": "A une largeur de 3 à 5 mm au niveau postérieur"
+      }
+    },
+    {
+      "id": 11,
+      "question_text": "Le remarginage :",
+      "options": {
+        "a": "Permet d'enregistrer le joint périphérique lors de la fonction",
+        "b": "Permet d'enregistrer la dépressibilité de la fibromuqueuse des crêtes édentées",
+        "c": "Concerne les bords du PEI",
+        "d": "Concerne l'intrados du PEI"
+      }
+    },
+    {
+      "id": 12,
+      "question_text": "Lors de l'empreinte secondaire, l'enregistrement de la totalité de l'arcade par le matériau à empreinte est réalisé :",
+      "options": {
+        "a": "Avant le remarginage",
+        "b": "Après le remarginage",
+        "c": "Avant la mise en place de l'adhésif",
+        "d": "Après la mise en place de l'adhésif"
+      }
+    },
+    {
+      "id": 13,
+      "question_text": "Les bords du porte empreinte individuel en regard des crêtes édentées :",
+      "options": {
+        "a": "Sont situés au niveau du fond du vestibule",
+        "b": "Sont situés à 2mm du fond du vestibule",
+        "c": "Doivent être vérifiés en bouche avant remarginage",
+        "d": "Ne doivent pas être vérifiés en bouche avant remarginage"
+      }
+    },
+    {
+      "id": 14,
+      "question_text": "Pour l'enregistrement du rapport maxillo-mandibulaire de ce patient, vous devez avoir recours à :",
+      "options": {
+        "a": "Une maquette d'occlusion mandibulaire",
+        "b": "Un enregistrement de l'occlusion en bouche",
+        "c": "Une confrontation des modèles au laboratoire sans enregistrement de l'occlusion en bouche",
+        "d": "Toutes les propositions sont justes"
+      }
+    },
+    {
+      "id": 15,
+      "question_text": "Ce patient un bon support parodontal des dents restantes. Il peut avoir une occlusion dynamique suivante :",
+      "options": {
+        "a": "Une latéralité avec un guidage canin au niveau du côté droit",
+        "b": "Une latéralité avec un guidage canin au niveau du côté gauche",
+        "c": "Une latéralité avec un guidage de groupe au niveau du côté droit",
+        "d": "Une latéralité avec un guidage de groupe au niveau du côté gauche"
+      }
+    },
+    {
+      "id": 16,
+      "question_text": "Lors de l'essayage du montage de ce patient, et en sachant qu'il présentait une classe I canine droite et gauche, vous devez avoir :",
+      "options": {
+        "a": "Un rapport de 1 dent sur 1 dent",
+        "b": "Un rapport de 1 dent sur 2 dents",
+        "c": "La pointe cuspidienne de la 23 est au même niveau que le bord libre de la 22",
+        "d": "La pointe cuspidienne de la 23 est plus basse que le bord libre de la 22"
+      }
+    },
+    {
+      "id": 17,
+      "question_text": "Lors de la pose de cette PAP résine, vous devez vous assurer que :",
+      "options": {
+        "a": "Toutes les épines sont éliminées",
+        "b": "Les crochets sont bien adaptés à la gencive marginale au niveau de leurs extrémités rétentives",
+        "c": "La résine de l'intrados est bien adaptée à la gencive marginale et au sulcus",
+        "d": "Les dents prothétiques respectent l'occlusion"
+      }
+    },
+    {
+      "id": 18,
+      "context": "Ce patient est revenu pour le contrôle. Il se plaint d'une instabilité de sa prothèse.",
+      "question_text": "Cette instabilité peut être due à :",
+      "options": {
+        "a": "Une inadaptation des crochets",
+        "b": "Une surextension",
+        "c": "Un guidage canin en latéralité droite",
+        "d": "Un guidage canin en latéralité gauche"
+      }
+    },
+    {
+      "id": 19,
+      "question_text": "Il se plaint aussi de douleur au niveau du secteur postérieur mandibulaire. Cette douleur peut être due à :",
+      "options": {
+        "a": "Une surextention",
+        "b": "Une compression",
+        "c": "Une surocclusion",
+        "d": "Une sous-occlusion"
+      }
+    },
+    {
+      "id": 20,
+      "context": "Un patient s'est présenté dans votre cabinet pour une réhabilitation prothétique. Il présente des édentement avec absence des 18, 17, 16, 26, 27, 28, 36, 35, 34, 43, 44, 45 et 46. Les 12, 11, 21, et 22 sont mobiles et doivent être extraites mais il insiste pour les garder et les extraire le jour de la pose de la prothèse. Vous avez donc décidé de réaliser une prothèse immédiate qui va à la fois remplacer les dents postérieures maxillaires et mandibulaires absentes et les incisives maxillaires mobiles.",
+      "question_text": "Quelles sont les étapes dont vous avez besoin pour réaliser cette prothèse :",
+      "options": {
+        "a": "Empreinte secondaire maxillaire",
+        "b": "Enregistrement de l'occlusion en bouche",
+        "c": "Essayage du montage postérieur",
+        "d": "Essayage du montage antérieur et postérieur"
+      }
+    },
+    {
+      "id": 21,
+      "question_text": "La forme de la crête édentée peut être :",
+      "options": {
+        "a": "En U, favorable à la réalisation d'une prothèse amovible partielle",
+        "b": "En V (lame de couteau), favorable à la réalisation d'une prothèse amovible partielle",
+        "c": "En V (lame de couteau), défavorable à la réalisation d'une prothèse amovible partielle",
+        "d": "En V, plus fréquente à la mandibule qu'au maxillaire"
+      }
+    },
+    {
+      "id": 22,
+      "question_text": "Selon Cawood et Howell, la résorption osseuse :",
+      "options": {
+        "a": "Comporte six classes",
+        "b": "Comporte cinq classes",
+        "c": "La classe V décrit une crête plate, hauteur et largeur insuffisantes",
+        "d": "La classe V décrit une crête concave (avec perte de l'os basal)"
+      }
+    },
+    {
+      "id": 23,
+      "question_text": "Le voile du palais (ou palais mou) peut être :",
+      "options": {
+        "a": "Horizontal : en continuité avec le palais (favorable)",
+        "b": "Horizontal : en continuité avec le palais (défavorable)",
+        "c": "Vertical (défavorable)",
+        "d": "Vertical (favorable)"
+      }
+    },
+    {
+      "id": 24,
+      "question_text": "Les Epines mentonnières supérieures (anciennement appelées Apophyses Géni) :",
+      "options": {
+        "a": "Représentent l'insertion des muscles génio-glosses",
+        "b": "Permettent l'insertion des muscles génio-hyoïdiens",
+        "c": "Sont situées en regard des premières et deuxièmes molaires",
+        "d": "Sont situées derrière les deux incisives centrales"
+      }
+    },
+    {
+      "id": 25,
+      "question_text": "Les ligaments ptérygo-mandibulaires sont sollicités et peuvent interférer avec la zone postérieure de la PAP :",
+      "options": {
+        "a": "Lors de l'ouverture buccale",
+        "b": "Lors de la latéralité mandibulaire",
+        "c": "Ils doivent impérativement être déchargés par la prothèse",
+        "d": "Ils doivent impérativement être enlevés chirurgicalement"
+      }
+    },
+    {
+      "id": 26,
+      "question_text": "Le raphé médian peut être :",
+      "options": {
+        "a": "En forme de V concave, qui constitue un indice négatif",
+        "b": "En forme de V en relief, qui constitue un indice négatif",
+        "c": "En forme plate, qui constitue un indice négatif",
+        "d": "En forme plate, qui constitue un indice positif"
+      }
+    },
+    {
+      "id": 27,
+      "question_text": "Les structures dento-parodontales se caractérisent par :",
+      "options": {
+        "a": "Une dépressibilité de 0.1 à 0.2 mm",
+        "b": "Une dépressibilité de 0.4 à 1 mm",
+        "c": "Une proprioception",
+        "d": "Une extéroception"
+      }
+    },
+    {
+      "id": 28,
+      "question_text": "La dualité tissulaire se caractérise par la différence de comportement des structures présentes, à savoir :",
+      "options": {
+        "a": "La dépressibilité",
+        "b": "La proprioception",
+        "c": "Les forces d'enfoncement et de décollement de la prothèse",
+        "d": "L'élasticité"
+      }
+    },
+    {
+      "id": 29,
+      "question_text": "Les égressions dentaires entraînent :",
+      "options": {
+        "a": "Une réduction de l'espace prothétique disponible ou utilisable",
+        "b": "Une augmentation de l'espace prothétique disponible ou utilisable",
+        "c": "Un plan d'occlusion perturbé",
+        "d": "Un plan d'occlusion correct"
+      }
+    },
+    {
+      "id": 30,
+      "question_text": "Le phénomène de résorption osseuse n'est pas identique entre le maxillaire et la mandibule :",
+      "options": {
+        "a": "Il est centripète au maxillaire",
+        "b": "Il est centrifuge à la mandibule",
+        "c": "Il est centripète à la mandibule",
+        "d": "Il est centrifuge au maxillaire"
+      }
+    },
+    {
+      "id": 31,
+      "question_text": "La sustentation, la stabilisation et la rétention prothétiques sont regroupées et connues sous la forme de :",
+      "options": {
+        "a": "La triade de Borel",
+        "b": "La triade de Batarec",
+        "c": "La triade de Housset",
+        "d": "La triade de Cawood et Howell"
+      }
+    },
+    {
+      "id": 32,
+      "question_text": "La sustentation prothétique est définie selon E. Batarec comme :",
+      "options": {
+        "a": "La réaction s'opposant aux forces axiales (de mastication) tendant à enfoncer la prothèse contre les surfaces d'appui",
+        "b": "La réaction s'opposant aux forces tendant à faire subir à la prothèse des mouvements de translation horizontale ou de rotation",
+        "c": "La réaction s'opposant aux forces axiales tendant à éloigner la prothèse des surfaces d'appui",
+        "d": "La réaction s'opposant aux forces obliques et horizontales tendant à éloigner la prothèse des surfaces d'appui"
+      }
+    },
+    {
+      "id": 33,
+      "question_text": "La stabilisation prothétique est définie selon E. Batarec comme :",
+      "options": {
+        "a": "La réaction s'opposant aux forces axiales (de mastication) tendant à enfoncer la prothèse contre les surfaces d'appui",
+        "b": "La réaction s'opposant aux forces tendant à faire subir à la prothèse des mouvements de translation horizontale ou de rotation",
+        "c": "La réaction s'opposant aux forces axiales tendant à éloigner la prothèse des surfaces d'appui",
+        "d": "La réaction s'opposant aux forces obliques et horizontales tendant à éloigner la prothèse des surfaces d'appui"
+      }
+    },
+    {
+      "id": 34,
+      "question_text": "La rétention prothétique est définie selon E. Batarec comme :",
+      "options": {
+        "a": "La réaction s'opposant aux forces axiales (de mastication) tendant à enfoncer la prothèse contre les surfaces d'appui",
+        "b": "La réaction s'opposant aux forces tendant à faire subir à la prothèse des mouvements de translation horizontale ou de rotation",
+        "c": "La réaction s'opposant aux forces axiales tendant à éloigner la prothèse des surfaces d'appui",
+        "d": "La réaction s'opposant aux forces obliques et horizontales tendant à enfoncer la prothèse contre les surfaces d'appui"
+      }
+    },
+    {
+      "id": 35,
+      "question_text": "Pour améliorer la sustentation prothétique, il faut adopter la (les) conception (s) suivante (s) :",
+      "options": {
+        "a": "Appui dento-parodontal : si proprioception prédominante",
+        "b": "Appui dento-parodontal : si extéroception prédominante",
+        "c": "Appui dento-parodontal et ostéo-muqueux (mixte) : si extéroception prédominante",
+        "d": "Appui dento-parodontal et ostéo-muqueux (mixte) : si proprioception prédominante"
+      }
+    },
+    {
+      "id": 36,
+      "question_text": "La sustentation prothétique d'origine fibro-muqueuse est assurée par les facteurs anatomiques suivants :",
+      "options": {
+        "a": "Une crête large",
+        "b": "Une voûte palatine plate",
+        "c": "Une voûte palatine profonde",
+        "d": "Des insertions musculaires et freinales proches de la ligne faitière"
+      }
+    },
+    {
+      "id": 37,
+      "question_text": "Les facteurs de sustentation liés à la conception prothétique sont :",
+      "options": {
+        "a": "Une extension maximale de la prothèse",
+        "b": "Une extension minimale de la prothèse",
+        "c": "Une chape parabolique à tenon radiculaire",
+        "d": "Un attachement axial"
+      }
+    },
+    {
+      "id": 38,
+      "question_text": "Parmi les facteurs anatomiques régissant la rétention prothétique, nous citons :",
+      "options": {
+        "a": "Les crêtes hautes, larges",
+        "b": "Le palais en U",
+        "c": "Les contre-dépouilles (tubérosités, trigones, ..)",
+        "d": "Le palais plat"
+      }
+    },
+    {
+      "id": 39,
+      "question_text": "Les facteurs physiques régissant la rétention prothétique sont :",
+      "options": {
+        "a": "L'extéroception",
+        "b": "Les crochets façonnés (PAP résine)/ crochets coulés (PAP métallique)",
+        "c": "Le Phénomène d'interface (fibromuqueuse/intrados prothétique)",
+        "d": "La Pression atmosphérique : effet de ventouse"
+      }
+    },
+    {
+      "id": 40,
+      "question_text": "Les facteurs de rétention liés à la conception prothétique sont :",
+      "options": {
+        "a": "Les crochets façonnés (PAP résine) ou crochets coulés (PAP métallique)",
+        "b": "Les attachements (PAP supra-radiculaire)",
+        "c": "La chape parabolique à tenon radiculaire",
+        "d": "L'extension maximale de la prothèse"
+      }
+    }
+  ]
+}
